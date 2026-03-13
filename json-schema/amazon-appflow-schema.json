@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.apievangelist.com/amazon-appflow/flow-definition",
+  "title": "Amazon AppFlow Flow Definition",
+  "description": "Schema defining the structure of an Amazon AppFlow flow resource, including source and destination configurations, task definitions, trigger settings, and flow metadata.",
+  "type": "object",
+  "required": [
+    "flowName",
+    "sourceFlowConfig",
+    "destinationFlowConfigList",
+    "tasks",
+    "triggerConfig"
+  ],
+  "properties": {
+    "flowArn": {
+      "type": "string",
+      "description": "The ARN of the flow."
+    },
+    "flowName": {
+      "type": "string",
+      "description": "The specified name of the flow.",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_-]*$",
+      "maxLength": 256
+    },
+    "description": {
+      "type": "string",
+      "description": "A user-entered description of the flow.",
+      "maxLength": 2048
+    },
+    "flowStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "description": "Indicates the current status of the flow."
+    },
+    "sourceFlowConfig": {
+      "$ref": "#/$defs/SourceFlowConfig"
+    },
+    "destinationFlowConfigList": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/DestinationFlowConfig"
+      },
+      "description": "The configuration that controls how Amazon AppFlow places data in the destination connector."
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Task"
+      },
+      "description": "A list of tasks that Amazon AppFlow performs while transferring the data in the flow run."
+    },
+    "triggerConfig": {
+      "$ref": "#/$defs/TriggerConfig"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Specifies when the flow was created."
+    },
+    "lastUpdatedAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Specifies when the flow was last updated."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "The tags used to organize, track, or control access for your flow."
+    }
+  },
+  "$defs": {
+    "SourceFlowConfig": {
+      "type": "object",
+      "description": "Contains information about the configuration of the source connector.",
+      "required": [
+        "connectorType",
+        "sourceConnectorProperties"
+      ],
+      "properties": {
+        "connectorType": {
+          "type": "string",
+          "description": "The type of connector, such as Salesforce, Zendesk, Slack, etc."
+        },
+        "connectorProfileName": {
+          "type": "string",
+          "description": "The name of the connector profile."
+        },
+        "sourceConnectorProperties": {
+          "type": "object",
+          "description": "Specifies the information that is required to query a particular source connector."
+        },
+        "incrementalPullConfig": {
+          "type": "object",
+          "properties": {
+            "datetimeTypeFieldName": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "DestinationFlowConfig": {
+      "type": "object",
+      "description": "Contains information about the configuration of destination connector.",
+      "required": [
+        "connectorType",
+        "destinationConnectorProperties"
+      ],
+      "properties": {
+        "connectorType": {
+          "type": "string",
+          "description": "The type of destination connector."
+        },
+        "connectorProfileName": {
+          "type": "string"
+        },
+        "destinationConnectorProperties": {
+          "type": "object",
+          "description": "The properties that are required to query the destination connector."
+        }
+      }
+    },
+    "Task": {
+      "type": "object",
+      "description": "A class for modeling different type of tasks.",
+      "required": [
+        "sourceFields",
+        "taskType"
+      ],
+      "properties": {
+        "sourceFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "The source fields to which a particular task is applied."
+        },
+        "connectorOperator": {
+          "type": "object",
+          "description": "The operation to be performed on the provided source fields."
+        },
+        "destinationField": {
+          "type": "string",
+          "description": "A field in a destination connector."
+        },
+        "taskType": {
+          "type": "string",
+          "enum": [
+            "Arithmetic",
+            "Filter",
+            "Map",
+            "Map_all",
+            "Mask",
+            "Merge",
+            "Passthrough",
+            "Truncate",
+            "Validate",
+            "Partition"
+          ],
+          "description": "Specifies the particular task implementation."
+        },
+        "taskProperties": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "TriggerConfig": {
+      "type": "object",
+      "description": "The trigger settings that determine how and when Amazon AppFlow runs the specified flow.",
+      "required": [
+        "triggerType"
+      ],
+      "properties": {
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "Scheduled",
+            "Event",
+            "OnDemand"
+          ],
+          "description": "Specifies the type of flow trigger."
+        },
+        "triggerProperties": {
+          "type": "object",
+          "description": "Specifies the configuration details of a schedule-triggered flow."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "appflow": "https://docs.aws.amazon.com/appflow/1.0/APIReference/",
+    "aws": "https://aws.amazon.com/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+
+    "Flow": {
+      "@id": "appflow:API_FlowDefinition",
+      "@context": {
+        "flowArn": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "flowName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "flowStatus": {
+          "@id": "appflow:flowStatus",
+          "@type": "xsd:string"
+        },
+        "sourceFlowConfig": {
+          "@id": "appflow:sourceFlowConfig",
+          "@type": "appflow:SourceFlowConfig"
+        },
+        "destinationFlowConfigList": {
+          "@id": "appflow:destinationFlowConfigList",
+          "@container": "@list"
+        },
+        "tasks": {
+          "@id": "appflow:tasks",
+          "@container": "@list"
+        },
+        "triggerConfig": {
+          "@id": "appflow:triggerConfig",
+          "@type": "appflow:TriggerConfig"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedAt": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "SourceFlowConfig": {
+      "@id": "appflow:SourceFlowConfig",
+      "@context": {
+        "connectorType": {
+          "@id": "appflow:connectorType",
+          "@type": "xsd:string"
+        },
+        "connectorProfileName": {
+          "@id": "appflow:connectorProfileName",
+          "@type": "xsd:string"
+        },
+        "sourceConnectorProperties": {
+          "@id": "appflow:sourceConnectorProperties",
+          "@type": "appflow:SourceConnectorProperties"
+        }
+      }
+    },
+
+    "DestinationFlowConfig": {
+      "@id": "appflow:DestinationFlowConfig",
+      "@context": {
+        "connectorType": {
+          "@id": "appflow:connectorType",
+          "@type": "xsd:string"
+        },
+        "connectorProfileName": {
+          "@id": "appflow:connectorProfileName",
+          "@type": "xsd:string"
+        },
+        "destinationConnectorProperties": {
+          "@id": "appflow:destinationConnectorProperties",
+          "@type": "appflow:DestinationConnectorProperties"
+        }
+      }
+    },
+
+    "Task": {
+      "@id": "appflow:Task",
+      "@context": {
+        "sourceFields": {
+          "@id": "appflow:sourceFields",
+          "@container": "@list"
+        },
+        "taskType": {
+          "@id": "appflow:taskType",
+          "@type": "xsd:string"
+        },
+        "destinationField": {
+          "@id": "appflow:destinationField",
+          "@type": "xsd:string"
+        },
+        "taskProperties": {
+          "@id": "appflow:taskProperties",
+          "@container": "@index"
+        }
+      }
+    },
+
+    "TriggerConfig": {
+      "@id": "appflow:TriggerConfig",
+      "@context": {
+        "triggerType": {
+          "@id": "appflow:triggerType",
+          "@type": "xsd:string"
+        },
+        "triggerProperties": {
+          "@id": "appflow:triggerProperties",
+          "@type": "appflow:TriggerProperties"
+        }
+      }
+    },
+
+    "ConnectorProfile": {
+      "@id": "appflow:API_ConnectorProfile",
+      "@context": {
+        "connectorProfileArn": {
+          "@id": "schema:identifier",
+          "@type": "xsd:string"
+        },
+        "connectorProfileName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "connectorType": {
+          "@id": "appflow:connectorType",
+          "@type": "xsd:string"
+        },
+        "connectionMode": {
+          "@id": "appflow:connectionMode",
+          "@type": "xsd:string"
+        },
+        "createdAt": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "lastUpdatedAt": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    }
+  }
+}
