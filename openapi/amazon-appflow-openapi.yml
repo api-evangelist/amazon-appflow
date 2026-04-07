@@ -48,7 +48,7 @@ paths:
   /create-flow:
     post:
       operationId: CreateFlow
-      summary: Create a new data flow
+      summary: Amazon AppFlow Create a new data flow
       description: Creates a new flow for transferring data between a source and destination.
       tags:
         - Flows
