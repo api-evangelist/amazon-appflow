@@ -40,10 +40,6 @@ security:
 tags:
   - name: Flows
     description: Operations for creating and managing data flows
-  - name: Connectors
-    description: Operations for managing connector profiles and configurations
-  - name: Execution
-    description: Operations for managing flow executions
 paths:
   /create-flow:
     post:
