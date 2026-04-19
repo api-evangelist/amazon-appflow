@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-connector-entity-field-schema.json",
+  "title": "ConnectorEntityField",
+  "description": "ConnectorEntityField schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "example": "Id",
+      "description": "The unique identifier of the connector field."
+    },
+    "parentIdentifier": {
+      "type": "string",
+      "example": "",
+      "description": "The parent identifier of the connector field."
+    },
+    "label": {
+      "type": "string",
+      "example": "Account ID",
+      "description": "The label applied to a connector entity field."
+    },
+    "isPrimaryKey": {
+      "type": "boolean",
+      "example": true,
+      "description": "Booelan value that indicates whether this field can be used as a primary key."
+    },
+    "defaultValue": {
+      "type": "string",
+      "example": "",
+      "description": "Default value that can be assigned to this field."
+    },
+    "isDeprecated": {
+      "type": "boolean",
+      "example": false,
+      "description": "Booelan value that indicates whether this field is deprecated or not."
+    },
+    "supportedFieldTypeDetails": {
+      "type": "object",
+      "description": "Contains details regarding the supported FieldType, including the corresponding filterOperators and supportedValues."
+    },
+    "description": {
+      "type": "string",
+      "example": "The unique identifier for the Account object.",
+      "description": "A description of the connector entity field."
+    },
+    "sourceProperties": {
+      "type": "object",
+      "properties": {
+        "isQueryable": {
+          "type": "boolean",
+          "example": true
+        },
+        "isRetrievable": {
+          "type": "boolean",
+          "example": true
+        },
+        "isPartitioningSupported": {
+          "type": "boolean",
+          "example": false
+        }
+      },
+      "description": "The properties that can be applied to a field when the connector is being used as a source."
+    },
+    "destinationProperties": {
+      "type": "object",
+      "properties": {
+        "isCreatable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isNullable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isUpsertable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isUpdatable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isDefaultedOnCreate": {
+          "type": "boolean",
+          "example": false
+        },
+        "supportedWriteOperations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": ""
+          },
+          "example": [
+            "INSERT"
+          ]
+        }
+      },
+      "description": "The properties applied to a field when the connector is being used as a destination."
+    }
+  }
+}

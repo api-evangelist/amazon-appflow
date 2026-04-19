@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorEntityResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorEntityFields": {
+      "type": "array",
+      "description": "Describes the fields for that connector entity.",
+      "items": {}
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connector-entity-response-structure.json"
+}

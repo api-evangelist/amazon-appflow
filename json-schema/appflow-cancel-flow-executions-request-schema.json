@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-cancel-flow-executions-request-schema.json",
+  "title": "CancelFlowExecutionsRequest",
+  "description": "CancelFlowExecutionsRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow",
+      "description": "The name of a flow with active runs that you want to cancel."
+    },
+    "executionIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "exec-500123"
+      ],
+      "description": "The ID of each active run to cancel. If you omit this parameter, your request ends all active runs that belong to the flow."
+    }
+  },
+  "required": [
+    "flowName"
+  ]
+}

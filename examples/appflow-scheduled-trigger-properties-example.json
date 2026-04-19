@@ -1,0 +1,10 @@
+{
+  "scheduleExpression": "rate(1day)",
+  "dataPullMode": "Incremental",
+  "scheduleStartTime": 1718153645993,
+  "scheduleEndTime": 1718153645993,
+  "timezone": "America/New_York",
+  "scheduleOffset": 0,
+  "firstExecutionFrom": 1718153645993,
+  "flowErrorDeactivationThreshold": 3
+}

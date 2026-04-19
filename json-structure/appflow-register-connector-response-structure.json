@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "description": "RegisterConnectorResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorArn": {
+      "type": "string",
+      "description": "The ARN of the connector being registered.",
+      "example": "arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-register-connector-response-structure.json"
+}

@@ -2,9 +2,11 @@ openapi: 3.1.0
 info:
   title: Amazon AppFlow API
   description: >-
-    The Amazon AppFlow API enables you to programmatically create and manage
-    data flows between SaaS applications and AWS services, configure
-    connectors, define flow triggers, and manage data field mappings.
+    Amazon AppFlow is a fully managed integration service that enables you to
+    securely transfer data between SaaS applications like Salesforce, SAP,
+    Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon
+    Redshift. You can run data flows at enterprise scale at the frequency you
+    choose — on a schedule, in response to a business event, or on demand.
   version: '2020-08-23'
   contact:
     name: AWS Support
@@ -14,96 +16,3147 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   x-logo:
     url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
 servers:
-  - url: https://appflow.{region}.amazonaws.com
-    description: Amazon AppFlow regional endpoint
-    variables:
-      region:
-        default: us-east-1
-        description: AWS region
-        enum:
-          - us-east-1
-          - us-east-2
-          - us-west-1
-          - us-west-2
-          - eu-west-1
-          - eu-west-2
-          - eu-central-1
-          - ap-northeast-1
-          - ap-southeast-1
-          - ap-southeast-2
-          - ap-south-1
-          - sa-east-1
-          - ca-central-1
+- url: https://appflow.{region}.amazonaws.com
+  description: Amazon AppFlow regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-northeast-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
 security:
-  - sigv4: []
+- sigv4: []
 tags:
-  - name: Flows
-    description: Operations for creating and managing data flows
+- name: Flows
+  description: Operations for creating and managing data flows
+- name: Connectors
+  description: Operations for managing connector profiles and connector registrations
+- name: Tags
+  description: Operations for managing resource tags
 paths:
   /create-flow:
     post:
-      operationId: CreateFlow
-      summary: Amazon AppFlow Create a new data flow
-      description: Creates a new flow for transferring data between a source and destination.
+      operationId: createFlow
+      summary: Amazon AppFlow Create Flow
+      description: Creates a new flow for transferring data between a source connector and a destination connector.
       tags:
-        - Flows
+      - Flows
       requestBody:
         required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/CreateFlowInput'
+              $ref: '#/components/schemas/CreateFlowRequest'
+            examples:
+              CreateFlowRequestExample:
+                summary: Default createFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+                  description: Transfer Salesforce accounts to S3 daily
+                  triggerConfig:
+                    triggerType: Scheduled
+                    triggerProperties:
+                      Scheduled:
+                        scheduleExpression: rate(1day)
+                  sourceFlowConfig:
+                    connectorType: Salesforce
+                    connectorProfileName: my-salesforce-profile
+                    sourceConnectorProperties:
+                      Salesforce:
+                        object: Account
+                  destinationFlowConfigList:
+                  - connectorType: S3
+                    destinationConnectorProperties:
+                      S3:
+                        bucketName: my-data-bucket
+                        bucketPrefix: appflow/salesforce/accounts
+                  tasks:
+                  - taskType: Map
+                    sourceFields:
+                    - Id
+                    destinationField: Id
+                    taskProperties: {}
       responses:
         '200':
           description: Flow created successfully
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/CreateFlowOutput'
+                $ref: '#/components/schemas/CreateFlowResponse'
+              examples:
+                CreateFlow200Example:
+                  summary: Default createFlow 200 response
+                  x-microcks-default: true
+                  value:
+                    flowArn: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+                    flowStatus: Active
         '400':
-          description: Invalid request
+          description: Validation error or connector server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Connector authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '402':
+          description: Service quota exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — flow with this name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
         '500':
           description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /delete-flow:
+    post:
+      operationId: deleteFlow
+      summary: Amazon AppFlow Delete Flow
+      description: Enables your application to delete an existing flow. Before deleting the flow, Amazon AppFlow validates the request by checking the flow configuration and status. You can delete 
+        flows one at a time.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteFlowRequest'
+            examples:
+              DeleteFlowRequestExample:
+                summary: Default deleteFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+                  forceDelete: false
+      responses:
+        '200':
+          description: Flow deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                DeleteFlow200Example:
+                  summary: Default deleteFlow 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — flow is running
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-flow:
+    post:
+      operationId: describeFlow
+      summary: Amazon AppFlow Describe Flow
+      description: Provides a description of the specified flow.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeFlowRequest'
+            examples:
+              DescribeFlowRequestExample:
+                summary: Default describeFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+      responses:
+        '200':
+          description: Flow description returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeFlowResponse'
+              examples:
+                DescribeFlow200Example:
+                  summary: Default describeFlow 200 response
+                  x-microcks-default: true
+                  value:
+                    flowArn: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+                    flowName: my-salesforce-to-s3-flow
+                    description: Transfer Salesforce accounts to S3 daily
+                    flowStatus: Active
+                    sourceFlowConfig:
+                      connectorType: Salesforce
+                      connectorProfileName: my-salesforce-profile
+                      sourceConnectorProperties:
+                        Salesforce:
+                          object: Account
+                    triggerConfig:
+                      triggerType: Scheduled
+                    createdAt: 1718153645993
+                    lastUpdatedAt: 1718153645993
+                    createdBy: arn:aws:iam::123456789012:user/admin
+                    lastUpdatedBy: arn:aws:iam::123456789012:user/admin
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list-flows:
+    post:
+      operationId: listFlows
+      summary: Amazon AppFlow List Flows
+      description: Lists all of the flows associated with your account.
+      tags:
+      - Flows
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListFlowsRequest'
+            examples:
+              ListFlowsRequestExample:
+                summary: Default listFlows request
+                x-microcks-default: true
+                value:
+                  maxResults: 20
+      responses:
+        '200':
+          description: List of flows returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListFlowsResponse'
+              examples:
+                ListFlows200Example:
+                  summary: Default listFlows 200 response
+                  x-microcks-default: true
+                  value:
+                    flows:
+                    - flowArn: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+                      flowName: my-salesforce-to-s3-flow
+                      description: Transfer Salesforce accounts to S3 daily
+                      flowStatus: Active
+                      sourceConnectorType: Salesforce
+                      destinationConnectorType: S3
+                      triggerType: Scheduled
+                      createdAt: 1718153645993
+                      lastUpdatedAt: 1718153645993
+                    nextToken: ''
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /update-flow:
+    post:
+      operationId: updateFlow
+      summary: Amazon AppFlow Update Flow
+      description: Updates an existing flow.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateFlowRequest'
+            examples:
+              UpdateFlowRequestExample:
+                summary: Default updateFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+                  description: Updated description
+                  triggerConfig:
+                    triggerType: Scheduled
+                    triggerProperties:
+                      Scheduled:
+                        scheduleExpression: rate(6hours)
+                  sourceFlowConfig:
+                    connectorType: Salesforce
+                    connectorProfileName: my-salesforce-profile
+                    sourceConnectorProperties:
+                      Salesforce:
+                        object: Account
+                  destinationFlowConfigList:
+                  - connectorType: S3
+                    destinationConnectorProperties:
+                      S3:
+                        bucketName: my-data-bucket
+                        bucketPrefix: appflow/salesforce/accounts
+                  tasks:
+                  - taskType: Map
+                    sourceFields:
+                    - Id
+                    destinationField: Id
+                    taskProperties: {}
+      responses:
+        '200':
+          description: Flow updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateFlowResponse'
+              examples:
+                UpdateFlow200Example:
+                  summary: Default updateFlow 200 response
+                  x-microcks-default: true
+                  value:
+                    flowStatus: Active
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /start-flow:
+    post:
+      operationId: startFlow
+      summary: Amazon AppFlow Start Flow
+      description: Activates an existing flow. For on-demand flows, this operation runs the flow immediately. For schedule and event-triggered flows, this operation activates the flow without 
+        modifying the configuration.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StartFlowRequest'
+            examples:
+              StartFlowRequestExample:
+                summary: Default startFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+      responses:
+        '200':
+          description: Flow started successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StartFlowResponse'
+              examples:
+                StartFlow200Example:
+                  summary: Default startFlow 200 response
+                  x-microcks-default: true
+                  value:
+                    flowArn: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+                    flowStatus: Active
+                    executionId: exec-500123
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /stop-flow:
+    post:
+      operationId: stopFlow
+      summary: Amazon AppFlow Stop Flow
+      description: Deactivates the existing flow. For on-demand flows, this operation returns an unsupportedOperationException error message. For schedule and event-triggered flows, this operation 
+        deactivates the flow.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StopFlowRequest'
+            examples:
+              StopFlowRequestExample:
+                summary: Default stopFlow request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+      responses:
+        '200':
+          description: Flow stopped successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StopFlowResponse'
+              examples:
+                StopFlow200Example:
+                  summary: Default stopFlow 200 response
+                  x-microcks-default: true
+                  value:
+                    flowArn: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+                    flowStatus: Suspended
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /cancel-flow-executions:
+    post:
+      operationId: cancelFlowExecutions
+      summary: Amazon AppFlow Cancel Flow Executions
+      description: Cancels active runs for a flow. You can cancel all of the active runs for a flow, or you can cancel specific runs by providing their IDs.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelFlowExecutionsRequest'
+            examples:
+              CancelFlowExecutionsRequestExample:
+                summary: Default cancelFlowExecutions request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+                  executionIds:
+                  - exec-500123
+      responses:
+        '200':
+          description: Flow executions cancelled successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelFlowExecutionsResponse'
+              examples:
+                CancelFlowExecutions200Example:
+                  summary: Default cancelFlowExecutions 200 response
+                  x-microcks-default: true
+                  value:
+                    invalidExecutions:
+                    - exec-invalid-123
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-flow-execution-records:
+    post:
+      operationId: describeFlowExecutionRecords
+      summary: Amazon AppFlow Describe Flow Execution Records
+      description: Provides details regarding all instances for a given flow, based on the specified filter function, with a limit of 1000 records.
+      tags:
+      - Flows
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeFlowExecutionRecordsRequest'
+            examples:
+              DescribeFlowExecutionRecordsRequestExample:
+                summary: Default describeFlowExecutionRecords request
+                x-microcks-default: true
+                value:
+                  flowName: my-salesforce-to-s3-flow
+                  maxResults: 20
+      responses:
+        '200':
+          description: Flow execution records returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeFlowExecutionRecordsResponse'
+              examples:
+                DescribeFlowExecutionRecords200Example:
+                  summary: Default describeFlowExecutionRecords 200 response
+                  x-microcks-default: true
+                  value:
+                    flowExecutions:
+                    - executionId: exec-500123
+                      executionStatus: Successful
+                      startedAt: 1718153645993
+                      lastUpdatedAt: 1718153700000
+                      executionResult:
+                        recordsProcessed: 1500
+                        bytesProcessed: 204800
+                        bytesWritten: 204800
+                    nextToken: ''
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Flow not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /create-connector-profile:
+    post:
+      operationId: createConnectorProfile
+      summary: Amazon AppFlow Create Connector Profile
+      description: Creates a new connector profile associated with your AWS account. There is a soft quota of 100 connector profiles per AWS account. If you need more connector profiles than this 
+        quota allows, you can submit a request to the Amazon AppFlow team through the Amazon AppFlow support channel.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateConnectorProfileRequest'
+            examples:
+              CreateConnectorProfileRequestExample:
+                summary: Default createConnectorProfile request
+                x-microcks-default: true
+                value:
+                  connectorProfileName: my-salesforce-profile
+                  connectorType: Salesforce
+                  connectionMode: Public
+                  connectorProfileConfig:
+                    connectorProfileCredentials:
+                      Salesforce:
+                        accessToken: eyJhbGciOiJSUzI1NiJ9...
+                        refreshToken: 5Aep8614...
+                    connectorProfileProperties:
+                      Salesforce:
+                        instanceUrl: https://myorg.salesforce.com
+      responses:
+        '200':
+          description: Connector profile created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateConnectorProfileResponse'
+              examples:
+                CreateConnectorProfile200Example:
+                  summary: Default createConnectorProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorProfileArn: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+        '400':
+          description: Validation error or connector server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Connector authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '402':
+          description: Service quota exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — profile with this name already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /delete-connector-profile:
+    post:
+      operationId: deleteConnectorProfile
+      summary: Amazon AppFlow Delete Connector Profile
+      description: Enables you to delete an existing connector profile.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteConnectorProfileRequest'
+            examples:
+              DeleteConnectorProfileRequestExample:
+                summary: Default deleteConnectorProfile request
+                x-microcks-default: true
+                value:
+                  connectorProfileName: my-salesforce-profile
+                  forceDelete: false
+      responses:
+        '200':
+          description: Connector profile deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                DeleteConnectorProfile200Example:
+                  summary: Default deleteConnectorProfile 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector profile not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — profile is in use by a flow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-connector-profiles:
+    post:
+      operationId: describeConnectorProfiles
+      summary: Amazon AppFlow Describe Connector Profiles
+      description: Returns a list of connector-profile details matching the provided connector-profile names and connector-types. Both input lists are optional, and you can use them to filter the 
+        result. If no names or connector-types are provided, returns all connector profiles in a paginated form. If there is no match, this operation returns an empty list.
+      tags:
+      - Connectors
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeConnectorProfilesRequest'
+            examples:
+              DescribeConnectorProfilesRequestExample:
+                summary: Default describeConnectorProfiles request
+                x-microcks-default: true
+                value:
+                  connectorType: Salesforce
+                  maxResults: 20
+      responses:
+        '200':
+          description: Connector profiles returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConnectorProfilesResponse'
+              examples:
+                DescribeConnectorProfiles200Example:
+                  summary: Default describeConnectorProfiles 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorProfileDetails:
+                    - connectorProfileArn: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+                      connectorProfileName: my-salesforce-profile
+                      connectorType: Salesforce
+                      connectionMode: Public
+                      createdAt: 1718153645993
+                      lastUpdatedAt: 1718153645993
+                    nextToken: ''
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /update-connector-profile:
+    post:
+      operationId: updateConnectorProfile
+      summary: Amazon AppFlow Update Connector Profile
+      description: Updates a given connector profile associated with your account.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConnectorProfileRequest'
+            examples:
+              UpdateConnectorProfileRequestExample:
+                summary: Default updateConnectorProfile request
+                x-microcks-default: true
+                value:
+                  connectorProfileName: my-salesforce-profile
+                  connectionMode: Public
+                  connectorProfileConfig:
+                    connectorProfileCredentials:
+                      Salesforce:
+                        accessToken: eyJhbGciOiJSUzI1NiJ9...
+                        refreshToken: 5Aep8614...
+                    connectorProfileProperties:
+                      Salesforce:
+                        instanceUrl: https://myorg.salesforce.com
+      responses:
+        '200':
+          description: Connector profile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateConnectorProfileResponse'
+              examples:
+                UpdateConnectorProfile200Example:
+                  summary: Default updateConnectorProfile 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorProfileArn: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Connector authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector profile not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-connectors:
+    post:
+      operationId: describeConnectors
+      summary: Amazon AppFlow Describe Connectors
+      description: Describes the connectors vended by Amazon AppFlow for specified connector types. If you don't specify a connector type, this operation describes all connectors vended by Amazon 
+        AppFlow. This API lists only custom connectors registered in this account, not the AWS authored connectors.
+      tags:
+      - Connectors
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeConnectorsRequest'
+            examples:
+              DescribeConnectorsRequestExample:
+                summary: Default describeConnectors request
+                x-microcks-default: true
+                value:
+                  connectorTypes:
+                  - Salesforce
+                  - S3
+                  maxResults: 20
+      responses:
+        '200':
+          description: Connectors described successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConnectorsResponse'
+              examples:
+                DescribeConnectors200Example:
+                  summary: Default describeConnectors 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorConfigurations:
+                      Salesforce:
+                        canUseAsSource: true
+                        canUseAsDestination: true
+                        isPrivateLinkEnabled: false
+                        isPrivateLinkEndpointUrlRequired: false
+                    nextToken: ''
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-connector:
+    post:
+      operationId: describeConnector
+      summary: Amazon AppFlow Describe Connector
+      description: Describes the given custom connector registered in your AWS account.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeConnectorRequest'
+            examples:
+              DescribeConnectorRequestExample:
+                summary: Default describeConnector request
+                x-microcks-default: true
+                value:
+                  connectorType: CustomConnector
+                  connectorLabel: MyCustomConnector
+      responses:
+        '200':
+          description: Connector description returned successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConnectorResponse'
+              examples:
+                DescribeConnector200Example:
+                  summary: Default describeConnector 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorConfiguration:
+                      connectorArn: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+                      connectorLabel: MyCustomConnector
+                      connectorDescription: My custom connector
+                      connectorOwner: '123456789012'
+                      connectorVersion: '1.0'
+                      connectorModes:
+                      - CLOUD
+                      canUseAsSource: true
+                      canUseAsDestination: true
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /describe-connector-entity:
+    post:
+      operationId: describeConnectorEntity
+      summary: Amazon AppFlow Describe Connector Entity
+      description: Provides details regarding the entity used with the connector, with a description of the data model for each field in that entity.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DescribeConnectorEntityRequest'
+            examples:
+              DescribeConnectorEntityRequestExample:
+                summary: Default describeConnectorEntity request
+                x-microcks-default: true
+                value:
+                  connectorEntityName: Account
+                  connectorType: Salesforce
+                  connectorProfileName: my-salesforce-profile
+      responses:
+        '200':
+          description: Connector entity described successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DescribeConnectorEntityResponse'
+              examples:
+                DescribeConnectorEntity200Example:
+                  summary: Default describeConnectorEntity 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorEntityFields:
+                    - identifier: Id
+                      label: Account ID
+                      isPrimaryKey: true
+                      isQueryable: true
+                      isRetrievable: true
+                      isWritable: false
+                      supportedFieldTypeDetails:
+                        v1:
+                          fieldType: id
+                          filterOperators:
+                          - EQUAL_TO
+        '400':
+          description: Validation error or connector error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Connector authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list-connector-entities:
+    post:
+      operationId: listConnectorEntities
+      summary: Amazon AppFlow List Connector Entities
+      description: Returns the list of available connector entities supported by Amazon AppFlow. For example, you can query Salesforce for Account and Opportunity entities, or query ServiceNow for the
+        Incident entity.
+      tags:
+      - Connectors
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListConnectorEntitiesRequest'
+            examples:
+              ListConnectorEntitiesRequestExample:
+                summary: Default listConnectorEntities request
+                x-microcks-default: true
+                value:
+                  connectorType: Salesforce
+                  connectorProfileName: my-salesforce-profile
+                  entitiesPath: ''
+      responses:
+        '200':
+          description: Connector entities listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectorEntitiesResponse'
+              examples:
+                ListConnectorEntities200Example:
+                  summary: Default listConnectorEntities 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorEntityMap:
+                      Objects:
+                      - name: Account
+                        label: Account
+                        hasNestedEntities: false
+                      - name: Contact
+                        label: Contact
+                        hasNestedEntities: false
+                      - name: Opportunity
+                        label: Opportunity
+                        hasNestedEntities: false
+                    nextToken: ''
+        '400':
+          description: Validation error or connector error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Connector authentication error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /list-connectors:
+    post:
+      operationId: listConnectors
+      summary: Amazon AppFlow List Connectors
+      description: Returns the list of all registered custom connectors in your Amazon Web Services account. This API lists only custom connectors registered in this account, not the AWS authored 
+        connectors.
+      tags:
+      - Connectors
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListConnectorsRequest'
+            examples:
+              ListConnectorsRequestExample:
+                summary: Default listConnectors request
+                x-microcks-default: true
+                value:
+                  maxResults: 20
+      responses:
+        '200':
+          description: Connectors listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectorsResponse'
+              examples:
+                ListConnectors200Example:
+                  summary: Default listConnectors 200 response
+                  x-microcks-default: true
+                  value:
+                    connectors:
+                    - connectorArn: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+                      connectorLabel: MyCustomConnector
+                      connectorDescription: My custom connector
+                      connectorType: CustomConnector
+                      connectorModes:
+                      - CLOUD
+                    nextToken: ''
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /register-connector:
+    post:
+      operationId: registerConnector
+      summary: Amazon AppFlow Register Connector
+      description: Registers a new custom connector with your Amazon Web Services account. Before you can register the connector, you must deploy the associated AWS lambda function in your account.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterConnectorRequest'
+            examples:
+              RegisterConnectorRequestExample:
+                summary: Default registerConnector request
+                x-microcks-default: true
+                value:
+                  connectorLabel: MyCustomConnector
+                  description: My custom connector for proprietary data source
+                  connectorProvisioningType: LAMBDA
+                  connectorProvisioningConfig:
+                    lambda:
+                      lambdaArn: arn:aws:lambda:us-east-1:123456789012:function:my-connector-function
+      responses:
+        '200':
+          description: Connector registered successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterConnectorResponse'
+              examples:
+                RegisterConnector200Example:
+                  summary: Default registerConnector 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorArn: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+        '400':
+          description: Validation error or connector server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — connector with this label already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /unregister-connector:
+    post:
+      operationId: unregisterConnector
+      summary: Amazon AppFlow Unregister Connector
+      description: Unregisters the custom connector registered in your account that matches the connector label provided in the request.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnregisterConnectorRequest'
+            examples:
+              UnregisterConnectorRequestExample:
+                summary: Default unregisterConnector request
+                x-microcks-default: true
+                value:
+                  connectorLabel: MyCustomConnector
+                  forceDelete: false
+      responses:
+        '200':
+          description: Connector unregistered successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                UnregisterConnector200Example:
+                  summary: Default unregisterConnector 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Conflict — connector is in use by a flow
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /update-connector-registration:
+    post:
+      operationId: updateConnectorRegistration
+      summary: Amazon AppFlow Update Connector Registration
+      description: Updates a custom connector that you've previously registered. This operation updates the connector with one of the following — the latest version of the AWS Lambda function that's 
+        assigned to the connector, or a new AWS Lambda function that you specify.
+      tags:
+      - Connectors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateConnectorRegistrationRequest'
+            examples:
+              UpdateConnectorRegistrationRequestExample:
+                summary: Default updateConnectorRegistration request
+                x-microcks-default: true
+                value:
+                  connectorLabel: MyCustomConnector
+                  description: Updated description for my connector
+                  connectorProvisioningConfig:
+                    lambda:
+                      lambdaArn: arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2
+      responses:
+        '200':
+          description: Connector registration updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdateConnectorRegistrationResponse'
+              examples:
+                UpdateConnectorRegistration200Example:
+                  summary: Default updateConnectorRegistration 200 response
+                  x-microcks-default: true
+                  value:
+                    connectorArn: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+        '400':
+          description: Validation error or connector server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /reset-connector-metadata-cache:
+    post:
+      operationId: resetConnectorMetadataCache
+      summary: Amazon AppFlow Reset Connector Metadata Cache
+      description: Resets metadata about your connector entities that Amazon AppFlow stored in its cache. Use this action when you want Amazon AppFlow to return the latest information about the data 
+        that you have in a source application.
+      tags:
+      - Connectors
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResetConnectorMetadataCacheRequest'
+            examples:
+              ResetConnectorMetadataCacheRequestExample:
+                summary: Default resetConnectorMetadataCache request
+                x-microcks-default: true
+                value:
+                  connectorType: Salesforce
+                  connectorProfileName: my-salesforce-profile
+                  connectorEntityName: Account
+                  entitiesPath: ''
+      responses:
+        '200':
+          description: Connector metadata cache reset successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                ResetConnectorMetadataCache200Example:
+                  summary: Default resetConnectorMetadataCache 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error or connector error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Connector not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tags/{resourceArn}:
+    get:
+      operationId: listTagsForResource
+      summary: Amazon AppFlow List Tags for Resource
+      description: Retrieves the tags that are associated with a specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the specified flow.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      responses:
+        '200':
+          description: Tags listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceResponse'
+              examples:
+                ListTagsForResource200Example:
+                  summary: Default listTagsForResource 200 response
+                  x-microcks-default: true
+                  value:
+                    tags:
+                      environment: production
+                      team: data-engineering
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: tagResource
+      summary: Amazon AppFlow Tag Resource
+      description: Applies a tag to the specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the flow that you want to tag.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourceRequest'
+            examples:
+              TagResourceRequestExample:
+                summary: Default tagResource request
+                x-microcks-default: true
+                value:
+                  tags:
+                    environment: production
+                    team: data-engineering
+      responses:
+        '200':
+          description: Resource tagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                TagResource200Example:
+                  summary: Default tagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tags/{resourceArn}#tagKeys:
+    delete:
+      operationId: untagResource
+      summary: Amazon AppFlow Untag Resource
+      description: Removes a tag from the specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the flow that you want to untag.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      - name: tagKeys
+        in: query
+        required: true
+        description: The tag keys associated with the tag that you want to remove from your flow.
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - environment
+          - team
+      responses:
+        '200':
+          description: Tags removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                UntagResource200Example:
+                  summary: Default untagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     sigv4:
       type: apiKey
       name: Authorization
       in: header
-      description: AWS Signature Version 4
+      description: AWS Signature Version 4 authentication
   schemas:
-    CreateFlowInput:
+    CreateFlowRequest:
       type: object
       required:
-        - flowName
-        - sourceFlowConfig
-        - destinationFlowConfigList
-        - tasks
-        - triggerConfig
+      - flowName
+      - triggerConfig
+      - sourceFlowConfig
+      - destinationFlowConfigList
+      - tasks
       properties:
         flowName:
           type: string
-          description: The name of the flow
+          description: The specified name of the flow. Spaces are not allowed. Use underscores or hyphens only.
+          maxLength: 256
+          pattern: '[a-zA-Z0-9][\w!@#.-]+'
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token to ensure CreateFlow completes only once.
+          minLength: 1
+          maxLength: 256
+          example: client-token-500123
         description:
           type: string
+          description: A description of the flow you want to create.
+          maxLength: 2048
+          example: Transfer Salesforce accounts to S3 daily
+        kmsArn:
+          type: string
+          description: The ARN of the KMS key for encryption.
+          minLength: 20
+          maxLength: 2048
+          example: arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd
+        metadataCatalogConfig:
+          $ref: '#/components/schemas/MetadataCatalogConfig'
+        triggerConfig:
+          $ref: '#/components/schemas/TriggerConfig'
         sourceFlowConfig:
-          type: object
-          description: The source connector configuration
+          $ref: '#/components/schemas/SourceFlowConfig'
         destinationFlowConfigList:
           type: array
+          description: The configuration that controls how Amazon AppFlow places data in the destination connector.
           items:
-            type: object
+            $ref: '#/components/schemas/DestinationFlowConfig'
         tasks:
           type: array
+          description: A list of tasks that Amazon AppFlow performs while transferring data in the flow run.
           items:
-            type: object
-        triggerConfig:
+            $ref: '#/components/schemas/Task'
+        tags:
           type: object
-    CreateFlowOutput:
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+    CreateFlowResponse:
       type: object
       properties:
         flowArn:
           type: string
+          description: The flow's Amazon Resource Name (ARN).
+          maxLength: 512
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
         flowStatus:
           type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+    DeleteFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        forceDelete:
+          type: boolean
+          description: Indicates whether Amazon AppFlow should delete the flow, even if it is currently in use.
+          example: false
+    DescribeFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+    DescribeFlowResponse:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        description:
+          type: string
+          description: A description of the flow.
+          example: Transfer Salesforce accounts to S3 daily
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          example: my-salesforce-to-s3-flow
+        kmsArn:
+          type: string
+          description: The ARN of the AWS KMS key.
+          example: arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+        flowStatusMessage:
+          type: string
+          description: Contains an error message if the flow status is in a suspended or error state.
+          example: ''
+        sourceFlowConfig:
+          $ref: '#/components/schemas/SourceFlowConfig'
+        destinationFlowConfigList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DestinationFlowConfig'
+        lastRunExecutionDetails:
+          $ref: '#/components/schemas/ExecutionDetails'
+        triggerConfig:
+          $ref: '#/components/schemas/TriggerConfig'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        createdAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was created.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was last updated.
+          example: 1718153645993
+        createdBy:
+          type: string
+          description: The ARN of the user who created the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        lastUpdatedBy:
+          type: string
+          description: Specifies the account user name that most recently updated the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+        metadataCatalogConfig:
+          $ref: '#/components/schemas/MetadataCatalogConfig'
+        lastRunMetadataCatalogDetails:
+          type: array
+          items:
+            type: object
+    ListFlowsRequest:
+      type: object
+      properties:
+        maxResults:
+          type: integer
+          description: Specifies the maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          maxLength: 2048
+          example: ''
+    ListFlowsResponse:
+      type: object
+      properties:
+        flows:
+          type: array
+          description: The list of flows associated with your account.
+          items:
+            $ref: '#/components/schemas/FlowDefinition'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    FlowDefinition:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        description:
+          type: string
+          description: A user-entered description of the flow.
+          example: Transfer Salesforce accounts to S3 daily
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          example: my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+        sourceConnectorType:
+          type: string
+          description: Specifies the source connector type.
+          example: Salesforce
+        sourceConnectorLabel:
+          type: string
+          description: The label of the source connector in the flow.
+          example: MyCustomSourceConnector
+        destinationConnectorType:
+          type: string
+          description: Specifies the destination connector type.
+          example: S3
+        destinationConnectorLabel:
+          type: string
+          description: The label of the destination connector in the flow.
+          example: MyCustomDestinationConnector
+        triggerType:
+          type: string
+          description: Specifies the type of flow trigger.
+          enum:
+          - Scheduled
+          - Event
+          - OnDemand
+          example: Scheduled
+        createdAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was created.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was last updated.
+          example: 1718153645993
+        createdBy:
+          type: string
+          description: The ARN of the user who created the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        lastUpdatedBy:
+          type: string
+          description: Specifies the account user name that most recently updated the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+        lastRunExecutionDetails:
+          $ref: '#/components/schemas/ExecutionDetails'
+    UpdateFlowRequest:
+      type: object
+      required:
+      - flowName
+      - triggerConfig
+      - sourceFlowConfig
+      - destinationFlowConfigList
+      - tasks
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+        description:
+          type: string
+          description: A description of the flow.
+          maxLength: 2048
+          example: Updated description
+        triggerConfig:
+          $ref: '#/components/schemas/TriggerConfig'
+        sourceFlowConfig:
+          $ref: '#/components/schemas/SourceFlowConfig'
+        destinationFlowConfigList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DestinationFlowConfig'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        metadataCatalogConfig:
+          $ref: '#/components/schemas/MetadataCatalogConfig'
+    UpdateFlowResponse:
+      type: object
+      properties:
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+    StartFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+    StartFlowResponse:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+        executionId:
+          type: string
+          description: Returns the internal execution ID of an on-demand flow when the flow is started.
+          example: exec-500123
+    StopFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+    StopFlowResponse:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Suspended
+    CancelFlowExecutionsRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The name of a flow with active runs that you want to cancel.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        executionIds:
+          type: array
+          description: The ID of each active run to cancel. If you omit this parameter, your request ends all active runs that belong to the flow.
+          items:
+            type: string
+            example: ''
+          example:
+          - exec-500123
+    CancelFlowExecutionsResponse:
+      type: object
+      properties:
+        invalidExecutions:
+          type: array
+          description: The IDs of runs that Amazon AppFlow couldn't cancel. The runs might have ended before the cancelation request was processed.
+          items:
+            type: string
+            example: ''
+          example:
+          - exec-invalid-123
+    DescribeFlowExecutionRecordsRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        maxResults:
+          type: integer
+          description: Specifies the maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          maxLength: 2048
+          example: ''
+    DescribeFlowExecutionRecordsResponse:
+      type: object
+      properties:
+        flowExecutions:
+          type: array
+          description: Returns the execution details and flow run history for a given flow.
+          items:
+            $ref: '#/components/schemas/FlowExecution'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    FlowExecution:
+      type: object
+      properties:
+        executionId:
+          type: string
+          description: Specifies the identifier of the given flow run.
+          example: exec-500123
+        executionStatus:
+          type: string
+          description: Specifies the flow run status and whether it is in progress, has completed successfully, or has failed.
+          enum:
+          - InProgress
+          - Successful
+          - Error
+          - CancelStarted
+          - Canceled
+          example: Successful
+        executionResult:
+          $ref: '#/components/schemas/ExecutionResult'
+        startedAt:
+          type: integer
+          format: int64
+          description: Specifies the start timestamp for your flow run.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies the time of the most recent update.
+          example: 1718153700000
+        dataPullStartTime:
+          type: integer
+          format: int64
+          description: The timestamp that determines the first new or updated record to be transferred in the flow run.
+          example: 1718153645993
+        dataPullEndTime:
+          type: integer
+          format: int64
+          description: The timestamp that determines the last new or updated record to be transferred in the flow run.
+          example: 1718153700000
+    ExecutionResult:
+      type: object
+      properties:
+        errorInfo:
+          type: object
+          description: Provides any error message information related to the flow run.
+        bytesProcessed:
+          type: integer
+          format: int64
+          description: The total number of bytes processed by the flow run.
+          example: 204800
+        bytesWritten:
+          type: integer
+          format: int64
+          description: The total number of bytes written as a result of the flow run.
+          example: 204800
+        recordsProcessed:
+          type: integer
+          format: int64
+          description: The number of records processed in the flow run.
+          example: 1500
+        numParallelProcesses:
+          type: integer
+          format: int64
+          description: The number of processes that Amazon AppFlow ran at the same time when it retrieved your data.
+          example: 1
+    ExecutionDetails:
+      type: object
+      properties:
+        mostRecentExecutionMessage:
+          type: string
+          description: Describes the details of the most recent flow run.
+          example: Successfully ran the flow
+        mostRecentExecutionTime:
+          type: integer
+          format: int64
+          description: Specifies the time of the most recent flow run.
+          example: 1718153700000
+        mostRecentExecutionStatus:
+          type: string
+          description: Specifies the status of the most recent flow run.
+          enum:
+          - InProgress
+          - Successful
+          - Error
+          - CancelStarted
+          - Canceled
+          example: Successful
+    TriggerConfig:
+      type: object
+      required:
+      - triggerType
+      properties:
+        triggerType:
+          type: string
+          description: Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event.
+          enum:
+          - Scheduled
+          - Event
+          - OnDemand
+          example: Scheduled
+        triggerProperties:
+          type: object
+          description: Specifies the configuration details of a schedule-triggered flow as defined by the user.
+          properties:
+            Scheduled:
+              $ref: '#/components/schemas/ScheduledTriggerProperties'
+    ScheduledTriggerProperties:
+      type: object
+      required:
+      - scheduleExpression
+      properties:
+        scheduleExpression:
+          type: string
+          description: The scheduling expression that determines the rate at which the schedule will run, for example rate(5minutes).
+          example: rate(1day)
+        dataPullMode:
+          type: string
+          description: Specifies whether a scheduled flow has an incremental data transfer or a complete data transfer for each flow run.
+          enum:
+          - Incremental
+          - Complete
+          example: Incremental
+        scheduleStartTime:
+          type: integer
+          format: int64
+          description: The time at which the scheduled flow starts.
+          example: 1718153645993
+        scheduleEndTime:
+          type: integer
+          format: int64
+          description: The time at which the scheduled flow ends.
+          example: 1718153645993
+        timezone:
+          type: string
+          description: Specifies the time zone used when referring to the date and time of a scheduled-triggered flow.
+          example: America/New_York
+        scheduleOffset:
+          type: integer
+          format: int64
+          description: Specifies the optional offset that is added to the time interval for a schedule-triggered flow.
+          example: 0
+        firstExecutionFrom:
+          type: integer
+          format: int64
+          description: Specifies the date range for the records to import from the connector in the first flow run.
+          example: 1718153645993
+        flowErrorDeactivationThreshold:
+          type: integer
+          description: Defines how many times a scheduled flow fails consecutively before Amazon AppFlow deactivates it.
+          example: 3
+    SourceFlowConfig:
+      type: object
+      required:
+      - connectorType
+      - sourceConnectorProperties
+      properties:
+        connectorType:
+          type: string
+          description: The type of connector used as a source.
+          example: Salesforce
+        apiVersion:
+          type: string
+          description: The API version of the connector used in the source.
+          example: v55.0
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile. Required for all connectors except Amplitude, Datadog, Dynatrace, GoogleAnalytics, Marketo, SAPOData, Salesforce, ServiceNow, Singular, Slack,
+            Trendmicro, and Veeva.
+          example: my-salesforce-profile
+        sourceConnectorProperties:
+          type: object
+          description: Specifies the information that is required to query a particular source connector.
+          example:
+            Salesforce:
+              object: Account
+        incrementalPullConfig:
+          type: object
+          description: Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the 
+            incremental data pull.
+          properties:
+            datetimeTypeFieldName:
+              type: string
+              description: A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.
+              example: LastModifiedDate
+    DestinationFlowConfig:
+      type: object
+      required:
+      - connectorType
+      - destinationConnectorProperties
+      properties:
+        connectorType:
+          type: string
+          description: The type of connector used as a destination.
+          example: S3
+        apiVersion:
+          type: string
+          description: The API version that the destination connector uses.
+          example: '2006-03-01'
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile.
+          example: my-s3-profile
+        destinationConnectorProperties:
+          type: object
+          description: This stores the information that is required to query a particular connector.
+          example:
+            S3:
+              bucketName: my-data-bucket
+              bucketPrefix: appflow/salesforce/accounts
+    Task:
+      type: object
+      required:
+      - taskType
+      - sourceFields
+      properties:
+        sourceFields:
+          type: array
+          description: The source fields to which a particular task is applied.
+          items:
+            type: string
+            example: ''
+          example:
+          - Id
+          - Name
+        connectorOperator:
+          type: object
+          description: The operation to be performed on the provided source fields.
+          example:
+            Salesforce: NO_OP
+        destinationField:
+          type: string
+          description: A field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
+          example: AccountId
+        taskType:
+          type: string
+          description: Specifies the particular task implementation that Amazon AppFlow performs.
+          enum:
+          - Arithmetic
+          - Filter
+          - Map
+          - Map_all
+          - Mask
+          - Merge
+          - Partition
+          - Passthrough
+          - Truncate
+          - Validate
+          - Concat
+          example: Map
+        taskProperties:
+          type: object
+          description: A map used to store task-related information.
+          additionalProperties:
+            type: string
+          example:
+            SOURCE_DATA_TYPE: string
+    MetadataCatalogConfig:
+      type: object
+      properties:
+        glueDataCatalog:
+          type: object
+          description: Specifies the configuration that Amazon AppFlow uses when it catalogs data with the Glue Data Catalog.
+          properties:
+            roleArn:
+              type: string
+              description: The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions.
+              example: arn:aws:iam::123456789012:role/AppFlowGlueRole
+            databaseName:
+              type: string
+              description: The name of an existing Glue Data Catalog database.
+              example: appflow-catalog-db
+            tablePrefix:
+              type: string
+              description: A naming prefix for each Data Catalog table that Amazon AppFlow creates.
+              example: sf_
+    CreateConnectorProfileRequest:
+      type: object
+      required:
+      - connectorProfileName
+      - connectorType
+      - connectionMode
+      - connectorProfileConfig
+      properties:
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile. The name is unique for each ConnectorProfile in your AWS account.
+          maxLength: 256
+          example: my-salesforce-profile
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+        connectorType:
+          type: string
+          description: The type of connector, such as Salesforce, Marketo, and so on.
+          example: Salesforce
+        connectorLabel:
+          type: string
+          description: The label of the connector. The label is unique for each ConnectorRegistration in your AWS account.
+          example: MyCustomConnector
+        connectionMode:
+          type: string
+          description: Indicates the connection mode and specifies whether it is public or private.
+          enum:
+          - Public
+          - Private
+          example: Public
+        kmsArn:
+          type: string
+          description: The ARN of the KMS key to use to encrypt your connector profile credentials.
+          example: arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd
+        connectorProfileConfig:
+          type: object
+          description: Defines the connector-specific configuration and credentials.
+    CreateConnectorProfileResponse:
+      type: object
+      properties:
+        connectorProfileArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the connector profile.
+          example: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+    DeleteConnectorProfileRequest:
+      type: object
+      required:
+      - connectorProfileName
+      properties:
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile.
+          maxLength: 256
+          example: my-salesforce-profile
+        forceDelete:
+          type: boolean
+          description: Indicates whether Amazon AppFlow should delete the profile, even if it is currently in use in one or more flows.
+          example: false
+    DescribeConnectorProfilesRequest:
+      type: object
+      properties:
+        connectorProfileNames:
+          type: array
+          description: The name of the connector profile. The name is unique for each ConnectorProfile in the AWS account.
+          items:
+            type: string
+            example: ''
+          example:
+          - my-salesforce-profile
+        connectorType:
+          type: string
+          description: The type of connector, such as Salesforce, Marketo, and so on.
+          example: Salesforce
+        connectorLabel:
+          type: string
+          description: The name of the connector.
+          example: MyCustomConnector
+        maxResults:
+          type: integer
+          description: Specifies the maximum number of items that should be returned in the result set. The default for maxResults is 20.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          maxLength: 2048
+          example: ''
+    DescribeConnectorProfilesResponse:
+      type: object
+      properties:
+        connectorProfileDetails:
+          type: array
+          description: Returns information about the connector profiles associated with the flow.
+          items:
+            $ref: '#/components/schemas/ConnectorProfile'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    ConnectorProfile:
+      type: object
+      properties:
+        connectorProfileArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the connector profile.
+          example: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile.
+          example: my-salesforce-profile
+        connectorType:
+          type: string
+          description: The type of connector.
+          example: Salesforce
+        connectorLabel:
+          type: string
+          description: The label of the connector.
+          example: MyCustomConnector
+        connectionMode:
+          type: string
+          description: Indicates the connection mode and if it is public or private.
+          enum:
+          - Public
+          - Private
+          example: Public
+        credentialsArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the connector profile credentials.
+          example: arn:aws:secretsmanager:us-east-1:123456789012:secret:appflow/my-salesforce-profile-credentials
+        connectorProfileProperties:
+          type: object
+          description: The connector-specific properties of the profile configuration.
+        createdAt:
+          type: integer
+          format: int64
+          description: Specifies when the connector profile was created.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies when the connector profile was last updated.
+          example: 1718153645993
+        privateConnectionProvisioningState:
+          type: object
+          description: Specifies the private connection provisioning state.
+    UpdateConnectorProfileRequest:
+      type: object
+      required:
+      - connectorProfileName
+      - connectionMode
+      - connectorProfileConfig
+      properties:
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile and is unique for each ConnectorProfile in the AWS account.
+          maxLength: 256
+          example: my-salesforce-profile
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+        connectionMode:
+          type: string
+          description: Indicates the connection mode and if it is public or private.
+          enum:
+          - Public
+          - Private
+          example: Public
+        connectorProfileConfig:
+          type: object
+          description: Defines the connector-specific profile configuration and credentials.
+    UpdateConnectorProfileResponse:
+      type: object
+      properties:
+        connectorProfileArn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the connector profile.
+          example: arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile
+    DescribeConnectorsRequest:
+      type: object
+      properties:
+        connectorTypes:
+          type: array
+          description: The type of connector, such as Salesforce, Marketo, and so on.
+          items:
+            type: string
+            example: ''
+          example:
+          - Salesforce
+          - S3
+        maxResults:
+          type: integer
+          description: The maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          maxLength: 2048
+          example: ''
+    DescribeConnectorsResponse:
+      type: object
+      properties:
+        connectorConfigurations:
+          type: object
+          description: The configuration that is applied to the connectors used in the flow.
+          additionalProperties:
+            type: object
+        connectors:
+          type: array
+          description: Information about the connectors supported in Amazon AppFlow.
+          items:
+            $ref: '#/components/schemas/ConnectorDetail'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    ConnectorDetail:
+      type: object
+      properties:
+        connectorDescription:
+          type: string
+          description: A description about the registered connector.
+          example: My custom connector for proprietary data source
+        connectorName:
+          type: string
+          description: The name of the connector.
+          example: MyCustomConnector
+        connectorOwner:
+          type: string
+          description: The owner of the connector.
+          example: '123456789012'
+        connectorVersion:
+          type: string
+          description: The connector version.
+          example: '1.0'
+        applicationType:
+          type: string
+          description: The application type of the connector.
+          example: SaaS
+        connectorType:
+          type: string
+          description: The connector type.
+          example: CustomConnector
+        connectorLabel:
+          type: string
+          description: The label used for registering the connector.
+          example: MyCustomConnector
+        registeredAt:
+          type: integer
+          format: int64
+          description: The time at which the connector was registered.
+          example: 1718153645993
+        registeredBy:
+          type: string
+          description: The user who registered the connector.
+          example: arn:aws:iam::123456789012:user/admin
+        connectorProvisioningType:
+          type: string
+          description: The provisioning type that the connector uses.
+          example: LAMBDA
+        connectorModes:
+          type: array
+          items:
+            type: string
+            example: ''
+          example:
+          - CLOUD
+        supportedDataTransferTypes:
+          type: array
+          items:
+            type: string
+            example: ''
+          example:
+          - RECORD
+          - FILE
+    DescribeConnectorRequest:
+      type: object
+      required:
+      - connectorType
+      properties:
+        connectorType:
+          type: string
+          description: The connector type, such as CUSTOMCONNECTOR, Saleforce, Marketo.
+          example: CustomConnector
+        connectorLabel:
+          type: string
+          description: The label of the connector. The label is unique for each ConnectorRegistration in your Amazon Web Services account.
+          example: MyCustomConnector
+    DescribeConnectorResponse:
+      type: object
+      properties:
+        connectorConfiguration:
+          type: object
+          description: Configuration info of all the connectors that the user requested.
+          properties:
+            canUseAsSource:
+              type: boolean
+              description: Specifies whether the connector can be used as a source.
+              example: true
+            canUseAsDestination:
+              type: boolean
+              description: Specifies whether the connector can be used as a destination.
+              example: true
+            connectorArn:
+              type: string
+              description: The Amazon Resource Name (ARN) for the registered connector.
+              example: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+            connectorLabel:
+              type: string
+              description: The label used for registering the connector.
+              example: MyCustomConnector
+            connectorDescription:
+              type: string
+              description: A description about the connector.
+              example: My custom connector
+            connectorOwner:
+              type: string
+              description: The owner of the connector.
+              example: '123456789012'
+            connectorVersion:
+              type: string
+              description: The connector version.
+              example: '1.0'
+            connectorModes:
+              type: array
+              items:
+                type: string
+                example: ''
+              example:
+              - CLOUD
+    DescribeConnectorEntityRequest:
+      type: object
+      required:
+      - connectorEntityName
+      properties:
+        connectorEntityName:
+          type: string
+          description: The entity name for that connector.
+          maxLength: 1024
+          example: Account
+        connectorType:
+          type: string
+          description: The type of connector application, such as Salesforce, Marketo, and so on.
+          example: Salesforce
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile. The name is unique for each ConnectorProfile in the AWS account.
+          example: my-salesforce-profile
+        apiVersion:
+          type: string
+          description: The version of the API that's used by the connector.
+          example: v55.0
+    DescribeConnectorEntityResponse:
+      type: object
+      properties:
+        connectorEntityFields:
+          type: array
+          description: Describes the fields for that connector entity.
+          items:
+            $ref: '#/components/schemas/ConnectorEntityField'
+    ConnectorEntityField:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: The unique identifier of the connector field.
+          example: Id
+        parentIdentifier:
+          type: string
+          description: The parent identifier of the connector field.
+          example: ''
+        label:
+          type: string
+          description: The label applied to a connector entity field.
+          example: Account ID
+        isPrimaryKey:
+          type: boolean
+          description: Booelan value that indicates whether this field can be used as a primary key.
+          example: true
+        defaultValue:
+          type: string
+          description: Default value that can be assigned to this field.
+          example: ''
+        isDeprecated:
+          type: boolean
+          description: Booelan value that indicates whether this field is deprecated or not.
+          example: false
+        supportedFieldTypeDetails:
+          type: object
+          description: Contains details regarding the supported FieldType, including the corresponding filterOperators and supportedValues.
+        description:
+          type: string
+          description: A description of the connector entity field.
+          example: The unique identifier for the Account object.
+        sourceProperties:
+          type: object
+          description: The properties that can be applied to a field when the connector is being used as a source.
+          properties:
+            isQueryable:
+              type: boolean
+              example: true
+            isRetrievable:
+              type: boolean
+              example: true
+            isPartitioningSupported:
+              type: boolean
+              example: false
+        destinationProperties:
+          type: object
+          description: The properties applied to a field when the connector is being used as a destination.
+          properties:
+            isCreatable:
+              type: boolean
+              example: false
+            isNullable:
+              type: boolean
+              example: false
+            isUpsertable:
+              type: boolean
+              example: false
+            isUpdatable:
+              type: boolean
+              example: false
+            isDefaultedOnCreate:
+              type: boolean
+              example: false
+            supportedWriteOperations:
+              type: array
+              items:
+                type: string
+                example: ''
+              example:
+              - INSERT
+    ListConnectorEntitiesRequest:
+      type: object
+      properties:
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile. The name is unique for each ConnectorProfile in the AWS account.
+          example: my-salesforce-profile
+        connectorType:
+          type: string
+          description: The type of connector, such as Salesforce, Marketo, and so on.
+          example: Salesforce
+        entitiesPath:
+          type: string
+          description: This optional parameter is specific to connector implementation. Some connectors support multiple levels or categories of entities.
+          maxLength: 256
+          example: ''
+        apiVersion:
+          type: string
+          description: The version of the API that's used by the connector.
+          example: v55.0
+        maxResults:
+          type: integer
+          description: The maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 10000
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    ListConnectorEntitiesResponse:
+      type: object
+      properties:
+        connectorEntityMap:
+          type: object
+          description: The response of ListConnectorEntities lists entities grouped by category.
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/ConnectorEntity'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    ConnectorEntity:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+          description: The name of the connector entity.
+          example: Account
+        label:
+          type: string
+          description: The label applied to the connector entity.
+          example: Account
+        hasNestedEntities:
+          type: boolean
+          description: Specifies whether the connector entity is a parent or a category and has more entities nested underneath it.
+          example: false
+    ListConnectorsRequest:
+      type: object
+      properties:
+        maxResults:
+          type: integer
+          description: Specifies the maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    ListConnectorsResponse:
+      type: object
+      properties:
+        connectors:
+          type: array
+          description: Contains information about each connector returned in your request.
+          items:
+            $ref: '#/components/schemas/ConnectorDetail'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    RegisterConnectorRequest:
+      type: object
+      properties:
+        connectorLabel:
+          type: string
+          description: The name of the connector. The name is unique for each ConnectorRegistration in your Amazon Web Services account.
+          maxLength: 256
+          example: MyCustomConnector
+        description:
+          type: string
+          description: A description about the connector that's being registered.
+          maxLength: 2048
+          example: My custom connector for proprietary data source
+        connectorProvisioningType:
+          type: string
+          description: The provisioning type of the connector. Currently the only supported value is LAMBDA.
+          enum:
+          - LAMBDA
+          example: LAMBDA
+        connectorProvisioningConfig:
+          type: object
+          description: The provisioning type of the connector.
+          properties:
+            lambda:
+              type: object
+              description: Contains information about the configuration of the lambda which is being registered as the connector.
+              properties:
+                lambdaArn:
+                  type: string
+                  description: Lambda ARN of the connector being registered.
+                  example: arn:aws:lambda:us-east-1:123456789012:function:my-connector-function
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+    RegisterConnectorResponse:
+      type: object
+      properties:
+        connectorArn:
+          type: string
+          description: The ARN of the connector being registered.
+          example: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+    UnregisterConnectorRequest:
+      type: object
+      required:
+      - connectorLabel
+      properties:
+        connectorLabel:
+          type: string
+          description: The label of the connector. The label is unique for each ConnectorRegistration in your Amazon Web Services account.
+          maxLength: 256
+          example: MyCustomConnector
+        forceDelete:
+          type: boolean
+          description: Indicates whether Amazon AppFlow should unregister the connector, even if it is currently in use in one or more connector profiles.
+          example: false
+    UpdateConnectorRegistrationRequest:
+      type: object
+      required:
+      - connectorLabel
+      properties:
+        connectorLabel:
+          type: string
+          description: The name of the connector. The name is unique for each ConnectorRegistration in your Amazon Web Services account.
+          maxLength: 256
+          example: MyCustomConnector
+        description:
+          type: string
+          description: A description about the update that you're making to the connector.
+          maxLength: 2048
+          example: Updated description for my connector
+        connectorProvisioningConfig:
+          type: object
+          description: The provisioning type of the connector.
+          properties:
+            lambda:
+              type: object
+              properties:
+                lambdaArn:
+                  type: string
+                  description: Lambda ARN of the connector being registered.
+                  example: arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+    UpdateConnectorRegistrationResponse:
+      type: object
+      properties:
+        connectorArn:
+          type: string
+          description: The ARN of the connector being updated.
+          example: arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector
+    ResetConnectorMetadataCacheRequest:
+      type: object
+      properties:
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile that you want to reset cached metadata for.
+          maxLength: 256
+          example: my-salesforce-profile
+        connectorType:
+          type: string
+          description: The type of connector to reset cached metadata for.
+          example: Salesforce
+        connectorEntityName:
+          type: string
+          description: Use this parameter if you want to reset cached metadata about the details for an individual entity.
+          maxLength: 1024
+          example: Account
+        entitiesPath:
+          type: string
+          description: Use this parameter only if you're resetting the cached metadata about a nested entity.
+          maxLength: 256
+          example: ''
+        apiVersion:
+          type: string
+          description: The API version that you specified in the connector profile that you're resetting cached metadata for.
+          example: v55.0
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+            team: data-engineering
+    TagResourceRequest:
+      type: object
+      required:
+      - tags
+      properties:
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+            team: data-engineering
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message describing what went wrong.
+          example: The specified resource was not found.
+        code:
+          type: string
+          description: The error code.
+          example: ResourceNotFoundException

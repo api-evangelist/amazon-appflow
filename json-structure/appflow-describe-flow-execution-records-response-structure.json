@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "description": "DescribeFlowExecutionRecordsResponse schema from Amazon AppFlow API",
+  "properties": {
+    "flowExecutions": {
+      "type": "array",
+      "description": "Returns the execution details and flow run history for a given flow.",
+      "items": {}
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-flow-execution-records-response-structure.json"
+}

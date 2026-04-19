@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-connector-detail-schema.json",
+  "title": "ConnectorDetail",
+  "description": "ConnectorDetail schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorDescription": {
+      "type": "string",
+      "example": "My custom connector for proprietary data source",
+      "description": "A description about the registered connector."
+    },
+    "connectorName": {
+      "type": "string",
+      "example": "MyCustomConnector",
+      "description": "The name of the connector."
+    },
+    "connectorOwner": {
+      "type": "string",
+      "example": "123456789012",
+      "description": "The owner of the connector."
+    },
+    "connectorVersion": {
+      "type": "string",
+      "example": "1.0",
+      "description": "The connector version."
+    },
+    "applicationType": {
+      "type": "string",
+      "example": "SaaS",
+      "description": "The application type of the connector."
+    },
+    "connectorType": {
+      "type": "string",
+      "example": "CustomConnector",
+      "description": "The connector type."
+    },
+    "connectorLabel": {
+      "type": "string",
+      "example": "MyCustomConnector",
+      "description": "The label used for registering the connector."
+    },
+    "registeredAt": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "The time at which the connector was registered."
+    },
+    "registeredBy": {
+      "type": "string",
+      "example": "arn:aws:iam::123456789012:user/admin",
+      "description": "The user who registered the connector."
+    },
+    "connectorProvisioningType": {
+      "type": "string",
+      "example": "LAMBDA",
+      "description": "The provisioning type that the connector uses."
+    },
+    "connectorModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "CLOUD"
+      ]
+    },
+    "supportedDataTransferTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "RECORD",
+        "FILE"
+      ]
+    }
+  }
+}

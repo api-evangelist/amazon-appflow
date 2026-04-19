@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "description": "ListConnectorEntitiesResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorEntityMap": {
+      "type": "object",
+      "description": "The response of ListConnectorEntities lists entities grouped by category.",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/ConnectorEntity"
+        }
+      }
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-list-connector-entities-response-structure.json"
+}

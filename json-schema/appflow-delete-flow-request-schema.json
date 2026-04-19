@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-delete-flow-request-schema.json",
+  "title": "DeleteFlowRequest",
+  "description": "DeleteFlowRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow",
+      "description": "The specified name of the flow."
+    },
+    "forceDelete": {
+      "type": "boolean",
+      "example": false,
+      "description": "Indicates whether Amazon AppFlow should delete the flow, even if it is currently in use."
+    }
+  },
+  "required": [
+    "flowName"
+  ]
+}

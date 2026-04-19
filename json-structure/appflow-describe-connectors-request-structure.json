@@ -1,0 +1,33 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorsRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorTypes": {
+      "type": "array",
+      "description": "The type of connector, such as Salesforce, Marketo, and so on.",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "Salesforce",
+        "S3"
+      ]
+    },
+    "maxResults": {
+      "type": "int32",
+      "description": "The maximum number of items that should be returned in the result set.",
+      "minimum": 1,
+      "maximum": 100,
+      "example": 20
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "maxLength": 2048,
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connectors-request-structure.json"
+}

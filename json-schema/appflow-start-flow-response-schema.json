@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-start-flow-response-schema.json",
+  "title": "StartFlowResponse",
+  "description": "StartFlowResponse schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowArn": {
+      "type": "string",
+      "example": "arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow",
+      "description": "The flow's Amazon Resource Name (ARN)."
+    },
+    "flowStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "example": "Active",
+      "description": "Indicates the current status of the flow."
+    },
+    "executionId": {
+      "type": "string",
+      "example": "exec-500123",
+      "description": "Returns the internal execution ID of an on-demand flow when the flow is started."
+    }
+  }
+}

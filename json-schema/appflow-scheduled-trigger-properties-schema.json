@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-scheduled-trigger-properties-schema.json",
+  "title": "ScheduledTriggerProperties",
+  "description": "ScheduledTriggerProperties schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "scheduleExpression": {
+      "type": "string",
+      "example": "rate(1day)",
+      "description": "The scheduling expression that determines the rate at which the schedule will run, for example rate(5minutes)."
+    },
+    "dataPullMode": {
+      "type": "string",
+      "enum": [
+        "Incremental",
+        "Complete"
+      ],
+      "example": "Incremental",
+      "description": "Specifies whether a scheduled flow has an incremental data transfer or a complete data transfer for each flow run."
+    },
+    "scheduleStartTime": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "The time at which the scheduled flow starts."
+    },
+    "scheduleEndTime": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "The time at which the scheduled flow ends."
+    },
+    "timezone": {
+      "type": "string",
+      "example": "America/New_York",
+      "description": "Specifies the time zone used when referring to the date and time of a scheduled-triggered flow."
+    },
+    "scheduleOffset": {
+      "type": "integer",
+      "format": "int64",
+      "example": 0,
+      "description": "Specifies the optional offset that is added to the time interval for a schedule-triggered flow."
+    },
+    "firstExecutionFrom": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "Specifies the date range for the records to import from the connector in the first flow run."
+    },
+    "flowErrorDeactivationThreshold": {
+      "type": "integer",
+      "example": 3,
+      "description": "Defines how many times a scheduled flow fails consecutively before Amazon AppFlow deactivates it."
+    }
+  },
+  "required": [
+    "scheduleExpression"
+  ]
+}

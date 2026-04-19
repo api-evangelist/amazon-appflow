@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "description": "FlowDefinition schema from Amazon AppFlow API",
+  "properties": {
+    "flowArn": {
+      "type": "string",
+      "description": "The flow's Amazon Resource Name (ARN).",
+      "example": "arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow"
+    },
+    "description": {
+      "type": "string",
+      "description": "A user-entered description of the flow.",
+      "example": "Transfer Salesforce accounts to S3 daily"
+    },
+    "flowName": {
+      "type": "string",
+      "description": "The specified name of the flow.",
+      "example": "my-salesforce-to-s3-flow"
+    },
+    "flowStatus": {
+      "type": "string",
+      "description": "Indicates the current status of the flow.",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "example": "Active"
+    },
+    "sourceConnectorType": {
+      "type": "string",
+      "description": "Specifies the source connector type.",
+      "example": "Salesforce"
+    },
+    "sourceConnectorLabel": {
+      "type": "string",
+      "description": "The label of the source connector in the flow.",
+      "example": "MyCustomSourceConnector"
+    },
+    "destinationConnectorType": {
+      "type": "string",
+      "description": "Specifies the destination connector type.",
+      "example": "S3"
+    },
+    "destinationConnectorLabel": {
+      "type": "string",
+      "description": "The label of the destination connector in the flow.",
+      "example": "MyCustomDestinationConnector"
+    },
+    "triggerType": {
+      "type": "string",
+      "description": "Specifies the type of flow trigger.",
+      "enum": [
+        "Scheduled",
+        "Event",
+        "OnDemand"
+      ],
+      "example": "Scheduled"
+    },
+    "createdAt": {
+      "type": "int64",
+      "description": "Specifies when the flow was created.",
+      "example": 1718153645993
+    },
+    "lastUpdatedAt": {
+      "type": "int64",
+      "description": "Specifies when the flow was last updated.",
+      "example": 1718153645993
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "The ARN of the user who created the flow.",
+      "example": "arn:aws:iam::123456789012:user/admin"
+    },
+    "lastUpdatedBy": {
+      "type": "string",
+      "description": "Specifies the account user name that most recently updated the flow.",
+      "example": "arn:aws:iam::123456789012:user/admin"
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "environment": "production"
+      }
+    },
+    "lastRunExecutionDetails": {
+      "type": "object",
+      "properties": {
+        "mostRecentExecutionMessage": {
+          "type": "string",
+          "description": "Describes the details of the most recent flow run.",
+          "example": "Successfully ran the flow"
+        },
+        "mostRecentExecutionTime": {
+          "type": "int64",
+          "description": "Specifies the time of the most recent flow run.",
+          "example": 1718153700000
+        },
+        "mostRecentExecutionStatus": {
+          "type": "string",
+          "description": "Specifies the status of the most recent flow run.",
+          "enum": [
+            "InProgress",
+            "Successful",
+            "Error",
+            "CancelStarted",
+            "Canceled"
+          ],
+          "example": "Successful"
+        }
+      }
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-flow-definition-structure.json"
+}

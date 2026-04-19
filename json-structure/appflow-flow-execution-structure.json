@@ -1,0 +1,74 @@
+{
+  "type": "object",
+  "description": "FlowExecution schema from Amazon AppFlow API",
+  "properties": {
+    "executionId": {
+      "type": "string",
+      "description": "Specifies the identifier of the given flow run.",
+      "example": "exec-500123"
+    },
+    "executionStatus": {
+      "type": "string",
+      "description": "Specifies the flow run status and whether it is in progress, has completed successfully, or has failed.",
+      "enum": [
+        "InProgress",
+        "Successful",
+        "Error",
+        "CancelStarted",
+        "Canceled"
+      ],
+      "example": "Successful"
+    },
+    "executionResult": {
+      "type": "object",
+      "properties": {
+        "errorInfo": {
+          "type": "object",
+          "description": "Provides any error message information related to the flow run."
+        },
+        "bytesProcessed": {
+          "type": "int64",
+          "description": "The total number of bytes processed by the flow run.",
+          "example": 204800
+        },
+        "bytesWritten": {
+          "type": "int64",
+          "description": "The total number of bytes written as a result of the flow run.",
+          "example": 204800
+        },
+        "recordsProcessed": {
+          "type": "int64",
+          "description": "The number of records processed in the flow run.",
+          "example": 1500
+        },
+        "numParallelProcesses": {
+          "type": "int64",
+          "description": "The number of processes that Amazon AppFlow ran at the same time when it retrieved your data.",
+          "example": 1
+        }
+      }
+    },
+    "startedAt": {
+      "type": "int64",
+      "description": "Specifies the start timestamp for your flow run.",
+      "example": 1718153645993
+    },
+    "lastUpdatedAt": {
+      "type": "int64",
+      "description": "Specifies the time of the most recent update.",
+      "example": 1718153700000
+    },
+    "dataPullStartTime": {
+      "type": "int64",
+      "description": "The timestamp that determines the first new or updated record to be transferred in the flow run.",
+      "example": 1718153645993
+    },
+    "dataPullEndTime": {
+      "type": "int64",
+      "description": "The timestamp that determines the last new or updated record to be transferred in the flow run.",
+      "example": 1718153700000
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-flow-execution-structure.json"
+}

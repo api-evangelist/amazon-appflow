@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-flow-definition-schema.json",
+  "title": "FlowDefinition",
+  "description": "FlowDefinition schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowArn": {
+      "type": "string",
+      "example": "arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow",
+      "description": "The flow's Amazon Resource Name (ARN)."
+    },
+    "description": {
+      "type": "string",
+      "example": "Transfer Salesforce accounts to S3 daily",
+      "description": "A user-entered description of the flow."
+    },
+    "flowName": {
+      "type": "string",
+      "example": "my-salesforce-to-s3-flow",
+      "description": "The specified name of the flow."
+    },
+    "flowStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "example": "Active",
+      "description": "Indicates the current status of the flow."
+    },
+    "sourceConnectorType": {
+      "type": "string",
+      "example": "Salesforce",
+      "description": "Specifies the source connector type."
+    },
+    "sourceConnectorLabel": {
+      "type": "string",
+      "example": "MyCustomSourceConnector",
+      "description": "The label of the source connector in the flow."
+    },
+    "destinationConnectorType": {
+      "type": "string",
+      "example": "S3",
+      "description": "Specifies the destination connector type."
+    },
+    "destinationConnectorLabel": {
+      "type": "string",
+      "example": "MyCustomDestinationConnector",
+      "description": "The label of the destination connector in the flow."
+    },
+    "triggerType": {
+      "type": "string",
+      "enum": [
+        "Scheduled",
+        "Event",
+        "OnDemand"
+      ],
+      "example": "Scheduled",
+      "description": "Specifies the type of flow trigger."
+    },
+    "createdAt": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "Specifies when the flow was created."
+    },
+    "lastUpdatedAt": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "Specifies when the flow was last updated."
+    },
+    "createdBy": {
+      "type": "string",
+      "example": "arn:aws:iam::123456789012:user/admin",
+      "description": "The ARN of the user who created the flow."
+    },
+    "lastUpdatedBy": {
+      "type": "string",
+      "example": "arn:aws:iam::123456789012:user/admin",
+      "description": "Specifies the account user name that most recently updated the flow."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "environment": "production"
+      }
+    },
+    "lastRunExecutionDetails": {
+      "type": "object",
+      "properties": {
+        "mostRecentExecutionMessage": {
+          "type": "string",
+          "example": "Successfully ran the flow",
+          "description": "Describes the details of the most recent flow run."
+        },
+        "mostRecentExecutionTime": {
+          "type": "integer",
+          "format": "int64",
+          "example": 1718153700000,
+          "description": "Specifies the time of the most recent flow run."
+        },
+        "mostRecentExecutionStatus": {
+          "type": "string",
+          "enum": [
+            "InProgress",
+            "Successful",
+            "Error",
+            "CancelStarted",
+            "Canceled"
+          ],
+          "example": "Successful",
+          "description": "Specifies the status of the most recent flow run."
+        }
+      }
+    }
+  }
+}

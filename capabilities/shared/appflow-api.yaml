@@ -1,0 +1,665 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: Amazon AppFlow API
+  description: Shared capability definition for the Amazon AppFlow REST API, covering flows, connector profiles, connector registration, and resource tagging.
+  tags:
+    - Amazon AppFlow
+    - Data Integration
+    - ETL
+    - Connectors
+    - AWS
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: appflow
+      baseUri: https://appflow.us-east-1.amazonaws.com
+      description: Amazon AppFlow fully managed integration service for transferring data between SaaS applications and AWS services.
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: flows
+          path: /create-flow
+          description: Create and manage data flows between source and destination connectors.
+          operations:
+            - name: create-flow
+              method: POST
+              description: Creates a new flow for transferring data between a source connector and a destination connector.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-list
+          path: /list-flows
+          description: List all flows associated with your account.
+          operations:
+            - name: list-flows
+              method: POST
+              description: Lists all of the flows associated with your account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-describe
+          path: /describe-flow
+          description: Get details about a specific flow.
+          operations:
+            - name: describe-flow
+              method: POST
+              description: Provides a description of the specified flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow to describe.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-update
+          path: /update-flow
+          description: Update an existing flow.
+          operations:
+            - name: update-flow
+              method: POST
+              description: Updates an existing flow.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-delete
+          path: /delete-flow
+          description: Delete an existing flow.
+          operations:
+            - name: delete-flow
+              method: POST
+              description: Enables your application to delete an existing flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow to delete.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-start
+          path: /start-flow
+          description: Activate/start a flow.
+          operations:
+            - name: start-flow
+              method: POST
+              description: Activates an existing flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow to start.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-stop
+          path: /stop-flow
+          description: Deactivate/stop a flow.
+          operations:
+            - name: stop-flow
+              method: POST
+              description: Deactivates the existing flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow to stop.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-cancel
+          path: /cancel-flow-executions
+          description: Cancel active flow execution runs.
+          operations:
+            - name: cancel-flow-executions
+              method: POST
+              description: Cancels active runs for a flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow with active runs to cancel.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: flows-executions
+          path: /describe-flow-execution-records
+          description: Get execution history for a flow.
+          operations:
+            - name: describe-flow-execution-records
+              method: POST
+              description: Provides details regarding all instances for a given flow.
+              inputParameters:
+                - name: flowName
+                  in: body
+                  type: string
+                  required: true
+                  description: The name of the flow to get execution records for.
+                - name: maxResults
+                  in: body
+                  type: integer
+                  required: false
+                  description: Maximum number of execution records to return.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-create-profile
+          path: /create-connector-profile
+          description: Create a connector profile for authenticating to a SaaS application.
+          operations:
+            - name: create-connector-profile
+              method: POST
+              description: Creates a new connector profile associated with your AWS account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-list-profiles
+          path: /describe-connector-profiles
+          description: List connector profiles.
+          operations:
+            - name: describe-connector-profiles
+              method: POST
+              description: Returns a list of connector-profile details.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-update-profile
+          path: /update-connector-profile
+          description: Update a connector profile.
+          operations:
+            - name: update-connector-profile
+              method: POST
+              description: Updates a given connector profile associated with your account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-delete-profile
+          path: /delete-connector-profile
+          description: Delete a connector profile.
+          operations:
+            - name: delete-connector-profile
+              method: POST
+              description: Enables you to delete an existing connector profile.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-describe
+          path: /describe-connectors
+          description: Describe available connectors.
+          operations:
+            - name: describe-connectors
+              method: POST
+              description: Describes the connectors vended by Amazon AppFlow for specified connector types.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-describe-single
+          path: /describe-connector
+          description: Describe a specific connector.
+          operations:
+            - name: describe-connector
+              method: POST
+              description: Describes the given custom connector registered in your AWS account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-entities
+          path: /describe-connector-entity
+          description: Get details about a connector entity.
+          operations:
+            - name: describe-connector-entity
+              method: POST
+              description: Provides details regarding the entity used with the connector.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-list-entities
+          path: /list-connector-entities
+          description: List entities supported by a connector.
+          operations:
+            - name: list-connector-entities
+              method: POST
+              description: Returns the list of available connector entities supported by Amazon AppFlow.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-list
+          path: /list-connectors
+          description: List all custom connectors.
+          operations:
+            - name: list-connectors
+              method: POST
+              description: Returns the list of all registered custom connectors in your account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-register
+          path: /register-connector
+          description: Register a custom connector.
+          operations:
+            - name: register-connector
+              method: POST
+              description: Registers a new custom connector with your AWS account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-unregister
+          path: /unregister-connector
+          description: Unregister a custom connector.
+          operations:
+            - name: unregister-connector
+              method: POST
+              description: Unregisters the custom connector registered in your account.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-update-registration
+          path: /update-connector-registration
+          description: Update a custom connector registration.
+          operations:
+            - name: update-connector-registration
+              method: POST
+              description: Updates a custom connector that you have previously registered.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+        - name: connectors-reset-cache
+          path: /reset-connector-metadata-cache
+          description: Reset connector metadata cache.
+          operations:
+            - name: reset-connector-metadata-cache
+              method: POST
+              description: Resets metadata about your connector entities that Amazon AppFlow stored in its cache.
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: appflow-rest
+      resources:
+        - path: /v1/flows
+          name: flows
+          description: List and create data flows
+          operations:
+            - method: POST
+              name: list-flows
+              description: List all AppFlow data flows
+              call: "appflow.list-flows"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/flows/{flowName}
+          name: flow
+          description: Get, update, or delete a specific flow
+          operations:
+            - method: GET
+              name: describe-flow
+              description: Get details about a specific flow
+              call: "appflow.describe-flow"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/flows/{flowName}/start
+          name: flow-start
+          description: Start a flow
+          operations:
+            - method: POST
+              name: start-flow
+              description: Start/activate a flow
+              call: "appflow.start-flow"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/flows/{flowName}/stop
+          name: flow-stop
+          description: Stop a flow
+          operations:
+            - method: POST
+              name: stop-flow
+              description: Stop/deactivate a flow
+              call: "appflow.stop-flow"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/flows/{flowName}/executions
+          name: flow-executions
+          description: Get flow execution history
+          operations:
+            - method: GET
+              name: describe-flow-execution-records
+              description: Get execution records for a flow
+              call: "appflow.describe-flow-execution-records"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/connector-profiles
+          name: connector-profiles
+          description: List and create connector profiles
+          operations:
+            - method: POST
+              name: describe-connector-profiles
+              description: List connector profiles
+              call: "appflow.describe-connector-profiles"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/connectors
+          name: connectors
+          description: List available connectors
+          operations:
+            - method: GET
+              name: list-connectors
+              description: List registered connectors
+              call: "appflow.list-connectors"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: appflow-mcp
+      transport: http
+      tools:
+        - name: list-flows
+          description: List all Amazon AppFlow data flows in your account.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.list-flows"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-flow
+          description: Get detailed information about a specific AppFlow data flow.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.describe-flow"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-flow
+          description: Create a new AppFlow data flow between a source and destination connector.
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "appflow.create-flow"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-flow
+          description: Update an existing AppFlow data flow configuration.
+          hints:
+            readOnly: false
+            idempotent: true
+            openWorld: false
+          call: "appflow.update-flow"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-flow
+          description: Delete an existing AppFlow data flow.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "appflow.delete-flow"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: start-flow
+          description: Activate/start an AppFlow data flow.
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "appflow.start-flow"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: stop-flow
+          description: Deactivate/stop an AppFlow data flow.
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "appflow.stop-flow"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: cancel-flow-executions
+          description: Cancel active runs for an AppFlow data flow.
+          hints:
+            readOnly: false
+            destructive: true
+          call: "appflow.cancel-flow-executions"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-flow-execution-records
+          description: Get execution history and results for an AppFlow data flow.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.describe-flow-execution-records"
+          with:
+            flowName: "tools.flowName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-connector-profiles
+          description: List connector profiles for SaaS application connections.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.describe-connector-profiles"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-connector-profile
+          description: Create a connector profile to authenticate to a SaaS application.
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "appflow.create-connector-profile"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: update-connector-profile
+          description: Update an existing connector profile.
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "appflow.update-connector-profile"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-connector-profile
+          description: Delete a connector profile.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "appflow.delete-connector-profile"
+          with:
+            connectorProfileName: "tools.connectorProfileName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-connectors
+          description: List available AppFlow connectors and their configurations.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.describe-connectors"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-connector-entities
+          description: List entities (objects) supported by a connector, such as Salesforce Account or Contact.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.list-connector-entities"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: describe-connector-entity
+          description: Get field definitions for a connector entity.
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "appflow.describe-connector-entity"
+          with:
+            connectorEntityName: "tools.connectorEntityName"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: register-connector
+          description: Register a new custom Lambda-backed connector.
+          hints:
+            readOnly: false
+            openWorld: false
+          call: "appflow.register-connector"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: unregister-connector
+          description: Unregister a custom connector.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "appflow.unregister-connector"
+          with:
+            connectorLabel: "tools.connectorLabel"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: reset-connector-metadata-cache
+          description: Reset cached metadata for a connector to get the latest entity and field information.
+          hints:
+            readOnly: false
+            idempotent: true
+          call: "appflow.reset-connector-metadata-cache"
+          outputParameters:
+            - type: object
+              mapping: "$."

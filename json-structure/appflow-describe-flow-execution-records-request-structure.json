@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "description": "DescribeFlowExecutionRecordsRequest schema from Amazon AppFlow API",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "description": "The specified name of the flow.",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow"
+    },
+    "maxResults": {
+      "type": "int32",
+      "description": "Specifies the maximum number of items that should be returned in the result set.",
+      "minimum": 1,
+      "maximum": 100,
+      "example": 20
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "maxLength": 2048,
+      "example": ""
+    }
+  },
+  "required": [
+    "flowName"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-flow-execution-records-request-structure.json"
+}

@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "description": "UpdateConnectorProfileResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorProfileArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the connector profile.",
+      "example": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-update-connector-profile-response-structure.json"
+}

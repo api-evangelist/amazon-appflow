@@ -1,0 +1,59 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorConfiguration": {
+      "type": "object",
+      "description": "Configuration info of all the connectors that the user requested.",
+      "properties": {
+        "canUseAsSource": {
+          "type": "boolean",
+          "description": "Specifies whether the connector can be used as a source.",
+          "example": true
+        },
+        "canUseAsDestination": {
+          "type": "boolean",
+          "description": "Specifies whether the connector can be used as a destination.",
+          "example": true
+        },
+        "connectorArn": {
+          "type": "string",
+          "description": "The Amazon Resource Name (ARN) for the registered connector.",
+          "example": "arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector"
+        },
+        "connectorLabel": {
+          "type": "string",
+          "description": "The label used for registering the connector.",
+          "example": "MyCustomConnector"
+        },
+        "connectorDescription": {
+          "type": "string",
+          "description": "A description about the connector.",
+          "example": "My custom connector"
+        },
+        "connectorOwner": {
+          "type": "string",
+          "description": "The owner of the connector.",
+          "example": "123456789012"
+        },
+        "connectorVersion": {
+          "type": "string",
+          "description": "The connector version.",
+          "example": "1.0"
+        },
+        "connectorModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": ""
+          },
+          "example": [
+            "CLOUD"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connector-response-structure.json"
+}

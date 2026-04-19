@@ -1,163 +1,566 @@
 {
   "@context": {
-    "@vocab": "https://schema.org/",
-    "appflow": "https://docs.aws.amazon.com/appflow/1.0/APIReference/",
-    "aws": "https://aws.amazon.com/",
+    "@version": 1.1,
+    "amzn": "https://amazonaws.com/schema/appflow/",
     "schema": "https://schema.org/",
-    "xsd": "http://www.w3.org/2001/XMLSchema#",
     "dcterms": "http://purl.org/dc/terms/",
-    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
-
-    "Flow": {
-      "@id": "appflow:API_FlowDefinition",
-      "@context": {
-        "flowArn": {
-          "@id": "schema:identifier",
-          "@type": "xsd:string"
-        },
-        "flowName": {
-          "@id": "schema:name",
-          "@type": "xsd:string"
-        },
-        "description": {
-          "@id": "schema:description",
-          "@type": "xsd:string"
-        },
-        "flowStatus": {
-          "@id": "appflow:flowStatus",
-          "@type": "xsd:string"
-        },
-        "sourceFlowConfig": {
-          "@id": "appflow:sourceFlowConfig",
-          "@type": "appflow:SourceFlowConfig"
-        },
-        "destinationFlowConfigList": {
-          "@id": "appflow:destinationFlowConfigList",
-          "@container": "@list"
-        },
-        "tasks": {
-          "@id": "appflow:tasks",
-          "@container": "@list"
-        },
-        "triggerConfig": {
-          "@id": "appflow:triggerConfig",
-          "@type": "appflow:TriggerConfig"
-        },
-        "createdAt": {
-          "@id": "schema:dateCreated",
-          "@type": "xsd:dateTime"
-        },
-        "lastUpdatedAt": {
-          "@id": "schema:dateModified",
-          "@type": "xsd:dateTime"
-        },
-        "tags": {
-          "@id": "schema:keywords",
-          "@container": "@index"
-        }
-      }
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "DeleteFlowRequest": "amzn:DeleteFlowRequest",
+    "ListConnectorsResponse": "amzn:ListConnectorsResponse",
+    "DescribeFlowExecutionRecordsResponse": "amzn:DescribeFlowExecutionRecordsResponse",
+    "UnregisterConnectorRequest": "amzn:UnregisterConnectorRequest",
+    "RegisterConnectorResponse": "amzn:RegisterConnectorResponse",
+    "ConnectorProfile": "amzn:ConnectorProfile",
+    "UpdateFlowRequest": "amzn:UpdateFlowRequest",
+    "ExecutionDetails": "amzn:ExecutionDetails",
+    "DeleteConnectorProfileRequest": "amzn:DeleteConnectorProfileRequest",
+    "DescribeConnectorProfilesResponse": "amzn:DescribeConnectorProfilesResponse",
+    "DescribeConnectorRequest": "amzn:DescribeConnectorRequest",
+    "CreateFlowRequest": "amzn:CreateFlowRequest",
+    "DescribeFlowRequest": "amzn:DescribeFlowRequest",
+    "TagResourceRequest": "amzn:TagResourceRequest",
+    "ScheduledTriggerProperties": "amzn:ScheduledTriggerProperties",
+    "ResetConnectorMetadataCacheRequest": "amzn:ResetConnectorMetadataCacheRequest",
+    "ListFlowsRequest": "amzn:ListFlowsRequest",
+    "FlowExecution": "amzn:FlowExecution",
+    "CreateConnectorProfileResponse": "amzn:CreateConnectorProfileResponse",
+    "DescribeFlowResponse": "amzn:DescribeFlowResponse",
+    "ListFlowsResponse": "amzn:ListFlowsResponse",
+    "ConnectorDetail": "amzn:ConnectorDetail",
+    "RegisterConnectorRequest": "amzn:RegisterConnectorRequest",
+    "TriggerConfig": "amzn:TriggerConfig",
+    "UpdateConnectorRegistrationResponse": "amzn:UpdateConnectorRegistrationResponse",
+    "Task": "amzn:Task",
+    "StopFlowRequest": "amzn:StopFlowRequest",
+    "Amazon AppFlow Flow Definition": "amzn:Amazon AppFlow Flow Definition",
+    "ListConnectorEntitiesRequest": "amzn:ListConnectorEntitiesRequest",
+    "UpdateConnectorRegistrationRequest": "amzn:UpdateConnectorRegistrationRequest",
+    "ConnectorEntityField": "amzn:ConnectorEntityField",
+    "DescribeConnectorsRequest": "amzn:DescribeConnectorsRequest",
+    "CreateConnectorProfileRequest": "amzn:CreateConnectorProfileRequest",
+    "SourceFlowConfig": "amzn:SourceFlowConfig",
+    "ConnectorEntity": "amzn:ConnectorEntity",
+    "ListConnectorsRequest": "amzn:ListConnectorsRequest",
+    "StartFlowResponse": "amzn:StartFlowResponse",
+    "ListTagsForResourceResponse": "amzn:ListTagsForResourceResponse",
+    "StartFlowRequest": "amzn:StartFlowRequest",
+    "UpdateFlowResponse": "amzn:UpdateFlowResponse",
+    "CancelFlowExecutionsResponse": "amzn:CancelFlowExecutionsResponse",
+    "FlowDefinition": "amzn:FlowDefinition",
+    "StopFlowResponse": "amzn:StopFlowResponse",
+    "CancelFlowExecutionsRequest": "amzn:CancelFlowExecutionsRequest",
+    "DescribeConnectorEntityRequest": "amzn:DescribeConnectorEntityRequest",
+    "DestinationFlowConfig": "amzn:DestinationFlowConfig",
+    "DescribeConnectorResponse": "amzn:DescribeConnectorResponse",
+    "ListConnectorEntitiesResponse": "amzn:ListConnectorEntitiesResponse",
+    "UpdateConnectorProfileResponse": "amzn:UpdateConnectorProfileResponse",
+    "DescribeConnectorEntityResponse": "amzn:DescribeConnectorEntityResponse",
+    "MetadataCatalogConfig": "amzn:MetadataCatalogConfig",
+    "UpdateConnectorProfileRequest": "amzn:UpdateConnectorProfileRequest",
+    "DescribeConnectorsResponse": "amzn:DescribeConnectorsResponse",
+    "ExecutionResult": "amzn:ExecutionResult",
+    "DescribeFlowExecutionRecordsRequest": "amzn:DescribeFlowExecutionRecordsRequest",
+    "CreateFlowResponse": "amzn:CreateFlowResponse",
+    "DescribeConnectorProfilesRequest": "amzn:DescribeConnectorProfilesRequest",
+    "flowName": {
+      "@id": "amzn:flow_name",
+      "@type": "xsd:string"
     },
-
-    "SourceFlowConfig": {
-      "@id": "appflow:SourceFlowConfig",
-      "@context": {
-        "connectorType": {
-          "@id": "appflow:connectorType",
-          "@type": "xsd:string"
-        },
-        "connectorProfileName": {
-          "@id": "appflow:connectorProfileName",
-          "@type": "xsd:string"
-        },
-        "sourceConnectorProperties": {
-          "@id": "appflow:sourceConnectorProperties",
-          "@type": "appflow:SourceConnectorProperties"
-        }
-      }
+    "forceDelete": {
+      "@id": "amzn:force_delete",
+      "@type": "xsd:boolean"
     },
-
-    "DestinationFlowConfig": {
-      "@id": "appflow:DestinationFlowConfig",
-      "@context": {
-        "connectorType": {
-          "@id": "appflow:connectorType",
-          "@type": "xsd:string"
-        },
-        "connectorProfileName": {
-          "@id": "appflow:connectorProfileName",
-          "@type": "xsd:string"
-        },
-        "destinationConnectorProperties": {
-          "@id": "appflow:destinationConnectorProperties",
-          "@type": "appflow:DestinationConnectorProperties"
-        }
-      }
+    "connectors": {
+      "@id": "amzn:connectors",
+      "@container": "@set",
+      "@type": "xsd:string"
     },
-
-    "Task": {
-      "@id": "appflow:Task",
-      "@context": {
-        "sourceFields": {
-          "@id": "appflow:sourceFields",
-          "@container": "@list"
-        },
-        "taskType": {
-          "@id": "appflow:taskType",
-          "@type": "xsd:string"
-        },
-        "destinationField": {
-          "@id": "appflow:destinationField",
-          "@type": "xsd:string"
-        },
-        "taskProperties": {
-          "@id": "appflow:taskProperties",
-          "@container": "@index"
-        }
-      }
+    "nextToken": {
+      "@id": "amzn:next_token",
+      "@type": "xsd:string"
     },
-
-    "TriggerConfig": {
-      "@id": "appflow:TriggerConfig",
-      "@context": {
-        "triggerType": {
-          "@id": "appflow:triggerType",
-          "@type": "xsd:string"
-        },
-        "triggerProperties": {
-          "@id": "appflow:triggerProperties",
-          "@type": "appflow:TriggerProperties"
-        }
-      }
+    "flowExecutions": {
+      "@id": "amzn:flow_executions",
+      "@container": "@set",
+      "@type": "xsd:string"
     },
-
-    "ConnectorProfile": {
-      "@id": "appflow:API_ConnectorProfile",
-      "@context": {
-        "connectorProfileArn": {
-          "@id": "schema:identifier",
-          "@type": "xsd:string"
-        },
-        "connectorProfileName": {
-          "@id": "schema:name",
-          "@type": "xsd:string"
-        },
-        "connectorType": {
-          "@id": "appflow:connectorType",
-          "@type": "xsd:string"
-        },
-        "connectionMode": {
-          "@id": "appflow:connectionMode",
-          "@type": "xsd:string"
-        },
-        "createdAt": {
-          "@id": "schema:dateCreated",
-          "@type": "xsd:dateTime"
-        },
-        "lastUpdatedAt": {
-          "@id": "schema:dateModified",
-          "@type": "xsd:dateTime"
-        }
-      }
+    "connectorLabel": {
+      "@id": "amzn:connector_label",
+      "@type": "xsd:string"
+    },
+    "connectorArn": {
+      "@id": "amzn:connector_arn",
+      "@type": "xsd:string"
+    },
+    "connectorProfileArn": {
+      "@id": "amzn:connector_profile_arn",
+      "@type": "xsd:string"
+    },
+    "connectorProfileName": {
+      "@id": "amzn:connector_profile_name",
+      "@type": "xsd:string"
+    },
+    "connectorType": {
+      "@id": "amzn:connector_type",
+      "@type": "xsd:string"
+    },
+    "connectionMode": {
+      "@id": "amzn:connection_mode",
+      "@type": "xsd:string"
+    },
+    "credentialsArn": {
+      "@id": "amzn:credentials_arn",
+      "@type": "xsd:string"
+    },
+    "connectorProfileProperties": {
+      "@id": "amzn:connector_profile_properties",
+      "@type": "@id"
+    },
+    "createdAt": "schema:dateCreated",
+    "lastUpdatedAt": "schema:dateModified",
+    "privateConnectionProvisioningState": {
+      "@id": "amzn:private_connection_provisioning_state",
+      "@type": "@id"
+    },
+    "clientToken": {
+      "@id": "amzn:client_token",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "triggerConfig": {
+      "@id": "amzn:trigger_config",
+      "@type": "@id"
+    },
+    "triggerType": {
+      "@id": "amzn:trigger_type",
+      "@type": "xsd:string"
+    },
+    "triggerProperties": {
+      "@id": "amzn:trigger_properties",
+      "@type": "@id"
+    },
+    "Scheduled": {
+      "@id": "amzn:scheduled",
+      "@type": "xsd:string"
+    },
+    "sourceFlowConfig": {
+      "@id": "amzn:source_flow_config",
+      "@type": "@id"
+    },
+    "apiVersion": {
+      "@id": "amzn:api_version",
+      "@type": "xsd:string"
+    },
+    "sourceConnectorProperties": {
+      "@id": "amzn:source_connector_properties",
+      "@type": "@id"
+    },
+    "incrementalPullConfig": {
+      "@id": "amzn:incremental_pull_config",
+      "@type": "@id"
+    },
+    "datetimeTypeFieldName": {
+      "@id": "amzn:datetime_type_field_name",
+      "@type": "xsd:string"
+    },
+    "destinationFlowConfigList": {
+      "@id": "amzn:destination_flow_config_list",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "tasks": {
+      "@id": "amzn:tasks",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "metadataCatalogConfig": {
+      "@id": "amzn:metadata_catalog_config",
+      "@type": "@id"
+    },
+    "glueDataCatalog": {
+      "@id": "amzn:glue_data_catalog",
+      "@type": "@id"
+    },
+    "roleArn": {
+      "@id": "amzn:role_arn",
+      "@type": "xsd:string"
+    },
+    "databaseName": {
+      "@id": "amzn:database_name",
+      "@type": "xsd:string"
+    },
+    "tablePrefix": {
+      "@id": "amzn:table_prefix",
+      "@type": "xsd:string"
+    },
+    "mostRecentExecutionMessage": {
+      "@id": "amzn:most_recent_execution_message",
+      "@type": "xsd:string"
+    },
+    "mostRecentExecutionTime": {
+      "@id": "amzn:most_recent_execution_time",
+      "@type": "xsd:integer"
+    },
+    "mostRecentExecutionStatus": {
+      "@id": "amzn:most_recent_execution_status",
+      "@type": "xsd:string"
+    },
+    "connectorProfileDetails": {
+      "@id": "amzn:connector_profile_details",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "kmsArn": {
+      "@id": "amzn:kms_arn",
+      "@type": "xsd:string"
+    },
+    "tags": {
+      "@id": "amzn:tags",
+      "@type": "@id"
+    },
+    "scheduleExpression": {
+      "@id": "amzn:schedule_expression",
+      "@type": "xsd:string"
+    },
+    "dataPullMode": {
+      "@id": "amzn:data_pull_mode",
+      "@type": "xsd:string"
+    },
+    "scheduleStartTime": {
+      "@id": "amzn:schedule_start_time",
+      "@type": "xsd:integer"
+    },
+    "scheduleEndTime": {
+      "@id": "amzn:schedule_end_time",
+      "@type": "xsd:integer"
+    },
+    "timezone": {
+      "@id": "amzn:timezone",
+      "@type": "xsd:string"
+    },
+    "scheduleOffset": {
+      "@id": "amzn:schedule_offset",
+      "@type": "xsd:integer"
+    },
+    "firstExecutionFrom": {
+      "@id": "amzn:first_execution_from",
+      "@type": "xsd:integer"
+    },
+    "flowErrorDeactivationThreshold": {
+      "@id": "amzn:flow_error_deactivation_threshold",
+      "@type": "xsd:integer"
+    },
+    "connectorEntityName": {
+      "@id": "amzn:connector_entity_name",
+      "@type": "xsd:string"
+    },
+    "entitiesPath": {
+      "@id": "amzn:entities_path",
+      "@type": "xsd:string"
+    },
+    "maxResults": {
+      "@id": "amzn:max_results",
+      "@type": "xsd:integer"
+    },
+    "executionId": {
+      "@id": "amzn:execution_id",
+      "@type": "xsd:string"
+    },
+    "executionStatus": {
+      "@id": "amzn:execution_status",
+      "@type": "xsd:string"
+    },
+    "executionResult": {
+      "@id": "amzn:execution_result",
+      "@type": "@id"
+    },
+    "errorInfo": {
+      "@id": "amzn:error_info",
+      "@type": "@id"
+    },
+    "bytesProcessed": {
+      "@id": "amzn:bytes_processed",
+      "@type": "xsd:integer"
+    },
+    "bytesWritten": {
+      "@id": "amzn:bytes_written",
+      "@type": "xsd:integer"
+    },
+    "recordsProcessed": {
+      "@id": "amzn:records_processed",
+      "@type": "xsd:integer"
+    },
+    "numParallelProcesses": {
+      "@id": "amzn:num_parallel_processes",
+      "@type": "xsd:integer"
+    },
+    "startedAt": {
+      "@id": "amzn:started_at",
+      "@type": "xsd:integer"
+    },
+    "dataPullStartTime": {
+      "@id": "amzn:data_pull_start_time",
+      "@type": "xsd:integer"
+    },
+    "dataPullEndTime": {
+      "@id": "amzn:data_pull_end_time",
+      "@type": "xsd:integer"
+    },
+    "flowArn": {
+      "@id": "amzn:flow_arn",
+      "@type": "xsd:string"
+    },
+    "flowStatus": {
+      "@id": "amzn:flow_status",
+      "@type": "xsd:string"
+    },
+    "flowStatusMessage": {
+      "@id": "amzn:flow_status_message",
+      "@type": "xsd:string"
+    },
+    "lastRunExecutionDetails": {
+      "@id": "amzn:last_run_execution_details",
+      "@type": "@id"
+    },
+    "createdBy": {
+      "@id": "amzn:created_by",
+      "@type": "xsd:string"
+    },
+    "lastUpdatedBy": {
+      "@id": "amzn:last_updated_by",
+      "@type": "xsd:string"
+    },
+    "lastRunMetadataCatalogDetails": {
+      "@id": "amzn:last_run_metadata_catalog_details",
+      "@container": "@set",
+      "@type": "@id"
+    },
+    "flows": {
+      "@id": "amzn:flows",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorDescription": {
+      "@id": "amzn:connector_description",
+      "@type": "xsd:string"
+    },
+    "connectorName": {
+      "@id": "amzn:connector_name",
+      "@type": "xsd:string"
+    },
+    "connectorOwner": {
+      "@id": "amzn:connector_owner",
+      "@type": "xsd:string"
+    },
+    "connectorVersion": {
+      "@id": "amzn:connector_version",
+      "@type": "xsd:string"
+    },
+    "applicationType": {
+      "@id": "amzn:application_type",
+      "@type": "xsd:string"
+    },
+    "registeredAt": {
+      "@id": "amzn:registered_at",
+      "@type": "xsd:integer"
+    },
+    "registeredBy": {
+      "@id": "amzn:registered_by",
+      "@type": "xsd:string"
+    },
+    "connectorProvisioningType": {
+      "@id": "amzn:connector_provisioning_type",
+      "@type": "xsd:string"
+    },
+    "connectorModes": {
+      "@id": "amzn:connector_modes",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "supportedDataTransferTypes": {
+      "@id": "amzn:supported_data_transfer_types",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorProvisioningConfig": {
+      "@id": "amzn:connector_provisioning_config",
+      "@type": "@id"
+    },
+    "lambda": {
+      "@id": "amzn:lambda",
+      "@type": "@id"
+    },
+    "lambdaArn": {
+      "@id": "amzn:lambda_arn",
+      "@type": "xsd:string"
+    },
+    "sourceFields": {
+      "@id": "amzn:source_fields",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorOperator": {
+      "@id": "amzn:connector_operator",
+      "@type": "@id"
+    },
+    "destinationField": {
+      "@id": "amzn:destination_field",
+      "@type": "xsd:string"
+    },
+    "taskType": {
+      "@id": "amzn:task_type",
+      "@type": "xsd:string"
+    },
+    "taskProperties": {
+      "@id": "amzn:task_properties",
+      "@type": "@id"
+    },
+    "identifier": {
+      "@id": "amzn:identifier",
+      "@type": "xsd:string"
+    },
+    "parentIdentifier": {
+      "@id": "amzn:parent_identifier",
+      "@type": "xsd:string"
+    },
+    "label": {
+      "@id": "amzn:label",
+      "@type": "xsd:string"
+    },
+    "isPrimaryKey": {
+      "@id": "amzn:is_primary_key",
+      "@type": "xsd:boolean"
+    },
+    "defaultValue": {
+      "@id": "amzn:default_value",
+      "@type": "xsd:string"
+    },
+    "isDeprecated": {
+      "@id": "amzn:is_deprecated",
+      "@type": "xsd:boolean"
+    },
+    "supportedFieldTypeDetails": {
+      "@id": "amzn:supported_field_type_details",
+      "@type": "@id"
+    },
+    "sourceProperties": {
+      "@id": "amzn:source_properties",
+      "@type": "@id"
+    },
+    "isQueryable": {
+      "@id": "amzn:is_queryable",
+      "@type": "xsd:boolean"
+    },
+    "isRetrievable": {
+      "@id": "amzn:is_retrievable",
+      "@type": "xsd:boolean"
+    },
+    "isPartitioningSupported": {
+      "@id": "amzn:is_partitioning_supported",
+      "@type": "xsd:boolean"
+    },
+    "destinationProperties": {
+      "@id": "amzn:destination_properties",
+      "@type": "@id"
+    },
+    "isCreatable": {
+      "@id": "amzn:is_creatable",
+      "@type": "xsd:boolean"
+    },
+    "isNullable": {
+      "@id": "amzn:is_nullable",
+      "@type": "xsd:boolean"
+    },
+    "isUpsertable": {
+      "@id": "amzn:is_upsertable",
+      "@type": "xsd:boolean"
+    },
+    "isUpdatable": {
+      "@id": "amzn:is_updatable",
+      "@type": "xsd:boolean"
+    },
+    "isDefaultedOnCreate": {
+      "@id": "amzn:is_defaulted_on_create",
+      "@type": "xsd:boolean"
+    },
+    "supportedWriteOperations": {
+      "@id": "amzn:supported_write_operations",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorTypes": {
+      "@id": "amzn:connector_types",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorProfileConfig": {
+      "@id": "amzn:connector_profile_config",
+      "@type": "@id"
+    },
+    "name": "schema:name",
+    "hasNestedEntities": {
+      "@id": "amzn:has_nested_entities",
+      "@type": "xsd:boolean"
+    },
+    "invalidExecutions": {
+      "@id": "amzn:invalid_executions",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "sourceConnectorType": {
+      "@id": "amzn:source_connector_type",
+      "@type": "xsd:string"
+    },
+    "sourceConnectorLabel": {
+      "@id": "amzn:source_connector_label",
+      "@type": "xsd:string"
+    },
+    "destinationConnectorType": {
+      "@id": "amzn:destination_connector_type",
+      "@type": "xsd:string"
+    },
+    "destinationConnectorLabel": {
+      "@id": "amzn:destination_connector_label",
+      "@type": "xsd:string"
+    },
+    "executionIds": {
+      "@id": "amzn:execution_ids",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "destinationConnectorProperties": {
+      "@id": "amzn:destination_connector_properties",
+      "@type": "@id"
+    },
+    "connectorConfiguration": {
+      "@id": "amzn:connector_configuration",
+      "@type": "@id"
+    },
+    "canUseAsSource": {
+      "@id": "amzn:can_use_as_source",
+      "@type": "xsd:boolean"
+    },
+    "canUseAsDestination": {
+      "@id": "amzn:can_use_as_destination",
+      "@type": "xsd:boolean"
+    },
+    "connectorEntityMap": {
+      "@id": "amzn:connector_entity_map",
+      "@type": "@id"
+    },
+    "connectorEntityFields": {
+      "@id": "amzn:connector_entity_fields",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "connectorConfigurations": {
+      "@id": "amzn:connector_configurations",
+      "@type": "@id"
+    },
+    "connectorProfileNames": {
+      "@id": "amzn:connector_profile_names",
+      "@container": "@set",
+      "@type": "xsd:string"
     }
   }
 }

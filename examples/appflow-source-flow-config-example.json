@@ -1,0 +1,13 @@
+{
+  "connectorType": "Salesforce",
+  "apiVersion": "v55.0",
+  "connectorProfileName": "my-salesforce-profile",
+  "sourceConnectorProperties": {
+    "Salesforce": {
+      "object": "Account"
+    }
+  },
+  "incrementalPullConfig": {
+    "datetimeTypeFieldName": "LastModifiedDate"
+  }
+}

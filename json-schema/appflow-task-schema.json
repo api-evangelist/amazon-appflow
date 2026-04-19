@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-task-schema.json",
+  "title": "Task",
+  "description": "Task schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "sourceFields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "Id",
+        "Name"
+      ],
+      "description": "The source fields to which a particular task is applied."
+    },
+    "connectorOperator": {
+      "type": "object",
+      "example": {
+        "Salesforce": "NO_OP"
+      },
+      "description": "The operation to be performed on the provided source fields."
+    },
+    "destinationField": {
+      "type": "string",
+      "example": "AccountId",
+      "description": "A field in a destination connector, or a field value against which Amazon AppFlow validates a source field."
+    },
+    "taskType": {
+      "type": "string",
+      "enum": [
+        "Arithmetic",
+        "Filter",
+        "Map",
+        "Map_all",
+        "Mask",
+        "Merge",
+        "Partition",
+        "Passthrough",
+        "Truncate",
+        "Validate",
+        "Concat"
+      ],
+      "example": "Map",
+      "description": "Specifies the particular task implementation that Amazon AppFlow performs."
+    },
+    "taskProperties": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "SOURCE_DATA_TYPE": "string"
+      },
+      "description": "A map used to store task-related information."
+    }
+  },
+  "required": [
+    "taskType",
+    "sourceFields"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-update-flow-response-schema.json",
+  "title": "UpdateFlowResponse",
+  "description": "UpdateFlowResponse schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowStatus": {
+      "type": "string",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "example": "Active",
+      "description": "Indicates the current status of the flow."
+    }
+  }
+}

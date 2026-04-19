@@ -1,0 +1,6 @@
+{
+  "connectorProfileName": "my-salesforce-profile",
+  "clientToken": "client-token-500123",
+  "connectionMode": "Public",
+  "connectorProfileConfig": {}
+}

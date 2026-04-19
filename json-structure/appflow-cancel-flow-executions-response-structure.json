@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "description": "CancelFlowExecutionsResponse schema from Amazon AppFlow API",
+  "properties": {
+    "invalidExecutions": {
+      "type": "array",
+      "description": "The IDs of runs that Amazon AppFlow couldn't cancel. The runs might have ended before the cancelation request was processed.",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "exec-invalid-123"
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-cancel-flow-executions-response-structure.json"
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-connector-profile-schema.json",
+  "title": "ConnectorProfile",
+  "description": "ConnectorProfile schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorProfileArn": {
+      "type": "string",
+      "example": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile",
+      "description": "The Amazon Resource Name (ARN) of the connector profile."
+    },
+    "connectorProfileName": {
+      "type": "string",
+      "example": "my-salesforce-profile",
+      "description": "The name of the connector profile."
+    },
+    "connectorType": {
+      "type": "string",
+      "example": "Salesforce",
+      "description": "The type of connector."
+    },
+    "connectorLabel": {
+      "type": "string",
+      "example": "MyCustomConnector",
+      "description": "The label of the connector."
+    },
+    "connectionMode": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Private"
+      ],
+      "example": "Public",
+      "description": "Indicates the connection mode and if it is public or private."
+    },
+    "credentialsArn": {
+      "type": "string",
+      "example": "arn:aws:secretsmanager:us-east-1:123456789012:secret:appflow/my-salesforce-profile-credentials",
+      "description": "The Amazon Resource Name (ARN) of the connector profile credentials."
+    },
+    "connectorProfileProperties": {
+      "type": "object",
+      "description": "The connector-specific properties of the profile configuration."
+    },
+    "createdAt": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "Specifies when the connector profile was created."
+    },
+    "lastUpdatedAt": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1718153645993,
+      "description": "Specifies when the connector profile was last updated."
+    },
+    "privateConnectionProvisioningState": {
+      "type": "object",
+      "description": "Specifies the private connection provisioning state."
+    }
+  }
+}

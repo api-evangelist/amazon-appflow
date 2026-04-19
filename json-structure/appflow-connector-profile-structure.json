@@ -1,0 +1,60 @@
+{
+  "type": "object",
+  "description": "ConnectorProfile schema from Amazon AppFlow API",
+  "properties": {
+    "connectorProfileArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the connector profile.",
+      "example": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile"
+    },
+    "connectorProfileName": {
+      "type": "string",
+      "description": "The name of the connector profile.",
+      "example": "my-salesforce-profile"
+    },
+    "connectorType": {
+      "type": "string",
+      "description": "The type of connector.",
+      "example": "Salesforce"
+    },
+    "connectorLabel": {
+      "type": "string",
+      "description": "The label of the connector.",
+      "example": "MyCustomConnector"
+    },
+    "connectionMode": {
+      "type": "string",
+      "description": "Indicates the connection mode and if it is public or private.",
+      "enum": [
+        "Public",
+        "Private"
+      ],
+      "example": "Public"
+    },
+    "credentialsArn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the connector profile credentials.",
+      "example": "arn:aws:secretsmanager:us-east-1:123456789012:secret:appflow/my-salesforce-profile-credentials"
+    },
+    "connectorProfileProperties": {
+      "type": "object",
+      "description": "The connector-specific properties of the profile configuration."
+    },
+    "createdAt": {
+      "type": "int64",
+      "description": "Specifies when the connector profile was created.",
+      "example": 1718153645993
+    },
+    "lastUpdatedAt": {
+      "type": "int64",
+      "description": "Specifies when the connector profile was last updated.",
+      "example": 1718153645993
+    },
+    "privateConnectionProvisioningState": {
+      "type": "object",
+      "description": "Specifies the private connection provisioning state."
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-connector-profile-structure.json"
+}

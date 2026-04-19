@@ -1,0 +1,41 @@
+{
+  "flowName": "my-salesforce-to-s3-flow",
+  "clientToken": "client-token-500123",
+  "description": "Transfer Salesforce accounts to S3 daily",
+  "kmsArn": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd",
+  "metadataCatalogConfig": {
+    "glueDataCatalog": {
+      "roleArn": "arn:aws:iam::123456789012:role/AppFlowGlueRole",
+      "databaseName": "appflow-catalog-db",
+      "tablePrefix": "sf_"
+    }
+  },
+  "triggerConfig": {
+    "triggerType": "Scheduled",
+    "triggerProperties": {
+      "Scheduled": "example-value"
+    }
+  },
+  "sourceFlowConfig": {
+    "connectorType": "Salesforce",
+    "apiVersion": "v55.0",
+    "connectorProfileName": "my-salesforce-profile",
+    "sourceConnectorProperties": {
+      "Salesforce": {
+        "object": "Account"
+      }
+    },
+    "incrementalPullConfig": {
+      "datetimeTypeFieldName": "LastModifiedDate"
+    }
+  },
+  "destinationFlowConfigList": [
+    "example-value"
+  ],
+  "tasks": [
+    "example-value"
+  ],
+  "tags": {
+    "environment": "production"
+  }
+}

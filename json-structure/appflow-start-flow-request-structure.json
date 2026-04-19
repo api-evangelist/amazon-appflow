@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "description": "StartFlowRequest schema from Amazon AppFlow API",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "description": "The specified name of the flow.",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow"
+    },
+    "clientToken": {
+      "type": "string",
+      "description": "Idempotency token.",
+      "example": "client-token-500123"
+    }
+  },
+  "required": [
+    "flowName"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-start-flow-request-structure.json"
+}

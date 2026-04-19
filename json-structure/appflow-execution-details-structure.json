@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "description": "ExecutionDetails schema from Amazon AppFlow API",
+  "properties": {
+    "mostRecentExecutionMessage": {
+      "type": "string",
+      "description": "Describes the details of the most recent flow run.",
+      "example": "Successfully ran the flow"
+    },
+    "mostRecentExecutionTime": {
+      "type": "int64",
+      "description": "Specifies the time of the most recent flow run.",
+      "example": 1718153700000
+    },
+    "mostRecentExecutionStatus": {
+      "type": "string",
+      "description": "Specifies the status of the most recent flow run.",
+      "enum": [
+        "InProgress",
+        "Successful",
+        "Error",
+        "CancelStarted",
+        "Canceled"
+      ],
+      "example": "Successful"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-execution-details-structure.json"
+}

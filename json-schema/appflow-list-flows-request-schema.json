@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-list-flows-request-schema.json",
+  "title": "ListFlowsRequest",
+  "description": "ListFlowsRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "maxResults": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "example": 20,
+      "description": "Specifies the maximum number of items that should be returned in the result set."
+    },
+    "nextToken": {
+      "type": "string",
+      "maxLength": 2048,
+      "example": "",
+      "description": "The pagination token for next page of data."
+    }
+  }
+}

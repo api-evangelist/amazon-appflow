@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorsResponse schema from Amazon AppFlow API",
+  "properties": {
+    "connectorConfigurations": {
+      "type": "object",
+      "description": "The configuration that is applied to the connectors used in the flow.",
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "connectors": {
+      "type": "array",
+      "description": "Information about the connectors supported in Amazon AppFlow.",
+      "items": {}
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connectors-response-structure.json"
+}

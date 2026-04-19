@@ -1,0 +1,476 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: Amazon AppFlow
+  description: Unified taxonomy mapping operational (OpenAPI) and capability (Naftiko) dimensions for Amazon AppFlow, AWS's fully managed SaaS-to-AWS data integration service.
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - namespace: appflow
+      version: "2020-08-23"
+      baseUrl: https://appflow.us-east-1.amazonaws.com
+      status: active
+
+  resources:
+    - name: flows
+      description: Data flow definitions that describe how data moves from a source connector to a destination connector.
+      api: appflow
+      actions:
+        - create
+        - list
+        - describe
+        - update
+        - delete
+        - start
+        - stop
+        - cancel
+
+    - name: flow-executions
+      description: Individual runs of a data flow, including status, timing, and records processed.
+      api: appflow
+      actions:
+        - describe
+        - cancel
+
+    - name: connector-profiles
+      description: Named configurations that store authentication credentials and connection properties for SaaS applications.
+      api: appflow
+      actions:
+        - create
+        - list
+        - update
+        - delete
+
+    - name: connectors
+      description: Integration adapters for SaaS platforms (Salesforce, SAP, ServiceNow, Slack, etc.) and AWS services.
+      api: appflow
+      actions:
+        - list
+        - describe
+        - register
+        - unregister
+        - update-registration
+
+    - name: connector-entities
+      description: Objects/tables available within a connected SaaS application (e.g., Salesforce Account, Contact, Opportunity).
+      api: appflow
+      actions:
+        - list
+        - describe
+
+    - name: connector-metadata-cache
+      description: Cached metadata about connector entities and fields used for performance optimization.
+      api: appflow
+      actions:
+        - reset
+
+    - name: tags
+      description: Key-value labels for organizing and controlling access to AppFlow resources.
+      api: appflow
+      actions:
+        - list
+        - add
+        - remove
+
+  actions:
+    - name: create
+      httpMethod: POST
+      pattern: write
+      description: Create a new resource
+
+    - name: list
+      httpMethod: POST
+      pattern: read
+      description: List resources with pagination
+
+    - name: describe
+      httpMethod: POST
+      pattern: read
+      description: Get detailed information about a specific resource
+
+    - name: update
+      httpMethod: POST
+      pattern: write
+      description: Modify an existing resource
+
+    - name: delete
+      httpMethod: POST
+      pattern: destructive
+      description: Remove a resource permanently
+
+    - name: start
+      httpMethod: POST
+      pattern: write
+      description: Activate or trigger a flow
+
+    - name: stop
+      httpMethod: POST
+      pattern: write
+      description: Deactivate a running flow
+
+    - name: cancel
+      httpMethod: POST
+      pattern: destructive
+      description: Cancel in-progress flow executions
+
+    - name: register
+      httpMethod: POST
+      pattern: write
+      description: Register a custom connector
+
+    - name: unregister
+      httpMethod: POST
+      pattern: destructive
+      description: Remove a connector registration
+
+    - name: reset
+      httpMethod: POST
+      pattern: write
+      description: Clear cached data to force refresh
+
+    - name: add
+      httpMethod: POST
+      pattern: write
+      description: Add tags to a resource
+
+    - name: remove
+      httpMethod: DELETE
+      pattern: destructive
+      description: Remove tags from a resource
+
+  schemas:
+    core:
+      - name: CreateFlowRequest
+        description: Request body for creating a new data flow
+        keyProperties:
+          - flowName
+          - triggerConfig
+          - sourceFlowConfig
+          - destinationFlowConfigList
+          - tasks
+
+      - name: FlowDefinition
+        description: Summary information about a data flow
+        keyProperties:
+          - flowArn
+          - flowName
+          - flowStatus
+          - sourceConnectorType
+          - destinationConnectorType
+          - triggerType
+
+      - name: DescribeFlowResponse
+        description: Complete details about a data flow
+        keyProperties:
+          - flowArn
+          - flowName
+          - flowStatus
+          - sourceFlowConfig
+          - destinationFlowConfigList
+          - triggerConfig
+          - tasks
+
+      - name: TriggerConfig
+        description: Controls when and how a flow runs
+        keyProperties:
+          - triggerType
+          - triggerProperties
+
+      - name: SourceFlowConfig
+        description: Configures the source connector and entity
+        keyProperties:
+          - connectorType
+          - connectorProfileName
+          - sourceConnectorProperties
+
+      - name: DestinationFlowConfig
+        description: Configures the destination connector and entity
+        keyProperties:
+          - connectorType
+          - connectorProfileName
+          - destinationConnectorProperties
+
+      - name: Task
+        description: Data transformation or mapping operation applied during flow execution
+        keyProperties:
+          - taskType
+          - sourceFields
+          - destinationField
+          - taskProperties
+
+    execution:
+      - name: FlowExecution
+        description: Details about a single flow run
+        keyProperties:
+          - executionId
+          - executionStatus
+          - startedAt
+          - lastUpdatedAt
+          - executionResult
+
+      - name: ExecutionResult
+        description: Outcome of a flow run
+        keyProperties:
+          - recordsProcessed
+          - bytesProcessed
+          - bytesWritten
+
+    connectors:
+      - name: ConnectorProfile
+        description: Stored credentials and configuration for connecting to a SaaS application
+        keyProperties:
+          - connectorProfileArn
+          - connectorProfileName
+          - connectorType
+          - connectionMode
+          - createdAt
+
+      - name: ConnectorDetail
+        description: Information about a registered connector
+        keyProperties:
+          - connectorLabel
+          - connectorType
+          - connectorDescription
+          - canUseAsSource
+          - canUseAsDestination
+
+      - name: ConnectorEntity
+        description: An object/table available within a connected SaaS application
+        keyProperties:
+          - name
+          - label
+          - hasNestedEntities
+
+      - name: ConnectorEntityField
+        description: A field within a connector entity with its type and capabilities
+        keyProperties:
+          - identifier
+          - label
+          - isPrimaryKey
+          - isQueryable
+          - isRetrievable
+
+  parameters:
+    pagination:
+      - name: maxResults
+        type: integer
+        description: Maximum number of items per page (1-100)
+      - name: nextToken
+        type: string
+        description: Token for retrieving the next page of results
+
+    identifiers:
+      - name: flowName
+        type: string
+        description: Unique name of a data flow
+      - name: connectorProfileName
+        type: string
+        description: Unique name of a connector profile
+      - name: connectorType
+        type: string
+        description: Type identifier for a connector (Salesforce, S3, etc.)
+      - name: connectorLabel
+        type: string
+        description: Label for a custom connector registration
+      - name: connectorEntityName
+        type: string
+        description: Name of an entity within a connector
+
+    filters:
+      - name: connectorTypes
+        type: array
+        description: Filter connectors by type
+      - name: connectorProfileNames
+        type: array
+        description: Filter profiles by name
+
+  enums:
+    flowStatus:
+      - Active
+      - Deprecated
+      - Deleted
+      - Draft
+      - Errored
+      - Suspended
+
+    triggerType:
+      - Scheduled
+      - Event
+      - OnDemand
+
+    connectionMode:
+      - Public
+      - Private
+
+    executionStatus:
+      - InProgress
+      - Successful
+      - Error
+      - CancelStarted
+      - Canceled
+
+    taskType:
+      - Arithmetic
+      - Filter
+      - Map
+      - Map_all
+      - Mask
+      - Merge
+      - Partition
+      - Passthrough
+      - Truncate
+      - Validate
+      - Concat
+
+    dataPullMode:
+      - Incremental
+      - Complete
+
+    connectorProvisioningType:
+      - LAMBDA
+
+  authentication:
+    schemes:
+      - name: AWS Signature Version 4
+        type: apiKey
+        placement: header
+        headerName: Authorization
+        description: AWS SigV4 signing — requires AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+
+capability:
+  workflows:
+    - name: Data Integration
+      file: capabilities/data-integration.yaml
+      description: Workflow for data engineers and integration architects to orchestrate, monitor, and manage SaaS-to-AWS data flows
+      apisConsumed:
+        - Amazon AppFlow API
+      toolCount: 19
+      personas:
+        - Data Engineer
+        - Integration Architect
+
+  personas:
+    - id: data-engineer
+      name: Data Engineer
+      description: Builds and maintains data pipelines between SaaS applications and AWS analytics/ML services
+      workflows:
+        - Data Integration
+
+    - id: integration-architect
+      name: Integration Architect
+      description: Designs integration patterns, manages connector credentials, and establishes data governance for AppFlow
+      workflows:
+        - Data Integration
+
+  domains:
+    - name: Data Integration
+      description: Moving data between SaaS applications and AWS services
+      resources:
+        - flows
+        - flow-executions
+
+    - name: Connector Management
+      description: Configuring and managing connections to SaaS applications
+      resources:
+        - connector-profiles
+        - connectors
+        - connector-entities
+
+  namespaces:
+    - name: appflow
+      type: consumed
+      baseUri: https://appflow.us-east-1.amazonaws.com
+
+    - name: appflow-integration-api
+      type: rest-exposed
+      port: 8080
+
+    - name: appflow-integration-mcp
+      type: mcp-exposed
+      port: 9090
+
+    - name: appflow-rest
+      type: rest-exposed
+      port: 8100
+
+    - name: appflow-mcp
+      type: mcp-exposed
+      port: 9100
+
+  binds:
+    - name: AWS_ACCESS_KEY_ID
+      description: AWS access key for SigV4 authentication
+      workflows:
+        - Data Integration
+
+    - name: AWS_SECRET_ACCESS_KEY
+      description: AWS secret key for SigV4 authentication
+      workflows:
+        - Data Integration
+
+    - name: AWS_REGION
+      description: AWS region for AppFlow endpoint (e.g., us-east-1)
+      workflows:
+        - Data Integration
+
+crossReference:
+  - resource: flows
+    operations:
+      - createFlow
+      - listFlows
+      - describeFlow
+      - updateFlow
+      - deleteFlow
+      - startFlow
+      - stopFlow
+      - cancelFlowExecutions
+    workflows:
+      - Data Integration
+    personas:
+      - Data Engineer
+      - Integration Architect
+
+  - resource: flow-executions
+    operations:
+      - describeFlowExecutionRecords
+      - cancelFlowExecutions
+    workflows:
+      - Data Integration
+    personas:
+      - Data Engineer
+
+  - resource: connector-profiles
+    operations:
+      - createConnectorProfile
+      - describeConnectorProfiles
+      - updateConnectorProfile
+      - deleteConnectorProfile
+    workflows:
+      - Data Integration
+    personas:
+      - Integration Architect
+
+  - resource: connectors
+    operations:
+      - describeConnectors
+      - describeConnector
+      - registerConnector
+      - unregisterConnector
+      - updateConnectorRegistration
+      - resetConnectorMetadataCache
+    workflows:
+      - Data Integration
+    personas:
+      - Integration Architect
+
+  - resource: connector-entities
+    operations:
+      - listConnectorEntities
+      - describeConnectorEntity
+    workflows:
+      - Data Integration
+    personas:
+      - Data Engineer
+      - Integration Architect

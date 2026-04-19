@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-connector-entity-schema.json",
+  "title": "ConnectorEntity",
+  "description": "ConnectorEntity schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Account",
+      "description": "The name of the connector entity."
+    },
+    "label": {
+      "type": "string",
+      "example": "Account",
+      "description": "The label applied to the connector entity."
+    },
+    "hasNestedEntities": {
+      "type": "boolean",
+      "example": false,
+      "description": "Specifies whether the connector entity is a parent or a category and has more entities nested underneath it."
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

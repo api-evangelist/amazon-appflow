@@ -1,0 +1,47 @@
+{
+  "type": "object",
+  "description": "SourceFlowConfig schema from Amazon AppFlow API",
+  "properties": {
+    "connectorType": {
+      "type": "string",
+      "description": "The type of connector used as a source.",
+      "example": "Salesforce"
+    },
+    "apiVersion": {
+      "type": "string",
+      "description": "The API version of the connector used in the source.",
+      "example": "v55.0"
+    },
+    "connectorProfileName": {
+      "type": "string",
+      "description": "The name of the connector profile. Required for all connectors except Amplitude, Datadog, Dynatrace, GoogleAnalytics, Marketo, SAPOData, Salesforce, ServiceNow, Singular, Slack, Trendmicro, and Veeva.",
+      "example": "my-salesforce-profile"
+    },
+    "sourceConnectorProperties": {
+      "type": "object",
+      "description": "Specifies the information that is required to query a particular source connector.",
+      "example": {
+        "Salesforce": {
+          "object": "Account"
+        }
+      }
+    },
+    "incrementalPullConfig": {
+      "type": "object",
+      "description": "Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the incremental data pull.",
+      "properties": {
+        "datetimeTypeFieldName": {
+          "type": "string",
+          "description": "A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.",
+          "example": "LastModifiedDate"
+        }
+      }
+    }
+  },
+  "required": [
+    "connectorType",
+    "sourceConnectorProperties"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-source-flow-config-structure.json"
+}

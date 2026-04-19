@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-create-connector-profile-response-schema.json",
+  "title": "CreateConnectorProfileResponse",
+  "description": "CreateConnectorProfileResponse schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorProfileArn": {
+      "type": "string",
+      "example": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile",
+      "description": "The Amazon Resource Name (ARN) of the connector profile."
+    }
+  }
+}

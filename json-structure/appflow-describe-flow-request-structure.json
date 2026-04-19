@@ -1,0 +1,17 @@
+{
+  "type": "object",
+  "description": "DescribeFlowRequest schema from Amazon AppFlow API",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "description": "The specified name of the flow.",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow"
+    }
+  },
+  "required": [
+    "flowName"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-flow-request-structure.json"
+}

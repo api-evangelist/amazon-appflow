@@ -1,0 +1,79 @@
+{
+  "type": "object",
+  "description": "ConnectorDetail schema from Amazon AppFlow API",
+  "properties": {
+    "connectorDescription": {
+      "type": "string",
+      "description": "A description about the registered connector.",
+      "example": "My custom connector for proprietary data source"
+    },
+    "connectorName": {
+      "type": "string",
+      "description": "The name of the connector.",
+      "example": "MyCustomConnector"
+    },
+    "connectorOwner": {
+      "type": "string",
+      "description": "The owner of the connector.",
+      "example": "123456789012"
+    },
+    "connectorVersion": {
+      "type": "string",
+      "description": "The connector version.",
+      "example": "1.0"
+    },
+    "applicationType": {
+      "type": "string",
+      "description": "The application type of the connector.",
+      "example": "SaaS"
+    },
+    "connectorType": {
+      "type": "string",
+      "description": "The connector type.",
+      "example": "CustomConnector"
+    },
+    "connectorLabel": {
+      "type": "string",
+      "description": "The label used for registering the connector.",
+      "example": "MyCustomConnector"
+    },
+    "registeredAt": {
+      "type": "int64",
+      "description": "The time at which the connector was registered.",
+      "example": 1718153645993
+    },
+    "registeredBy": {
+      "type": "string",
+      "description": "The user who registered the connector.",
+      "example": "arn:aws:iam::123456789012:user/admin"
+    },
+    "connectorProvisioningType": {
+      "type": "string",
+      "description": "The provisioning type that the connector uses.",
+      "example": "LAMBDA"
+    },
+    "connectorModes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "CLOUD"
+      ]
+    },
+    "supportedDataTransferTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "RECORD",
+        "FILE"
+      ]
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-connector-detail-structure.json"
+}

@@ -1,0 +1,7 @@
+{
+  "connectorProfileName": "my-salesforce-profile",
+  "connectorType": "Salesforce",
+  "connectorEntityName": "Account",
+  "entitiesPath": "/var/log/appflow/flow.log",
+  "apiVersion": "v55.0"
+}

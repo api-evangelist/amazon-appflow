@@ -1,0 +1,19 @@
+{
+  "type": "object",
+  "description": "ListTagsForResourceResponse schema from Amazon AppFlow API",
+  "properties": {
+    "tags": {
+      "type": "object",
+      "description": "The tags used to organize, track, or control access for your flow.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "environment": "production",
+        "team": "data-engineering"
+      }
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-list-tags-for-resource-response-structure.json"
+}

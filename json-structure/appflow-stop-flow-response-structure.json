@@ -1,0 +1,26 @@
+{
+  "type": "object",
+  "description": "StopFlowResponse schema from Amazon AppFlow API",
+  "properties": {
+    "flowArn": {
+      "type": "string",
+      "description": "The flow's Amazon Resource Name (ARN).",
+      "example": "arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow"
+    },
+    "flowStatus": {
+      "type": "string",
+      "description": "Indicates the current status of the flow.",
+      "enum": [
+        "Active",
+        "Deprecated",
+        "Deleted",
+        "Draft",
+        "Errored",
+        "Suspended"
+      ],
+      "example": "Suspended"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-stop-flow-response-structure.json"
+}

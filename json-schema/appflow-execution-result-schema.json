@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-execution-result-schema.json",
+  "title": "ExecutionResult",
+  "description": "ExecutionResult schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "errorInfo": {
+      "type": "object",
+      "description": "Provides any error message information related to the flow run."
+    },
+    "bytesProcessed": {
+      "type": "integer",
+      "format": "int64",
+      "example": 204800,
+      "description": "The total number of bytes processed by the flow run."
+    },
+    "bytesWritten": {
+      "type": "integer",
+      "format": "int64",
+      "example": 204800,
+      "description": "The total number of bytes written as a result of the flow run."
+    },
+    "recordsProcessed": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1500,
+      "description": "The number of records processed in the flow run."
+    },
+    "numParallelProcesses": {
+      "type": "integer",
+      "format": "int64",
+      "example": 1,
+      "description": "The number of processes that Amazon AppFlow ran at the same time when it retrieved your data."
+    }
+  }
+}

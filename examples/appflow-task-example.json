@@ -1,0 +1,14 @@
+{
+  "sourceFields": [
+    "Id",
+    "Name"
+  ],
+  "connectorOperator": {
+    "Salesforce": "NO_OP"
+  },
+  "destinationField": "AccountId",
+  "taskType": "Map",
+  "taskProperties": {
+    "SOURCE_DATA_TYPE": "string"
+  }
+}

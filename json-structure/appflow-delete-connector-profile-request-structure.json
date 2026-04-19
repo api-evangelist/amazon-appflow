@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "description": "DeleteConnectorProfileRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorProfileName": {
+      "type": "string",
+      "description": "The name of the connector profile.",
+      "maxLength": 256,
+      "example": "my-salesforce-profile"
+    },
+    "forceDelete": {
+      "type": "boolean",
+      "description": "Indicates whether Amazon AppFlow should delete the profile, even if it is currently in use in one or more flows.",
+      "example": false
+    }
+  },
+  "required": [
+    "connectorProfileName"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-delete-connector-profile-request-structure.json"
+}

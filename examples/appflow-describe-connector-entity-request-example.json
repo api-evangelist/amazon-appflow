@@ -1,0 +1,6 @@
+{
+  "connectorEntityName": "Account",
+  "connectorType": "Salesforce",
+  "connectorProfileName": "my-salesforce-profile",
+  "apiVersion": "v55.0"
+}

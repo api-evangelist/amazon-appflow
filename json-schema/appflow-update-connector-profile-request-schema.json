@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-update-connector-profile-request-schema.json",
+  "title": "UpdateConnectorProfileRequest",
+  "description": "UpdateConnectorProfileRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorProfileName": {
+      "type": "string",
+      "maxLength": 256,
+      "example": "my-salesforce-profile",
+      "description": "The name of the connector profile and is unique for each ConnectorProfile in the AWS account."
+    },
+    "clientToken": {
+      "type": "string",
+      "example": "client-token-500123",
+      "description": "Idempotency token."
+    },
+    "connectionMode": {
+      "type": "string",
+      "enum": [
+        "Public",
+        "Private"
+      ],
+      "example": "Public",
+      "description": "Indicates the connection mode and if it is public or private."
+    },
+    "connectorProfileConfig": {
+      "type": "object",
+      "description": "Defines the connector-specific profile configuration and credentials."
+    }
+  },
+  "required": [
+    "connectorProfileName",
+    "connectionMode",
+    "connectorProfileConfig"
+  ]
+}

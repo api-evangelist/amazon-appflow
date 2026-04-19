@@ -1,0 +1,8 @@
+{
+  "connectorProfileName": "my-salesforce-profile",
+  "connectorType": "Salesforce",
+  "entitiesPath": "/var/log/appflow/flow.log",
+  "apiVersion": "v55.0",
+  "maxResults": 20,
+  "nextToken": ""
+}

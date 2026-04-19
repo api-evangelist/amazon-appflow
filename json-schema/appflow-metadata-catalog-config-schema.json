@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-metadata-catalog-config-schema.json",
+  "title": "MetadataCatalogConfig",
+  "description": "MetadataCatalogConfig schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "glueDataCatalog": {
+      "type": "object",
+      "properties": {
+        "roleArn": {
+          "type": "string",
+          "example": "arn:aws:iam::123456789012:role/AppFlowGlueRole",
+          "description": "The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions."
+        },
+        "databaseName": {
+          "type": "string",
+          "example": "appflow-catalog-db",
+          "description": "The name of an existing Glue Data Catalog database."
+        },
+        "tablePrefix": {
+          "type": "string",
+          "example": "sf_",
+          "description": "A naming prefix for each Data Catalog table that Amazon AppFlow creates."
+        }
+      },
+      "description": "Specifies the configuration that Amazon AppFlow uses when it catalogs data with the Glue Data Catalog."
+    }
+  }
+}

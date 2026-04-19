@@ -1,0 +1,8 @@
+{
+  "connectorTypes": [
+    "Salesforce",
+    "S3"
+  ],
+  "maxResults": 20,
+  "nextToken": ""
+}

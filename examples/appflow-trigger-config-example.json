@@ -1,0 +1,6 @@
+{
+  "triggerType": "Scheduled",
+  "triggerProperties": {
+    "Scheduled": "example-value"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "connectorDescription": "My custom connector for proprietary data source",
+  "connectorName": "MyCustomConnector",
+  "connectorOwner": "123456789012",
+  "connectorVersion": "1.0",
+  "applicationType": "SaaS",
+  "connectorType": "CustomConnector",
+  "connectorLabel": "MyCustomConnector",
+  "registeredAt": 1718153645993,
+  "registeredBy": "arn:aws:iam::123456789012:user/admin",
+  "connectorProvisioningType": "LAMBDA"
+}

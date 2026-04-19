@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorType": {
+      "type": "string",
+      "description": "The connector type, such as CUSTOMCONNECTOR, Saleforce, Marketo.",
+      "example": "CustomConnector"
+    },
+    "connectorLabel": {
+      "type": "string",
+      "description": "The label of the connector. The label is unique for each ConnectorRegistration in your Amazon Web Services account.",
+      "example": "MyCustomConnector"
+    }
+  },
+  "required": [
+    "connectorType"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connector-request-structure.json"
+}

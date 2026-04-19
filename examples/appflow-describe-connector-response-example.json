@@ -1,0 +1,14 @@
+{
+  "connectorConfiguration": {
+    "canUseAsSource": true,
+    "canUseAsDestination": true,
+    "connectorArn": "arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector",
+    "connectorLabel": "MyCustomConnector",
+    "connectorDescription": "My custom connector",
+    "connectorOwner": "123456789012",
+    "connectorVersion": "1.0",
+    "connectorModes": [
+      "CLOUD"
+    ]
+  }
+}

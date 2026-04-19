@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-create-flow-request-schema.json",
+  "title": "CreateFlowRequest",
+  "description": "CreateFlowRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flowName": {
+      "type": "string",
+      "pattern": "[a-zA-Z0-9][\\w!@#.-]+",
+      "maxLength": 256,
+      "example": "my-salesforce-to-s3-flow",
+      "description": "The specified name of the flow. Spaces are not allowed. Use underscores or hyphens only."
+    },
+    "clientToken": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256,
+      "example": "client-token-500123",
+      "description": "Idempotency token to ensure CreateFlow completes only once."
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 2048,
+      "example": "Transfer Salesforce accounts to S3 daily",
+      "description": "A description of the flow you want to create."
+    },
+    "kmsArn": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2048,
+      "example": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd",
+      "description": "The ARN of the KMS key for encryption."
+    },
+    "metadataCatalogConfig": {
+      "type": "object",
+      "properties": {
+        "glueDataCatalog": {
+          "type": "object",
+          "properties": {
+            "roleArn": {
+              "type": "string",
+              "example": "arn:aws:iam::123456789012:role/AppFlowGlueRole",
+              "description": "The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions."
+            },
+            "databaseName": {
+              "type": "string",
+              "example": "appflow-catalog-db",
+              "description": "The name of an existing Glue Data Catalog database."
+            },
+            "tablePrefix": {
+              "type": "string",
+              "example": "sf_",
+              "description": "A naming prefix for each Data Catalog table that Amazon AppFlow creates."
+            }
+          },
+          "description": "Specifies the configuration that Amazon AppFlow uses when it catalogs data with the Glue Data Catalog."
+        }
+      }
+    },
+    "triggerConfig": {
+      "type": "object",
+      "properties": {
+        "triggerType": {
+          "type": "string",
+          "enum": [
+            "Scheduled",
+            "Event",
+            "OnDemand"
+          ],
+          "example": "Scheduled",
+          "description": "Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event."
+        },
+        "triggerProperties": {
+          "type": "object",
+          "properties": {
+            "Scheduled": {}
+          },
+          "description": "Specifies the configuration details of a schedule-triggered flow as defined by the user."
+        }
+      },
+      "required": [
+        "triggerType"
+      ]
+    },
+    "sourceFlowConfig": {
+      "type": "object",
+      "properties": {
+        "connectorType": {
+          "type": "string",
+          "example": "Salesforce",
+          "description": "The type of connector used as a source."
+        },
+        "apiVersion": {
+          "type": "string",
+          "example": "v55.0",
+          "description": "The API version of the connector used in the source."
+        },
+        "connectorProfileName": {
+          "type": "string",
+          "example": "my-salesforce-profile",
+          "description": "The name of the connector profile. Required for all connectors except Amplitude, Datadog, Dynatrace, GoogleAnalytics, Marketo, SAPOData, Salesforce, ServiceNow, Singular, Slack, Trendmicro, and Veeva."
+        },
+        "sourceConnectorProperties": {
+          "type": "object",
+          "example": {
+            "Salesforce": {
+              "object": "Account"
+            }
+          },
+          "description": "Specifies the information that is required to query a particular source connector."
+        },
+        "incrementalPullConfig": {
+          "type": "object",
+          "properties": {
+            "datetimeTypeFieldName": {
+              "type": "string",
+              "example": "LastModifiedDate",
+              "description": "A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source."
+            }
+          },
+          "description": "Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the incremental data pull."
+        }
+      },
+      "required": [
+        "connectorType",
+        "sourceConnectorProperties"
+      ]
+    },
+    "destinationFlowConfigList": {
+      "type": "array",
+      "items": {},
+      "description": "The configuration that controls how Amazon AppFlow places data in the destination connector."
+    },
+    "tasks": {
+      "type": "array",
+      "items": {},
+      "description": "A list of tasks that Amazon AppFlow performs while transferring data in the flow run."
+    },
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "environment": "production"
+      },
+      "description": "The tags used to organize, track, or control access for your flow."
+    }
+  },
+  "required": [
+    "flowName",
+    "triggerConfig",
+    "sourceFlowConfig",
+    "destinationFlowConfigList",
+    "tasks"
+  ]
+}

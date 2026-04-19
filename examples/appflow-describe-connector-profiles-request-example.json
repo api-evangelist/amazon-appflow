@@ -1,0 +1,9 @@
+{
+  "connectorProfileNames": [
+    "my-salesforce-profile"
+  ],
+  "connectorType": "Salesforce",
+  "connectorLabel": "MyCustomConnector",
+  "maxResults": 20,
+  "nextToken": ""
+}

@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "description": "ResetConnectorMetadataCacheRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorProfileName": {
+      "type": "string",
+      "description": "The name of the connector profile that you want to reset cached metadata for.",
+      "maxLength": 256,
+      "example": "my-salesforce-profile"
+    },
+    "connectorType": {
+      "type": "string",
+      "description": "The type of connector to reset cached metadata for.",
+      "example": "Salesforce"
+    },
+    "connectorEntityName": {
+      "type": "string",
+      "description": "Use this parameter if you want to reset cached metadata about the details for an individual entity.",
+      "maxLength": 1024,
+      "example": "Account"
+    },
+    "entitiesPath": {
+      "type": "string",
+      "description": "Use this parameter only if you're resetting the cached metadata about a nested entity.",
+      "maxLength": 256,
+      "example": ""
+    },
+    "apiVersion": {
+      "type": "string",
+      "description": "The API version that you specified in the connector profile that you're resetting cached metadata for.",
+      "example": "v55.0"
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-reset-connector-metadata-cache-request-structure.json"
+}

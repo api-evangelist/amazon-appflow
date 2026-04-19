@@ -1,0 +1,16 @@
+{
+  "flowArn": "arn:aws:appflow:us-east-1:123456789012:flow/example-flow",
+  "flowName": "my-salesforce-to-s3-flow",
+  "description": "A description of the resource.",
+  "flowStatus": "Draft",
+  "sourceFlowConfig": "example-value",
+  "destinationFlowConfigList": [
+    "example-value"
+  ],
+  "tasks": [
+    "example-value"
+  ],
+  "triggerConfig": "example-value",
+  "createdAt": "example-value",
+  "lastUpdatedAt": "example-value"
+}

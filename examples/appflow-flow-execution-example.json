@@ -1,0 +1,15 @@
+{
+  "executionId": "exec-500123",
+  "executionStatus": "Successful",
+  "executionResult": {
+    "errorInfo": {},
+    "bytesProcessed": 204800,
+    "bytesWritten": 204800,
+    "recordsProcessed": 1500,
+    "numParallelProcesses": 1
+  },
+  "startedAt": 1718153645993,
+  "lastUpdatedAt": 1718153700000,
+  "dataPullStartTime": 1718153645993,
+  "dataPullEndTime": 1718153700000
+}

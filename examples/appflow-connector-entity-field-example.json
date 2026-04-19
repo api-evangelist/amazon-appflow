@@ -1,0 +1,25 @@
+{
+  "identifier": "Id",
+  "parentIdentifier": "Id",
+  "label": "Account ID",
+  "isPrimaryKey": true,
+  "defaultValue": "example-value",
+  "isDeprecated": false,
+  "supportedFieldTypeDetails": {},
+  "description": "The unique identifier for the Account object.",
+  "sourceProperties": {
+    "isQueryable": true,
+    "isRetrievable": true,
+    "isPartitioningSupported": false
+  },
+  "destinationProperties": {
+    "isCreatable": false,
+    "isNullable": false,
+    "isUpsertable": false,
+    "isUpdatable": false,
+    "isDefaultedOnCreate": false,
+    "supportedWriteOperations": [
+      "INSERT"
+    ]
+  }
+}

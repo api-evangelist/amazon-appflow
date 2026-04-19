@@ -1,0 +1,101 @@
+{
+  "type": "object",
+  "description": "ConnectorEntityField schema from Amazon AppFlow API",
+  "properties": {
+    "identifier": {
+      "type": "string",
+      "description": "The unique identifier of the connector field.",
+      "example": "Id"
+    },
+    "parentIdentifier": {
+      "type": "string",
+      "description": "The parent identifier of the connector field.",
+      "example": ""
+    },
+    "label": {
+      "type": "string",
+      "description": "The label applied to a connector entity field.",
+      "example": "Account ID"
+    },
+    "isPrimaryKey": {
+      "type": "boolean",
+      "description": "Booelan value that indicates whether this field can be used as a primary key.",
+      "example": true
+    },
+    "defaultValue": {
+      "type": "string",
+      "description": "Default value that can be assigned to this field.",
+      "example": ""
+    },
+    "isDeprecated": {
+      "type": "boolean",
+      "description": "Booelan value that indicates whether this field is deprecated or not.",
+      "example": false
+    },
+    "supportedFieldTypeDetails": {
+      "type": "object",
+      "description": "Contains details regarding the supported FieldType, including the corresponding filterOperators and supportedValues."
+    },
+    "description": {
+      "type": "string",
+      "description": "A description of the connector entity field.",
+      "example": "The unique identifier for the Account object."
+    },
+    "sourceProperties": {
+      "type": "object",
+      "description": "The properties that can be applied to a field when the connector is being used as a source.",
+      "properties": {
+        "isQueryable": {
+          "type": "boolean",
+          "example": true
+        },
+        "isRetrievable": {
+          "type": "boolean",
+          "example": true
+        },
+        "isPartitioningSupported": {
+          "type": "boolean",
+          "example": false
+        }
+      }
+    },
+    "destinationProperties": {
+      "type": "object",
+      "description": "The properties applied to a field when the connector is being used as a destination.",
+      "properties": {
+        "isCreatable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isNullable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isUpsertable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isUpdatable": {
+          "type": "boolean",
+          "example": false
+        },
+        "isDefaultedOnCreate": {
+          "type": "boolean",
+          "example": false
+        },
+        "supportedWriteOperations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": ""
+          },
+          "example": [
+            "INSERT"
+          ]
+        }
+      }
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-connector-entity-field-structure.json"
+}

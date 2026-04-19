@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-list-flows-response-schema.json",
+  "title": "ListFlowsResponse",
+  "description": "ListFlowsResponse schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "flows": {
+      "type": "array",
+      "items": {},
+      "description": "The list of flows associated with your account."
+    },
+    "nextToken": {
+      "type": "string",
+      "example": "",
+      "description": "The pagination token for next page of data."
+    }
+  }
+}

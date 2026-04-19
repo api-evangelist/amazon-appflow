@@ -1,0 +1,12 @@
+{
+  "connectorProfileArn": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile",
+  "connectorProfileName": "my-salesforce-profile",
+  "connectorType": "Salesforce",
+  "connectorLabel": "MyCustomConnector",
+  "connectionMode": "Public",
+  "credentialsArn": "arn:aws:secretsmanager:us-east-1:123456789012:secret:appflow/my-salesforce-profile-credentials",
+  "connectorProfileProperties": {},
+  "createdAt": 1718153645993,
+  "lastUpdatedAt": 1718153645993,
+  "privateConnectionProvisioningState": {}
+}

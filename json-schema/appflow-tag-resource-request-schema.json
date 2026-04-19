@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-tag-resource-request-schema.json",
+  "title": "TagResourceRequest",
+  "description": "TagResourceRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "environment": "production",
+        "team": "data-engineering"
+      },
+      "description": "The tags used to organize, track, or control access for your flow."
+    }
+  },
+  "required": [
+    "tags"
+  ]
+}

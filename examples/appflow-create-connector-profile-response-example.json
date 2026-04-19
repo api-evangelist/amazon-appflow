@@ -1,0 +1,3 @@
+{
+  "connectorProfileArn": "arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile"
+}

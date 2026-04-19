@@ -1,0 +1,3 @@
+{
+  "connectorArn": "arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector"
+}

@@ -1,0 +1,35 @@
+{
+  "flowArn": "arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow",
+  "description": "Transfer Salesforce accounts to S3 daily",
+  "flowName": "my-salesforce-to-s3-flow",
+  "kmsArn": "arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd",
+  "flowStatus": "Active",
+  "flowStatusMessage": "Successfully processed the request.",
+  "sourceFlowConfig": {
+    "connectorType": "Salesforce",
+    "apiVersion": "v55.0",
+    "connectorProfileName": "my-salesforce-profile",
+    "sourceConnectorProperties": {
+      "Salesforce": {
+        "object": "Account"
+      }
+    },
+    "incrementalPullConfig": {
+      "datetimeTypeFieldName": "LastModifiedDate"
+    }
+  },
+  "destinationFlowConfigList": [
+    "example-value"
+  ],
+  "lastRunExecutionDetails": {
+    "mostRecentExecutionMessage": "Successfully ran the flow",
+    "mostRecentExecutionTime": 1718153700000,
+    "mostRecentExecutionStatus": "Successful"
+  },
+  "triggerConfig": {
+    "triggerType": "Scheduled",
+    "triggerProperties": {
+      "Scheduled": "example-value"
+    }
+  }
+}

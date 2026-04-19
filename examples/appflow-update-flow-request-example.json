@@ -1,0 +1,37 @@
+{
+  "flowName": "my-salesforce-to-s3-flow",
+  "clientToken": "client-token-500123",
+  "description": "Updated description",
+  "triggerConfig": {
+    "triggerType": "Scheduled",
+    "triggerProperties": {
+      "Scheduled": "example-value"
+    }
+  },
+  "sourceFlowConfig": {
+    "connectorType": "Salesforce",
+    "apiVersion": "v55.0",
+    "connectorProfileName": "my-salesforce-profile",
+    "sourceConnectorProperties": {
+      "Salesforce": {
+        "object": "Account"
+      }
+    },
+    "incrementalPullConfig": {
+      "datetimeTypeFieldName": "LastModifiedDate"
+    }
+  },
+  "destinationFlowConfigList": [
+    "example-value"
+  ],
+  "tasks": [
+    "example-value"
+  ],
+  "metadataCatalogConfig": {
+    "glueDataCatalog": {
+      "roleArn": "arn:aws:iam::123456789012:role/AppFlowGlueRole",
+      "databaseName": "appflow-catalog-db",
+      "tablePrefix": "sf_"
+    }
+  }
+}

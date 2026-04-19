@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "description": "DescribeConnectorProfilesRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorProfileNames": {
+      "type": "array",
+      "description": "The name of the connector profile. The name is unique for each ConnectorProfile in the AWS account.",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "my-salesforce-profile"
+      ]
+    },
+    "connectorType": {
+      "type": "string",
+      "description": "The type of connector, such as Salesforce, Marketo, and so on.",
+      "example": "Salesforce"
+    },
+    "connectorLabel": {
+      "type": "string",
+      "description": "The name of the connector.",
+      "example": "MyCustomConnector"
+    },
+    "maxResults": {
+      "type": "int32",
+      "description": "Specifies the maximum number of items that should be returned in the result set. The default for maxResults is 20.",
+      "minimum": 1,
+      "maximum": 100,
+      "example": 20
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "maxLength": 2048,
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-describe-connector-profiles-request-structure.json"
+}

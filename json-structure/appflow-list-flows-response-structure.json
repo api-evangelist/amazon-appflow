@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "description": "ListFlowsResponse schema from Amazon AppFlow API",
+  "properties": {
+    "flows": {
+      "type": "array",
+      "description": "The list of flows associated with your account.",
+      "items": {}
+    },
+    "nextToken": {
+      "type": "string",
+      "description": "The pagination token for next page of data.",
+      "example": ""
+    }
+  },
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-list-flows-response-structure.json"
+}

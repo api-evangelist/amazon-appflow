@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-describe-connector-response-schema.json",
+  "title": "DescribeConnectorResponse",
+  "description": "DescribeConnectorResponse schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorConfiguration": {
+      "type": "object",
+      "properties": {
+        "canUseAsSource": {
+          "type": "boolean",
+          "example": true,
+          "description": "Specifies whether the connector can be used as a source."
+        },
+        "canUseAsDestination": {
+          "type": "boolean",
+          "example": true,
+          "description": "Specifies whether the connector can be used as a destination."
+        },
+        "connectorArn": {
+          "type": "string",
+          "example": "arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector",
+          "description": "The Amazon Resource Name (ARN) for the registered connector."
+        },
+        "connectorLabel": {
+          "type": "string",
+          "example": "MyCustomConnector",
+          "description": "The label used for registering the connector."
+        },
+        "connectorDescription": {
+          "type": "string",
+          "example": "My custom connector",
+          "description": "A description about the connector."
+        },
+        "connectorOwner": {
+          "type": "string",
+          "example": "123456789012",
+          "description": "The owner of the connector."
+        },
+        "connectorVersion": {
+          "type": "string",
+          "example": "1.0",
+          "description": "The connector version."
+        },
+        "connectorModes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "example": ""
+          },
+          "example": [
+            "CLOUD"
+          ]
+        }
+      },
+      "description": "Configuration info of all the connectors that the user requested."
+    }
+  }
+}

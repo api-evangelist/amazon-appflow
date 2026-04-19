@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-destination-flow-config-schema.json",
+  "title": "DestinationFlowConfig",
+  "description": "DestinationFlowConfig schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorType": {
+      "type": "string",
+      "example": "S3",
+      "description": "The type of connector used as a destination."
+    },
+    "apiVersion": {
+      "type": "string",
+      "example": "2006-03-01",
+      "description": "The API version that the destination connector uses."
+    },
+    "connectorProfileName": {
+      "type": "string",
+      "example": "my-s3-profile",
+      "description": "The name of the connector profile."
+    },
+    "destinationConnectorProperties": {
+      "type": "object",
+      "example": {
+        "S3": {
+          "bucketName": "my-data-bucket",
+          "bucketPrefix": "appflow/salesforce/accounts"
+        }
+      },
+      "description": "This stores the information that is required to query a particular connector."
+    }
+  },
+  "required": [
+    "connectorType",
+    "destinationConnectorProperties"
+  ]
+}

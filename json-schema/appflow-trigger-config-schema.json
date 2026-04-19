@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-trigger-config-schema.json",
+  "title": "TriggerConfig",
+  "description": "TriggerConfig schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "triggerType": {
+      "type": "string",
+      "enum": [
+        "Scheduled",
+        "Event",
+        "OnDemand"
+      ],
+      "example": "Scheduled",
+      "description": "Specifies the type of flow trigger. It can be OnDemand, Scheduled, or Event."
+    },
+    "triggerProperties": {
+      "type": "object",
+      "properties": {
+        "Scheduled": {}
+      },
+      "description": "Specifies the configuration details of a schedule-triggered flow as defined by the user."
+    }
+  },
+  "required": [
+    "triggerType"
+  ]
+}

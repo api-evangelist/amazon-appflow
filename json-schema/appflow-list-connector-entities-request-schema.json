@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-schema/appflow-list-connector-entities-request-schema.json",
+  "title": "ListConnectorEntitiesRequest",
+  "description": "ListConnectorEntitiesRequest schema from Amazon AppFlow API",
+  "type": "object",
+  "properties": {
+    "connectorProfileName": {
+      "type": "string",
+      "example": "my-salesforce-profile",
+      "description": "The name of the connector profile. The name is unique for each ConnectorProfile in the AWS account."
+    },
+    "connectorType": {
+      "type": "string",
+      "example": "Salesforce",
+      "description": "The type of connector, such as Salesforce, Marketo, and so on."
+    },
+    "entitiesPath": {
+      "type": "string",
+      "maxLength": 256,
+      "example": "",
+      "description": "This optional parameter is specific to connector implementation. Some connectors support multiple levels or categories of entities."
+    },
+    "apiVersion": {
+      "type": "string",
+      "example": "v55.0",
+      "description": "The version of the API that's used by the connector."
+    },
+    "maxResults": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000,
+      "example": 20,
+      "description": "The maximum number of items that should be returned in the result set."
+    },
+    "nextToken": {
+      "type": "string",
+      "example": "",
+      "description": "The pagination token for next page of data."
+    }
+  }
+}

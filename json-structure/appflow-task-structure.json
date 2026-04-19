@@ -1,0 +1,64 @@
+{
+  "type": "object",
+  "description": "Task schema from Amazon AppFlow API",
+  "properties": {
+    "sourceFields": {
+      "type": "array",
+      "description": "The source fields to which a particular task is applied.",
+      "items": {
+        "type": "string",
+        "example": ""
+      },
+      "example": [
+        "Id",
+        "Name"
+      ]
+    },
+    "connectorOperator": {
+      "type": "object",
+      "description": "The operation to be performed on the provided source fields.",
+      "example": {
+        "Salesforce": "NO_OP"
+      }
+    },
+    "destinationField": {
+      "type": "string",
+      "description": "A field in a destination connector, or a field value against which Amazon AppFlow validates a source field.",
+      "example": "AccountId"
+    },
+    "taskType": {
+      "type": "string",
+      "description": "Specifies the particular task implementation that Amazon AppFlow performs.",
+      "enum": [
+        "Arithmetic",
+        "Filter",
+        "Map",
+        "Map_all",
+        "Mask",
+        "Merge",
+        "Partition",
+        "Passthrough",
+        "Truncate",
+        "Validate",
+        "Concat"
+      ],
+      "example": "Map"
+    },
+    "taskProperties": {
+      "type": "object",
+      "description": "A map used to store task-related information.",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "example": {
+        "SOURCE_DATA_TYPE": "string"
+      }
+    }
+  },
+  "required": [
+    "taskType",
+    "sourceFields"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-task-structure.json"
+}

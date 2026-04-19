@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "description": "UpdateConnectorRegistrationRequest schema from Amazon AppFlow API",
+  "properties": {
+    "connectorLabel": {
+      "type": "string",
+      "description": "The name of the connector. The name is unique for each ConnectorRegistration in your Amazon Web Services account.",
+      "maxLength": 256,
+      "example": "MyCustomConnector"
+    },
+    "description": {
+      "type": "string",
+      "description": "A description about the update that you're making to the connector.",
+      "maxLength": 2048,
+      "example": "Updated description for my connector"
+    },
+    "connectorProvisioningConfig": {
+      "type": "object",
+      "description": "The provisioning type of the connector.",
+      "properties": {
+        "lambda": {
+          "type": "object",
+          "properties": {
+            "lambdaArn": {
+              "type": "string",
+              "description": "Lambda ARN of the connector being registered.",
+              "example": "arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2"
+            }
+          }
+        }
+      }
+    },
+    "clientToken": {
+      "type": "string",
+      "description": "Idempotency token.",
+      "example": "client-token-500123"
+    }
+  },
+  "required": [
+    "connectorLabel"
+  ],
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-appflow/refs/heads/main/json-structure/appflow-update-connector-registration-request-structure.json"
+}
