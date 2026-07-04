@@ -1,0 +1,30 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon AppFlow API
+  version: 1.0.0
+extends: openapi/amazon-appflow-openapi.yml
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: Amazon Web Services
+    x-apievangelist-slug: amazon-appflow
+    x-apievangelist-category:
+    - Data Integration
+    - ETL
+    - iPaaS
+    x-apievangelist-auth: aws-sigv4
+- target: $.tags
+  update:
+  - name: Flows
+    description: Operations for creating and managing data flows
+  - name: Connectors
+    description: Operations for managing connector profiles and connector registrations
+  - name: Tags
+    description: Operations for managing resource tags
+- target: "$.paths['/create-flow'].post"
+  update:
+    x-apievangelist-lifecycle: stable
+    x-apievangelist-idempotent: true
+- target: "$.paths['/start-flow'].post"
+  update:
+    x-apievangelist-lifecycle: stable

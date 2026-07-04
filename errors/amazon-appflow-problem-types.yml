@@ -1,0 +1,43 @@
+generated: '2026-06-20'
+method: derived
+format: aws-json
+source: openapi/amazon-appflow-openapi.yml
+notes: >-
+  Derived from the 4xx/5xx responses in the AppFlow OpenAPI (all reference the
+  ErrorResponse schema, application/json, not RFC 9457 problem+json). Titles and
+  remediation are enriched from the AWS AppFlow API Reference documented common
+  errors. AppFlow returns the exception name in the response body/header rather
+  than a URI problem type.
+problems:
+- status: 400
+  name: ValidationException
+  title: The request has invalid or missing parameters.
+  remediation: Correct the request parameters; check field patterns, lengths and required fields.
+- status: 400
+  name: ConnectorServerException
+  title: The connector's server returned an error during the request.
+  remediation: Inspect the connector configuration and downstream SaaS service status.
+- status: 401
+  name: ConnectorAuthenticationException
+  title: Authentication with the connected SaaS application failed.
+  remediation: Reconnect or refresh the connector profile credentials.
+- status: 402
+  name: ServiceQuotaExceededException
+  title: An AppFlow service quota has been exceeded.
+  remediation: Request a quota increase through AWS Service Quotas or the AppFlow support channel.
+- status: 403
+  name: AccessDeniedException
+  title: The caller does not have permission to perform this action.
+  remediation: Verify the IAM policy grants the required appflow permissions.
+- status: 404
+  name: ResourceNotFoundException
+  title: The requested flow, connector, or connector profile was not found.
+  remediation: Confirm the resource name/ARN and region.
+- status: 409
+  name: ConflictException
+  title: The request conflicts with the current state of the resource.
+  remediation: The resource may already exist or be in use by a running flow; resolve the conflict and retry.
+- status: 500
+  name: InternalServerException
+  title: An unexpected error occurred on the AppFlow service.
+  remediation: Retry with exponential backoff; contact AWS Support if it persists.

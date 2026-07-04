@@ -1,0 +1,24 @@
+generated: '2026-06-20'
+method: derived
+source: >-
+  openapi/amazon-appflow-openapi.yml (API version date-stamp) plus AWS public
+  documentation for versioning, deprecation policy, SLA and status page.
+notes: >-
+  Amazon AppFlow is an AWS date-versioned JSON-protocol service (API version
+  2020-08-23). AWS pins the API version per request rather than via a URI path
+  segment. No operations in the current OpenAPI are marked deprecated (the
+  FlowStatus enum includes a Deprecated flow-state value, which is unrelated to
+  API deprecation).
+versioning:
+  scheme: date-version
+  current: '2020-08-23'
+  docs: https://docs.aws.amazon.com/appflow/1.0/APIReference/Welcome.html
+deprecation:
+  policy_url: https://docs.aws.amazon.com/whitepapers/latest/aws-caf-security-perspective/deprecation.html
+  sunset_header: false
+  notes: AWS communicates service and feature deprecations via documentation, the AWS Health Dashboard, and customer notifications rather than RFC 8594 Sunset headers.
+sla:
+  url: https://aws.amazon.com/appflow/sla/
+  uptime_target: "99.9%"
+status_page: https://health.aws.amazon.com/health/status
+deprecated_operations: []

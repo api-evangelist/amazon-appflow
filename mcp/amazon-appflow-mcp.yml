@@ -1,0 +1,88 @@
+generated: '2026-06-20'
+method: derived
+status: candidate
+source: openapi/amazon-appflow-openapi.yml
+notes: >-
+  No official first-party Amazon AppFlow MCP server was found (no dedicated
+  awslabs/mcp server or registry entry for AppFlow at time of enrichment). The
+  tool list below is a candidate surface derived one-to-one from the AppFlow
+  OpenAPI operations, suitable for wrapping the AWS SDK behind an MCP server.
+server:
+  name: amazon-appflow
+  transport: stdio
+tools:
+- name: createFlow
+  description: Create a new flow between a source and destination connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#createFlow
+- name: deleteFlow
+  description: Delete an existing flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#deleteFlow
+- name: describeFlow
+  description: Describe the configuration and status of a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeFlow
+- name: listFlows
+  description: List the flows associated with your account.
+  source_operation: openapi/amazon-appflow-openapi.yml#listFlows
+- name: updateFlow
+  description: Update an existing flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#updateFlow
+- name: startFlow
+  description: Activate or run a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#startFlow
+- name: stopFlow
+  description: Deactivate a schedule or event-triggered flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#stopFlow
+- name: cancelFlowExecutions
+  description: Cancel active runs for a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#cancelFlowExecutions
+- name: describeFlowExecutionRecords
+  description: Retrieve execution records for a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeFlowExecutionRecords
+- name: createConnectorProfile
+  description: Create a connector profile.
+  source_operation: openapi/amazon-appflow-openapi.yml#createConnectorProfile
+- name: deleteConnectorProfile
+  description: Delete a connector profile.
+  source_operation: openapi/amazon-appflow-openapi.yml#deleteConnectorProfile
+- name: describeConnectorProfiles
+  description: List connector-profile details, optionally filtered.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeConnectorProfiles
+- name: updateConnectorProfile
+  description: Update a connector profile.
+  source_operation: openapi/amazon-appflow-openapi.yml#updateConnectorProfile
+- name: describeConnectors
+  description: Describe connectors vended by Amazon AppFlow.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeConnectors
+- name: describeConnector
+  description: Describe a registered custom connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeConnector
+- name: describeConnectorEntity
+  description: Describe the data model of a connector entity.
+  source_operation: openapi/amazon-appflow-openapi.yml#describeConnectorEntity
+- name: listConnectorEntities
+  description: List available entities for a connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#listConnectorEntities
+- name: listConnectors
+  description: List registered custom connectors.
+  source_operation: openapi/amazon-appflow-openapi.yml#listConnectors
+- name: registerConnector
+  description: Register a new custom connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#registerConnector
+- name: unregisterConnector
+  description: Unregister a custom connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#unregisterConnector
+- name: updateConnectorRegistration
+  description: Update a registered custom connector.
+  source_operation: openapi/amazon-appflow-openapi.yml#updateConnectorRegistration
+- name: resetConnectorMetadataCache
+  description: Reset cached connector-entity metadata.
+  source_operation: openapi/amazon-appflow-openapi.yml#resetConnectorMetadataCache
+- name: listTagsForResource
+  description: List tags on a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#listTagsForResource
+- name: tagResource
+  description: Apply tags to a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#tagResource
+- name: untagResource
+  description: Remove tags from a flow.
+  source_operation: openapi/amazon-appflow-openapi.yml#untagResource

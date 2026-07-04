@@ -11,7 +11,7 @@ description: >-
   Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and
   Amazon Redshift, in just a few clicks.
 created: '2024-01-15'
-modified: '2026-04-19'
+modified: '2026-06-20'
 tags:
 - AWS
 - Connectors
@@ -435,6 +435,24 @@ common:
   url: rules/amazon-appflow-spectral-rules.yml
 - type: Vocabulary
   url: vocabulary/amazon-appflow-vocabulary.yaml
+- type: Packages
+  url: packages/amazon-appflow-packages.yml
+- type: WellKnown
+  url: well-known/amazon-appflow-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-appflow-security.txt
+- type: MCPServer
+  url: mcp/amazon-appflow-mcp.yml
+- type: LLMsTxt
+  url: llms/amazon-appflow-llms.txt
+- type: Overlay
+  url: overlays/amazon-appflow-openapi-overlay.yaml
+- type: Conformance
+  url: conformance/amazon-appflow-conformance.yml
+- type: ErrorCatalog
+  url: errors/amazon-appflow-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/amazon-appflow-lifecycle.yml
 - type: NaftikoCapability
   url: capabilities/data-integration.yaml
 - type: NaftikoCapability
