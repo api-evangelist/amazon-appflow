@@ -395,6 +395,12 @@ apis:
   - type: Example
     url: examples/appflow-update-flow-response-example.json
 common:
+- type: VulnerabilityDisclosure
+  url: security/amazon-appflow-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/amazon-appflow-domain-security.yml
+- type: Authentication
+  url: authentication/amazon-appflow-authentication.yml
 - type: Portal
   url: https://console.aws.amazon.com/
 - type: DeveloperPortal
