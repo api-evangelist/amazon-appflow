@@ -395,6 +395,8 @@ apis:
   - type: Example
     url: examples/appflow-update-flow-response-example.json
 common:
+- type: AgenticAccess
+  url: agentic-access/amazon-appflow-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/amazon-appflow-vulnerability-disclosure.yml
 - type: DomainSecurity
