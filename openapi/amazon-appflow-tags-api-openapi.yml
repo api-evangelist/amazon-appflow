@@ -1,0 +1,274 @@
+openapi: 3.1.0
+info:
+  title: Amazon AppFlow Connectors Tags API
+  description: Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose — on a schedule, in response to a business event, or on demand.
+  version: '2020-08-23'
+  contact:
+    name: AWS Support
+    url: https://aws.amazon.com/premiumsupport/
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  x-logo:
+    url: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+  x-generated-from: documentation
+  x-last-validated: '2026-04-19'
+servers:
+- url: https://appflow.{region}.amazonaws.com
+  description: Amazon AppFlow regional endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS region
+      enum:
+      - us-east-1
+      - us-east-2
+      - us-west-1
+      - us-west-2
+      - eu-west-1
+      - eu-west-2
+      - eu-central-1
+      - ap-northeast-1
+      - ap-southeast-1
+      - ap-southeast-2
+      - ap-south-1
+      - sa-east-1
+      - ca-central-1
+security:
+- sigv4: []
+tags:
+- name: Tags
+  description: Operations for managing resource tags
+paths:
+  /tags/{resourceArn}:
+    get:
+      operationId: listTagsForResource
+      summary: Amazon AppFlow List Tags for Resource
+      description: Retrieves the tags that are associated with a specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the specified flow.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      responses:
+        '200':
+          description: Tags listed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListTagsForResourceResponse'
+              examples:
+                ListTagsForResource200Example:
+                  summary: Default listTagsForResource 200 response
+                  x-microcks-default: true
+                  value:
+                    tags:
+                      environment: production
+                      team: data-engineering
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: tagResource
+      summary: Amazon AppFlow Tag Resource
+      description: Applies a tag to the specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the flow that you want to tag.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TagResourceRequest'
+            examples:
+              TagResourceRequestExample:
+                summary: Default tagResource request
+                x-microcks-default: true
+                value:
+                  tags:
+                    environment: production
+                    team: data-engineering
+      responses:
+        '200':
+          description: Resource tagged successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                TagResource200Example:
+                  summary: Default tagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /tags/{resourceArn}#tagKeys:
+    delete:
+      operationId: untagResource
+      summary: Amazon AppFlow Untag Resource
+      description: Removes a tag from the specified flow.
+      tags:
+      - Tags
+      parameters:
+      - name: resourceArn
+        in: path
+        required: true
+        description: The Amazon Resource Name (ARN) of the flow that you want to untag.
+        schema:
+          type: string
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+      - name: tagKeys
+        in: query
+        required: true
+        description: The tag keys associated with the tag that you want to remove from your flow.
+        schema:
+          type: array
+          items:
+            type: string
+          example:
+          - environment
+          - team
+      responses:
+        '200':
+          description: Tags removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+              examples:
+                UntagResource200Example:
+                  summary: Default untagResource 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Access denied
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Resource not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TagResourceRequest:
+      type: object
+      required:
+      - tags
+      properties:
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+            team: data-engineering
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message describing what went wrong.
+          example: The specified resource was not found.
+        code:
+          type: string
+          description: The error code.
+          example: ResourceNotFoundException
+    ListTagsForResourceResponse:
+      type: object
+      properties:
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+            team: data-engineering
+  securitySchemes:
+    sigv4:
+      type: apiKey
+      name: Authorization
+      in: header
+      description: AWS Signature Version 4 authentication
