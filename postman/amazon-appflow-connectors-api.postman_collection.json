@@ -1,0 +1,4442 @@
+{
+  "info": {
+    "_postman_id": "cef71f8b-d9e8-4e56-a759-7d94e958c2fc",
+    "name": "Amazon AppFlow Connectors API",
+    "description": "Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose \u2014 on a schedule, in response to a business event, or on demand.\n\nContact Support:\n Name: AWS Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:25.000Z",
+    "updatedAt": "2026-07-28T00:30:26.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cef71f8b-d9e8-4e56-a759-7d94e958c2fc"
+  },
+  "item": [
+    {
+      "name": "create-connector-profile",
+      "item": [
+        {
+          "name": "Amazon AppFlow Create Connector Profile",
+          "id": "6958bf01-325f-4345-8d70-3fc7bc814b32",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/create-connector-profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "create-connector-profile"
+              ]
+            },
+            "description": "Creates a new connector profile associated with your AWS account. There is a soft quota of 100 connector profiles per AWS account. If you need more connector profiles than this quota allows, you can submit a request to the Amazon AppFlow team through the Amazon AppFlow support channel."
+          },
+          "response": [
+            {
+              "id": "cf6f30cb-2875-4c9b-9ac7-6e8268ab015c",
+              "name": "Connector profile created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorProfileArn\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-cf6f30cb-2875-4c9b-9ac7-6e8268ab015c"
+            },
+            {
+              "id": "bdf5167a-15d0-456d-9ab4-412588c47bba",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-bdf5167a-15d0-456d-9ab4-412588c47bba"
+            },
+            {
+              "id": "3b95e6f3-5b94-4b65-bfed-1e052cdc272a",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-3b95e6f3-5b94-4b65-bfed-1e052cdc272a"
+            },
+            {
+              "id": "649b8b08-5fd0-46ea-a349-956214fc04d0",
+              "name": "Service quota exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-649b8b08-5fd0-46ea-a349-956214fc04d0"
+            },
+            {
+              "id": "981d3d05-cc00-4509-af2a-32acd310efe3",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-981d3d05-cc00-4509-af2a-32acd310efe3"
+            },
+            {
+              "id": "75a84b6c-214a-4436-9ea5-00550ba98bd4",
+              "name": "Conflict \u2014 profile with this name already exists",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-75a84b6c-214a-4436-9ea5-00550ba98bd4"
+            },
+            {
+              "id": "9170e0e9-8de3-443b-a901-53d22128ab5e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"Private\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-connector-profile"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-9170e0e9-8de3-443b-a901-53d22128ab5e"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-6958bf01-325f-4345-8d70-3fc7bc814b32"
+        }
+      ],
+      "id": "cf557bc2-0ca3-4576-a1ad-548d8715e926",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-cf557bc2-0ca3-4576-a1ad-548d8715e926"
+    },
+    {
+      "name": "delete-connector-profile",
+      "item": [
+        {
+          "name": "Amazon AppFlow Delete Connector Profile",
+          "id": "3ba21c61-d139-4031-b79e-e0493c863d9e",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/delete-connector-profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "delete-connector-profile"
+              ]
+            },
+            "description": "Enables you to delete an existing connector profile."
+          },
+          "response": [
+            {
+              "id": "dea956e3-39a0-4b85-a202-ddfd9430bd7f",
+              "name": "Connector profile deleted successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-dea956e3-39a0-4b85-a202-ddfd9430bd7f"
+            },
+            {
+              "id": "474640ed-80b7-4425-a3f9-158c307d747d",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-474640ed-80b7-4425-a3f9-158c307d747d"
+            },
+            {
+              "id": "ac1d9297-f1b4-4690-b4dd-b5a4f47111c6",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-ac1d9297-f1b4-4690-b4dd-b5a4f47111c6"
+            },
+            {
+              "id": "a4b146b6-4c9b-46fc-be4e-371cb6f5edef",
+              "name": "Connector profile not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-a4b146b6-4c9b-46fc-be4e-371cb6f5edef"
+            },
+            {
+              "id": "c101593b-6f87-4a4e-8502-a44ed50003a1",
+              "name": "Conflict \u2014 profile is in use by a flow",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-c101593b-6f87-4a4e-8502-a44ed50003a1"
+            },
+            {
+              "id": "85047290-e509-41a6-839f-f54321391638",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-connector-profile"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-85047290-e509-41a6-839f-f54321391638"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-3ba21c61-d139-4031-b79e-e0493c863d9e"
+        }
+      ],
+      "id": "358653a2-a50c-4aab-ad6f-a42d167d537a",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-358653a2-a50c-4aab-ad6f-a42d167d537a"
+    },
+    {
+      "name": "describe-connector-profiles",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Connector Profiles",
+          "id": "ebf751ca-7ba2-4717-ad05-7bbf2227d8de",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-connector-profiles",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-connector-profiles"
+              ]
+            },
+            "description": "Returns a list of connector-profile details matching the provided connector-profile names and connector-types. Both input lists are optional, and you can use them to filter the result. If no names or connector-types are provided, returns all connector profiles in a paginated form. If there is no match, this operation returns an empty list."
+          },
+          "response": [
+            {
+              "id": "867f0b43-016e-4ff5-bafa-12d295f754fb",
+              "name": "Connector profiles returned successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-profiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-profiles"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorProfileDetails\": [\n    {\n      \"connectorProfileArn\": \"<string>\",\n      \"connectorProfileName\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"connectionMode\": \"Private\",\n      \"credentialsArn\": \"<string>\",\n      \"connectorProfileProperties\": {},\n      \"createdAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"privateConnectionProvisioningState\": {}\n    },\n    {\n      \"connectorProfileArn\": \"<string>\",\n      \"connectorProfileName\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"connectionMode\": \"Public\",\n      \"credentialsArn\": \"<string>\",\n      \"connectorProfileProperties\": {},\n      \"createdAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"privateConnectionProvisioningState\": {}\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-867f0b43-016e-4ff5-bafa-12d295f754fb"
+            },
+            {
+              "id": "d76a2f66-6885-4dce-b93b-0809ee8cf627",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-profiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-profiles"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-d76a2f66-6885-4dce-b93b-0809ee8cf627"
+            },
+            {
+              "id": "91fbe6fd-f4bf-486d-bce3-776342d567e9",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-profiles",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-profiles"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-91fbe6fd-f4bf-486d-bce3-776342d567e9"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-ebf751ca-7ba2-4717-ad05-7bbf2227d8de"
+        }
+      ],
+      "id": "e0dc346c-a681-4437-bf8e-11abe327630d",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-e0dc346c-a681-4437-bf8e-11abe327630d"
+    },
+    {
+      "name": "update-connector-profile",
+      "item": [
+        {
+          "name": "Amazon AppFlow Update Connector Profile",
+          "id": "9ae1d147-4a2f-4ff7-b190-5a3996cd48bf",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/update-connector-profile",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "update-connector-profile"
+              ]
+            },
+            "description": "Updates a given connector profile associated with your account."
+          },
+          "response": [
+            {
+              "id": "230c705b-af54-4cc0-924b-e01001a92b1f",
+              "name": "Connector profile updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorProfileArn\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-230c705b-af54-4cc0-924b-e01001a92b1f"
+            },
+            {
+              "id": "663befe4-358a-4b34-b9d5-b15865c47233",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-663befe4-358a-4b34-b9d5-b15865c47233"
+            },
+            {
+              "id": "badb4ca3-8316-4e76-acfc-b8cbaffd0ec8",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-badb4ca3-8316-4e76-acfc-b8cbaffd0ec8"
+            },
+            {
+              "id": "b6e96995-385d-4893-9e45-7a1e7c63b8c4",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-b6e96995-385d-4893-9e45-7a1e7c63b8c4"
+            },
+            {
+              "id": "13ff6644-5731-4324-8e82-c9eb253d73e3",
+              "name": "Connector profile not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-13ff6644-5731-4324-8e82-c9eb253d73e3"
+            },
+            {
+              "id": "f729af63-d6a7-48d2-bf35-4c6be794c0df",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {},\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-profile",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-profile"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-f729af63-d6a7-48d2-bf35-4c6be794c0df"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-9ae1d147-4a2f-4ff7-b190-5a3996cd48bf"
+        }
+      ],
+      "id": "81d38177-3fe5-4e49-955d-a255f7dc4fa9",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-81d38177-3fe5-4e49-955d-a255f7dc4fa9"
+    },
+    {
+      "name": "describe-connectors",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Connectors",
+          "id": "27671f6e-b100-4f62-9f39-a5d4f43ea9c4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-connectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-connectors"
+              ]
+            },
+            "description": "Describes the connectors vended by Amazon AppFlow for specified connector types. If you don't specify a connector type, this operation describes all connectors vended by Amazon AppFlow. This API lists only custom connectors registered in this account, not the AWS authored connectors."
+          },
+          "response": [
+            {
+              "id": "cc784819-fc4d-4916-a0f8-89a69b1e3679",
+              "name": "Connectors described successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connectors"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorConfigurations\": {\n    \"labore_3\": {},\n    \"dolore_966\": {}\n  },\n  \"connectors\": [\n    {\n      \"connectorDescription\": \"<string>\",\n      \"connectorName\": \"<string>\",\n      \"connectorOwner\": \"<string>\",\n      \"connectorVersion\": \"<string>\",\n      \"applicationType\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"registeredAt\": \"<long>\",\n      \"registeredBy\": \"<string>\",\n      \"connectorProvisioningType\": \"<string>\",\n      \"connectorModes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"supportedDataTransferTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"connectorDescription\": \"<string>\",\n      \"connectorName\": \"<string>\",\n      \"connectorOwner\": \"<string>\",\n      \"connectorVersion\": \"<string>\",\n      \"applicationType\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"registeredAt\": \"<long>\",\n      \"registeredBy\": \"<string>\",\n      \"connectorProvisioningType\": \"<string>\",\n      \"connectorModes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"supportedDataTransferTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-cc784819-fc4d-4916-a0f8-89a69b1e3679"
+            },
+            {
+              "id": "bed1ee93-0760-4e00-91ff-1d7f9d0f1876",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connectors"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-bed1ee93-0760-4e00-91ff-1d7f9d0f1876"
+            },
+            {
+              "id": "1bc87ec9-f92c-4768-9fda-60a0e1ad6f93",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connectors"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-1bc87ec9-f92c-4768-9fda-60a0e1ad6f93"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-27671f6e-b100-4f62-9f39-a5d4f43ea9c4"
+        }
+      ],
+      "id": "b6965cad-1546-47ea-8b53-99c5c6dea31b",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-b6965cad-1546-47ea-8b53-99c5c6dea31b"
+    },
+    {
+      "name": "describe-connector",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Connector",
+          "id": "627fcddb-bad1-4557-ab6b-7eed6218a62a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-connector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-connector"
+              ]
+            },
+            "description": "Describes the given custom connector registered in your AWS account."
+          },
+          "response": [
+            {
+              "id": "8d1fac6b-9180-404f-b8fe-43613b0066df",
+              "name": "Connector description returned successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorConfiguration\": {\n    \"canUseAsSource\": \"<boolean>\",\n    \"canUseAsDestination\": \"<boolean>\",\n    \"connectorArn\": \"<string>\",\n    \"connectorLabel\": \"<string>\",\n    \"connectorDescription\": \"<string>\",\n    \"connectorOwner\": \"<string>\",\n    \"connectorVersion\": \"<string>\",\n    \"connectorModes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-8d1fac6b-9180-404f-b8fe-43613b0066df"
+            },
+            {
+              "id": "21d3a142-bc13-4eb7-b581-821c5335cb98",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-21d3a142-bc13-4eb7-b581-821c5335cb98"
+            },
+            {
+              "id": "0aff3a7d-b16a-49b6-ba53-de10d7730643",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-0aff3a7d-b16a-49b6-ba53-de10d7730643"
+            },
+            {
+              "id": "fded2ca5-ce05-4aa8-a514-ff2160702541",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-fded2ca5-ce05-4aa8-a514-ff2160702541"
+            },
+            {
+              "id": "9f2a1b41-56fa-41e6-853c-678bb6d084f4",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-9f2a1b41-56fa-41e6-853c-678bb6d084f4"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-627fcddb-bad1-4557-ab6b-7eed6218a62a"
+        }
+      ],
+      "id": "e364d8b0-3342-4b1f-91a5-766a05cd4062",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-e364d8b0-3342-4b1f-91a5-766a05cd4062"
+    },
+    {
+      "name": "describe-connector-entity",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Connector Entity",
+          "id": "20aadc55-41c5-43b4-a1df-4ed05e3daf1b",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-connector-entity",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-connector-entity"
+              ]
+            },
+            "description": "Provides details regarding the entity used with the connector, with a description of the data model for each field in that entity."
+          },
+          "response": [
+            {
+              "id": "fb36fe16-db01-43ad-a699-e5b93d092d4f",
+              "name": "Connector entity described successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorEntityFields\": [\n    {\n      \"identifier\": \"<string>\",\n      \"parentIdentifier\": \"<string>\",\n      \"label\": \"<string>\",\n      \"isPrimaryKey\": \"<boolean>\",\n      \"defaultValue\": \"<string>\",\n      \"isDeprecated\": \"<boolean>\",\n      \"supportedFieldTypeDetails\": {},\n      \"description\": \"<string>\",\n      \"sourceProperties\": {\n        \"isQueryable\": \"<boolean>\",\n        \"isRetrievable\": \"<boolean>\",\n        \"isPartitioningSupported\": \"<boolean>\"\n      },\n      \"destinationProperties\": {\n        \"isCreatable\": \"<boolean>\",\n        \"isNullable\": \"<boolean>\",\n        \"isUpsertable\": \"<boolean>\",\n        \"isUpdatable\": \"<boolean>\",\n        \"isDefaultedOnCreate\": \"<boolean>\",\n        \"supportedWriteOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    {\n      \"identifier\": \"<string>\",\n      \"parentIdentifier\": \"<string>\",\n      \"label\": \"<string>\",\n      \"isPrimaryKey\": \"<boolean>\",\n      \"defaultValue\": \"<string>\",\n      \"isDeprecated\": \"<boolean>\",\n      \"supportedFieldTypeDetails\": {},\n      \"description\": \"<string>\",\n      \"sourceProperties\": {\n        \"isQueryable\": \"<boolean>\",\n        \"isRetrievable\": \"<boolean>\",\n        \"isPartitioningSupported\": \"<boolean>\"\n      },\n      \"destinationProperties\": {\n        \"isCreatable\": \"<boolean>\",\n        \"isNullable\": \"<boolean>\",\n        \"isUpsertable\": \"<boolean>\",\n        \"isUpdatable\": \"<boolean>\",\n        \"isDefaultedOnCreate\": \"<boolean>\",\n        \"supportedWriteOperations\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-fb36fe16-db01-43ad-a699-e5b93d092d4f"
+            },
+            {
+              "id": "081a07fe-c806-4792-98af-431ac1225ae7",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-081a07fe-c806-4792-98af-431ac1225ae7"
+            },
+            {
+              "id": "29259bdd-3fe9-47e6-9ebe-d38b79f4f4de",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-29259bdd-3fe9-47e6-9ebe-d38b79f4f4de"
+            },
+            {
+              "id": "f826d2c3-6386-499f-a081-df74a9ec9054",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-f826d2c3-6386-499f-a081-df74a9ec9054"
+            },
+            {
+              "id": "f35a4cd0-8a47-4ab4-89ff-7823aba0ae43",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-f35a4cd0-8a47-4ab4-89ff-7823aba0ae43"
+            },
+            {
+              "id": "1323dfc8-b429-459a-9740-15599018fa51",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-connector-entity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-connector-entity"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-1323dfc8-b429-459a-9740-15599018fa51"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-20aadc55-41c5-43b4-a1df-4ed05e3daf1b"
+        }
+      ],
+      "id": "38c2211d-39a3-4d8d-978f-3f0efc57299e",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-38c2211d-39a3-4d8d-978f-3f0efc57299e"
+    },
+    {
+      "name": "list-connector-entities",
+      "item": [
+        {
+          "name": "Amazon AppFlow List Connector Entities",
+          "id": "f6909224-f599-4d91-9584-89ffa1f16271",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/list-connector-entities",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "list-connector-entities"
+              ]
+            },
+            "description": "Returns the list of available connector entities supported by Amazon AppFlow. For example, you can query Salesforce for Account and Opportunity entities, or query ServiceNow for the Incident entity."
+          },
+          "response": [
+            {
+              "id": "d097e161-d7eb-4c45-9a0c-1f40649570f2",
+              "name": "Connector entities listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorEntityMap\": {\n    \"cillum__4\": [\n      {\n        \"name\": \"<string>\",\n        \"label\": \"<string>\",\n        \"hasNestedEntities\": \"<boolean>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"label\": \"<string>\",\n        \"hasNestedEntities\": \"<boolean>\"\n      }\n    ]\n  },\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-d097e161-d7eb-4c45-9a0c-1f40649570f2"
+            },
+            {
+              "id": "c81d1788-df96-416f-978f-68e0e771111e",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-c81d1788-df96-416f-978f-68e0e771111e"
+            },
+            {
+              "id": "eb62e933-eb62-46ac-b00c-a7d6cc8984d9",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-eb62e933-eb62-46ac-b00c-a7d6cc8984d9"
+            },
+            {
+              "id": "e63f902f-e24a-48ed-8ccc-973fb50c5fa8",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-e63f902f-e24a-48ed-8ccc-973fb50c5fa8"
+            },
+            {
+              "id": "ec5a097e-31ff-4cd6-a474-9805ba16f49a",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-ec5a097e-31ff-4cd6-a474-9805ba16f49a"
+            },
+            {
+              "id": "6f1406b1-8088-4035-9b3f-6283c17af388",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connector-entities",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connector-entities"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-6f1406b1-8088-4035-9b3f-6283c17af388"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-f6909224-f599-4d91-9584-89ffa1f16271"
+        }
+      ],
+      "id": "2340bbba-6c78-47fe-85ec-4ec59ef38de4",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-2340bbba-6c78-47fe-85ec-4ec59ef38de4"
+    },
+    {
+      "name": "list-connectors",
+      "item": [
+        {
+          "name": "Amazon AppFlow List Connectors",
+          "id": "a46a86fc-7266-47a4-91df-55647ca1e571",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/list-connectors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "list-connectors"
+              ]
+            },
+            "description": "Returns the list of all registered custom connectors in your Amazon Web Services account. This API lists only custom connectors registered in this account, not the AWS authored connectors."
+          },
+          "response": [
+            {
+              "id": "c0907b67-9508-433d-8f37-8986da4368e8",
+              "name": "Connectors listed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connectors"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectors\": [\n    {\n      \"connectorDescription\": \"<string>\",\n      \"connectorName\": \"<string>\",\n      \"connectorOwner\": \"<string>\",\n      \"connectorVersion\": \"<string>\",\n      \"applicationType\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"registeredAt\": \"<long>\",\n      \"registeredBy\": \"<string>\",\n      \"connectorProvisioningType\": \"<string>\",\n      \"connectorModes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"supportedDataTransferTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"connectorDescription\": \"<string>\",\n      \"connectorName\": \"<string>\",\n      \"connectorOwner\": \"<string>\",\n      \"connectorVersion\": \"<string>\",\n      \"applicationType\": \"<string>\",\n      \"connectorType\": \"<string>\",\n      \"connectorLabel\": \"<string>\",\n      \"registeredAt\": \"<long>\",\n      \"registeredBy\": \"<string>\",\n      \"connectorProvisioningType\": \"<string>\",\n      \"connectorModes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"supportedDataTransferTypes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-c0907b67-9508-433d-8f37-8986da4368e8"
+            },
+            {
+              "id": "9625f953-1c5a-48d8-a8a4-4981209ebce7",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connectors"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-9625f953-1c5a-48d8-a8a4-4981209ebce7"
+            },
+            {
+              "id": "b984aa88-417a-48ce-802d-9d1fc3018f31",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-connectors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-connectors"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-b984aa88-417a-48ce-802d-9d1fc3018f31"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-a46a86fc-7266-47a4-91df-55647ca1e571"
+        }
+      ],
+      "id": "c14aed39-38f4-463f-9d1a-c0e806737421",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-c14aed39-38f4-463f-9d1a-c0e806737421"
+    },
+    {
+      "name": "register-connector",
+      "item": [
+        {
+          "name": "Amazon AppFlow Register Connector",
+          "id": "419a2a10-0cfe-475e-becb-6d431ea3e00f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/register-connector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "register-connector"
+              ]
+            },
+            "description": "Registers a new custom connector with your Amazon Web Services account. Before you can register the connector, you must deploy the associated AWS lambda function in your account."
+          },
+          "response": [
+            {
+              "id": "017c2b86-972c-462c-baa3-2f02712bced2",
+              "name": "Connector registered successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "register-connector"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorArn\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-017c2b86-972c-462c-baa3-2f02712bced2"
+            },
+            {
+              "id": "0534ee79-30e2-4d15-8721-25d5c3671e17",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "register-connector"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-0534ee79-30e2-4d15-8721-25d5c3671e17"
+            },
+            {
+              "id": "373440c9-85cf-4722-a527-62bea647cd46",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "register-connector"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-373440c9-85cf-4722-a527-62bea647cd46"
+            },
+            {
+              "id": "dc9e9986-aad2-4f40-901d-ba8676f44799",
+              "name": "Conflict \u2014 connector with this label already exists",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "register-connector"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-dc9e9986-aad2-4f40-901d-ba8676f44799"
+            },
+            {
+              "id": "06965f6d-505f-4dce-a8ff-d2991c257b35",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/register-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "register-connector"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-06965f6d-505f-4dce-a8ff-d2991c257b35"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-419a2a10-0cfe-475e-becb-6d431ea3e00f"
+        }
+      ],
+      "id": "fab8a01e-73bf-425c-9cb6-f44aea831370",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-fab8a01e-73bf-425c-9cb6-f44aea831370"
+    },
+    {
+      "name": "unregister-connector",
+      "item": [
+        {
+          "name": "Amazon AppFlow Unregister Connector",
+          "id": "823a58ed-6169-483f-b7b6-e10445d70fd4",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/unregister-connector",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "unregister-connector"
+              ]
+            },
+            "description": "Unregisters the custom connector registered in your account that matches the connector label provided in the request."
+          },
+          "response": [
+            {
+              "id": "19e7f218-9d7b-4d44-b167-8d03c3e1ff38",
+              "name": "Connector unregistered successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-19e7f218-9d7b-4d44-b167-8d03c3e1ff38"
+            },
+            {
+              "id": "80c2d09b-c020-4b74-ba2f-d534f05ec1cd",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-80c2d09b-c020-4b74-ba2f-d534f05ec1cd"
+            },
+            {
+              "id": "c8b3492b-8994-41fa-8c2c-4fc21621f05d",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-c8b3492b-8994-41fa-8c2c-4fc21621f05d"
+            },
+            {
+              "id": "1699c356-5d01-4e83-bdc8-12d1dab13645",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-1699c356-5d01-4e83-bdc8-12d1dab13645"
+            },
+            {
+              "id": "96039cbf-b292-4d6b-a92d-d5b2cb86ebc9",
+              "name": "Conflict \u2014 connector is in use by a flow",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-96039cbf-b292-4d6b-a92d-d5b2cb86ebc9"
+            },
+            {
+              "id": "b9eb9df6-2430-491e-89df-0b948e3c3e6e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/unregister-connector",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "unregister-connector"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-b9eb9df6-2430-491e-89df-0b948e3c3e6e"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-823a58ed-6169-483f-b7b6-e10445d70fd4"
+        }
+      ],
+      "id": "af768d70-7a53-425e-b168-66b33ff794bc",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-af768d70-7a53-425e-b168-66b33ff794bc"
+    },
+    {
+      "name": "update-connector-registration",
+      "item": [
+        {
+          "name": "Amazon AppFlow Update Connector Registration",
+          "id": "9de7d8d7-0041-45b8-99f6-f7079878b470",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/update-connector-registration",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "update-connector-registration"
+              ]
+            },
+            "description": "Updates a custom connector that you've previously registered. This operation updates the connector with one of the following \u2014 the latest version of the AWS Lambda function that's assigned to the connector, or a new AWS Lambda function that you specify."
+          },
+          "response": [
+            {
+              "id": "4e66df48-5528-45de-9a42-1d776dc9563b",
+              "name": "Connector registration updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-registration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-registration"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"connectorArn\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-4e66df48-5528-45de-9a42-1d776dc9563b"
+            },
+            {
+              "id": "af84f1c4-57fa-4b48-b106-5815fbf93e13",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-registration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-registration"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-af84f1c4-57fa-4b48-b106-5815fbf93e13"
+            },
+            {
+              "id": "75d73649-fd7a-499b-900f-f08ef7cd8020",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-registration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-registration"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-75d73649-fd7a-499b-900f-f08ef7cd8020"
+            },
+            {
+              "id": "21f9aaea-827f-4785-8158-9d901f8ed704",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-registration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-registration"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-21f9aaea-827f-4785-8158-9d901f8ed704"
+            },
+            {
+              "id": "65bef4a8-0bac-45c7-9970-61ccfa2abe65",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-connector-registration",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-connector-registration"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-65bef4a8-0bac-45c7-9970-61ccfa2abe65"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-9de7d8d7-0041-45b8-99f6-f7079878b470"
+        }
+      ],
+      "id": "c4035630-4b8d-40dd-8d66-30e4fc6a6ad5",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-c4035630-4b8d-40dd-8d66-30e4fc6a6ad5"
+    },
+    {
+      "name": "reset-connector-metadata-cache",
+      "item": [
+        {
+          "name": "Amazon AppFlow Reset Connector Metadata Cache",
+          "id": "7354b27b-2a84-43bf-96c1-5fc4741adcc8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "reset-connector-metadata-cache"
+              ]
+            },
+            "description": "Resets metadata about your connector entities that Amazon AppFlow stored in its cache. Use this action when you want Amazon AppFlow to return the latest information about the data that you have in a source application."
+          },
+          "response": [
+            {
+              "id": "384fd968-721b-48a6-a23d-20d0eb80ad4b",
+              "name": "Connector metadata cache reset successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-384fd968-721b-48a6-a23d-20d0eb80ad4b"
+            },
+            {
+              "id": "fd8e8cf7-5a87-494f-abe0-2332d05e8b2f",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-fd8e8cf7-5a87-494f-abe0-2332d05e8b2f"
+            },
+            {
+              "id": "0f03080a-37d0-4c4b-8f65-2413228c8cde",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-0f03080a-37d0-4c4b-8f65-2413228c8cde"
+            },
+            {
+              "id": "82040f1a-a1c0-4af2-955f-c662eefb2f77",
+              "name": "Connector not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-82040f1a-a1c0-4af2-955f-c662eefb2f77"
+            },
+            {
+              "id": "4dcb09c8-36e4-4fab-ae29-c7c476e87d78",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/reset-connector-metadata-cache",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:26.000Z",
+              "updatedAt": "2026-07-28T00:30:26.000Z",
+              "uid": "35240-4dcb09c8-36e4-4fab-ae29-c7c476e87d78"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:26.000Z",
+          "updatedAt": "2026-07-28T00:30:26.000Z",
+          "uid": "35240-7354b27b-2a84-43bf-96c1-5fc4741adcc8"
+        }
+      ],
+      "id": "2ff3b381-6c1e-49fd-86f4-3b67854a7d2c",
+      "createdAt": "2026-07-28T00:30:26.000Z",
+      "updatedAt": "2026-07-28T00:30:26.000Z",
+      "uid": "35240-2ff3b381-6c1e-49fd-86f4-3b67854a7d2c"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://appflow.{{region}}.amazonaws.com"
+    }
+  ]
+}

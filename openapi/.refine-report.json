@@ -1,0 +1,18 @@
+{
+  "provider": "amazon-appflow",
+  "sources": [
+    "amazon-appflow-connectors-api-openapi.yml",
+    "amazon-appflow-flows-api-openapi.yml",
+    "amazon-appflow-tags-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-appflow-connectors-api-openapi.yml",
+    "amazon-appflow-flows-api-openapi.yml",
+    "amazon-appflow-tags-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

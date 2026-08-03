@@ -1,0 +1,3162 @@
+{
+  "info": {
+    "_postman_id": "83c6e626-6299-4e66-8b33-b8265186d9a8",
+    "name": "Amazon AppFlow Connectors Flows API",
+    "description": "Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose \u2014 on a schedule, in response to a business event, or on demand.\n\nContact Support:\n Name: AWS Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T00:30:27.000Z",
+    "updatedAt": "2026-07-28T00:30:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-83c6e626-6299-4e66-8b33-b8265186d9a8"
+  },
+  "item": [
+    {
+      "name": "create-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Create Flow",
+          "id": "1eb2d9b9-bd6a-4e7f-9090-82137e9ad345",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/create-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "create-flow"
+              ]
+            },
+            "description": "Creates a new flow for transferring data between a source connector and a destination connector."
+          },
+          "response": [
+            {
+              "id": "7f938b2b-fa8d-4a1e-9498-21904515df48",
+              "name": "Flow created successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowArn\": \"<string>\",\n  \"flowStatus\": \"Active\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-7f938b2b-fa8d-4a1e-9498-21904515df48"
+            },
+            {
+              "id": "5aa85da4-8d6c-4994-adcd-12d56a23cf78",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-5aa85da4-8d6c-4994-adcd-12d56a23cf78"
+            },
+            {
+              "id": "22385847-1052-45bd-abbc-cc8d291a15ce",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-22385847-1052-45bd-abbc-cc8d291a15ce"
+            },
+            {
+              "id": "73bbe697-af39-4f86-b12c-7540770cc8c4",
+              "name": "Service quota exceeded",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-73bbe697-af39-4f86-b12c-7540770cc8c4"
+            },
+            {
+              "id": "a58675a8-2c09-47cc-8ec2-7a3a3650fcc7",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a58675a8-2c09-47cc-8ec2-7a3a3650fcc7"
+            },
+            {
+              "id": "794dcc5c-5a96-46fb-88f6-adeffb4c9ca8",
+              "name": "Resource not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-794dcc5c-5a96-46fb-88f6-adeffb4c9ca8"
+            },
+            {
+              "id": "f6a3283e-779e-4629-a562-e9d5f8e279dd",
+              "name": "Conflict \u2014 flow with this name already exists",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-f6a3283e-779e-4629-a562-e9d5f8e279dd"
+            },
+            {
+              "id": "15bd61ab-cecf-4900-848b-4312fb93c28f",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"hd\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Concat\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"voluptate94\": \"<string>\",\n        \"ullamcoda\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"laboreb\": \"<string>\",\n        \"minim_7b9\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"reprehenderite7_\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/create-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "create-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-15bd61ab-cecf-4900-848b-4312fb93c28f"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-1eb2d9b9-bd6a-4e7f-9090-82137e9ad345"
+        }
+      ],
+      "id": "d9963056-68a7-4eaa-8aab-3455946702bf",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-d9963056-68a7-4eaa-8aab-3455946702bf"
+    },
+    {
+      "name": "delete-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Delete Flow",
+          "id": "428244c0-b33a-44e1-ba78-429cbbea302f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/delete-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "delete-flow"
+              ]
+            },
+            "description": "Enables your application to delete an existing flow. Before deleting the flow, Amazon AppFlow validates the request by checking the flow configuration and status. You can delete flows one at a time."
+          },
+          "response": [
+            {
+              "id": "61d15a26-c197-4681-9c83-4800f90314ff",
+              "name": "Flow deleted successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-61d15a26-c197-4681-9c83-4800f90314ff"
+            },
+            {
+              "id": "e7874df0-1287-4ad6-9dd4-2982f4200b3d",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-e7874df0-1287-4ad6-9dd4-2982f4200b3d"
+            },
+            {
+              "id": "63b784fd-010f-4fa1-a07b-ad83f85efa8a",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-63b784fd-010f-4fa1-a07b-ad83f85efa8a"
+            },
+            {
+              "id": "0e414e96-ec71-4947-82c8-0f1c1f209cce",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-0e414e96-ec71-4947-82c8-0f1c1f209cce"
+            },
+            {
+              "id": "dcfe6c5c-3ce0-4aa3-873a-9a6129d3fc1c",
+              "name": "Conflict \u2014 flow is running",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-dcfe6c5c-3ce0-4aa3-873a-9a6129d3fc1c"
+            },
+            {
+              "id": "ddbfb50e-3994-4e54-9a92-fe4029d5efc3",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/delete-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "delete-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-ddbfb50e-3994-4e54-9a92-fe4029d5efc3"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-428244c0-b33a-44e1-ba78-429cbbea302f"
+        }
+      ],
+      "id": "74ca69da-bf67-4b8c-88a3-10bfa97336b4",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-74ca69da-bf67-4b8c-88a3-10bfa97336b4"
+    },
+    {
+      "name": "describe-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Flow",
+          "id": "af51c11e-e100-4579-a3c1-13f05c31cfdd",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-flow"
+              ]
+            },
+            "description": "Provides a description of the specified flow."
+          },
+          "response": [
+            {
+              "id": "fbafbcff-a3ba-4883-91cc-d5ea741642b4",
+              "name": "Flow description returned successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowArn\": \"<string>\",\n  \"description\": \"<string>\",\n  \"flowName\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"flowStatus\": \"Errored\",\n  \"flowStatusMessage\": \"<string>\",\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"lastRunExecutionDetails\": {\n    \"mostRecentExecutionMessage\": \"<string>\",\n    \"mostRecentExecutionTime\": \"<long>\",\n    \"mostRecentExecutionStatus\": \"Successful\"\n  },\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"tasks\": [\n    {\n      \"taskType\": \"Passthrough\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"Lorem_f\": \"<string>\",\n        \"velit498\": \"<string>\",\n        \"fugiat_d8\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Filter\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"eu_\": \"<string>\",\n        \"eiusmod89\": \"<string>\"\n      }\n    }\n  ],\n  \"createdAt\": \"<long>\",\n  \"lastUpdatedAt\": \"<long>\",\n  \"createdBy\": \"<string>\",\n  \"lastUpdatedBy\": \"<string>\",\n  \"tags\": {\n    \"ullamco_c7\": \"<string>\"\n  },\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-fbafbcff-a3ba-4883-91cc-d5ea741642b4"
+            },
+            {
+              "id": "52a87746-f929-4c8e-ba65-d4111eddbeff",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-52a87746-f929-4c8e-ba65-d4111eddbeff"
+            },
+            {
+              "id": "a8a5e189-608e-4a75-8341-72b6381d2e85",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a8a5e189-608e-4a75-8341-72b6381d2e85"
+            },
+            {
+              "id": "a2dae9c5-7c24-44d3-808b-aff8305ca4a6",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a2dae9c5-7c24-44d3-808b-aff8305ca4a6"
+            },
+            {
+              "id": "06c86565-3e15-4f52-a4cd-b3884506ad99",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-06c86565-3e15-4f52-a4cd-b3884506ad99"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-af51c11e-e100-4579-a3c1-13f05c31cfdd"
+        }
+      ],
+      "id": "ca072f58-2b72-493c-9a8e-2e70fdcdf3b6",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-ca072f58-2b72-493c-9a8e-2e70fdcdf3b6"
+    },
+    {
+      "name": "list-flows",
+      "item": [
+        {
+          "name": "Amazon AppFlow List Flows",
+          "id": "caeeeb5c-2de9-4836-bf05-fde751aa2061",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/list-flows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "list-flows"
+              ]
+            },
+            "description": "Lists all of the flows associated with your account."
+          },
+          "response": [
+            {
+              "id": "31e6c117-570a-4d89-bf19-5b424863138d",
+              "name": "List of flows returned successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-flows"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flows\": [\n    {\n      \"flowArn\": \"<string>\",\n      \"description\": \"<string>\",\n      \"flowName\": \"<string>\",\n      \"flowStatus\": \"Draft\",\n      \"sourceConnectorType\": \"<string>\",\n      \"sourceConnectorLabel\": \"<string>\",\n      \"destinationConnectorType\": \"<string>\",\n      \"destinationConnectorLabel\": \"<string>\",\n      \"triggerType\": \"Event\",\n      \"createdAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"tags\": {\n        \"culpa_3\": \"<string>\"\n      },\n      \"lastRunExecutionDetails\": {\n        \"mostRecentExecutionMessage\": \"<string>\",\n        \"mostRecentExecutionTime\": \"<long>\",\n        \"mostRecentExecutionStatus\": \"Error\"\n      }\n    },\n    {\n      \"flowArn\": \"<string>\",\n      \"description\": \"<string>\",\n      \"flowName\": \"<string>\",\n      \"flowStatus\": \"Draft\",\n      \"sourceConnectorType\": \"<string>\",\n      \"sourceConnectorLabel\": \"<string>\",\n      \"destinationConnectorType\": \"<string>\",\n      \"destinationConnectorLabel\": \"<string>\",\n      \"triggerType\": \"OnDemand\",\n      \"createdAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"createdBy\": \"<string>\",\n      \"lastUpdatedBy\": \"<string>\",\n      \"tags\": {\n        \"consequate\": \"<string>\",\n        \"quis73_\": \"<string>\"\n      },\n      \"lastRunExecutionDetails\": {\n        \"mostRecentExecutionMessage\": \"<string>\",\n        \"mostRecentExecutionTime\": \"<long>\",\n        \"mostRecentExecutionStatus\": \"Canceled\"\n      }\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-31e6c117-570a-4d89-bf19-5b424863138d"
+            },
+            {
+              "id": "56479378-9891-4bd1-9a39-75affd3423f9",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-flows"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-56479378-9891-4bd1-9a39-75affd3423f9"
+            },
+            {
+              "id": "5e7ab125-a7c5-4ccf-9320-e5a652a67dda",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/list-flows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "list-flows"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-5e7ab125-a7c5-4ccf-9320-e5a652a67dda"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-caeeeb5c-2de9-4836-bf05-fde751aa2061"
+        }
+      ],
+      "id": "7967b991-21a3-4d54-a69d-a805756c75fe",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-7967b991-21a3-4d54-a69d-a805756c75fe"
+    },
+    {
+      "name": "update-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Update Flow",
+          "id": "97a97b37-140f-43c1-b574-06e3925bbeca",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/update-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "update-flow"
+              ]
+            },
+            "description": "Updates an existing flow."
+          },
+          "response": [
+            {
+              "id": "bd2c326d-5c95-4b51-90e6-ecfc82247188",
+              "name": "Flow updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowStatus\": \"Errored\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-bd2c326d-5c95-4b51-90e6-ecfc82247188"
+            },
+            {
+              "id": "7a400f1a-cf34-4b36-98da-d91112398eb9",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-7a400f1a-cf34-4b36-98da-d91112398eb9"
+            },
+            {
+              "id": "2dd06bfd-63d9-42cd-81d0-a5151a1d67d9",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-2dd06bfd-63d9-42cd-81d0-a5151a1d67d9"
+            },
+            {
+              "id": "43749a69-c8bc-4eb8-b969-6341e7e514e5",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-43749a69-c8bc-4eb8-b969-6341e7e514e5"
+            },
+            {
+              "id": "db4f4389-3de4-4cfe-8429-5390ded1e2df",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Event\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"Incremental\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": {},\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": {},\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Mask\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"ada1\": \"<string>\",\n        \"id_32b\": \"<string>\",\n        \"Duis16f\": \"<string>\",\n        \"dolored_7\": \"<string>\",\n        \"incididunt22\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"Merge\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": {},\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"quisb\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/update-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "update-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-db4f4389-3de4-4cfe-8429-5390ded1e2df"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-97a97b37-140f-43c1-b574-06e3925bbeca"
+        }
+      ],
+      "id": "02531fab-aef4-4e39-813a-6ec3166e897c",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-02531fab-aef4-4e39-813a-6ec3166e897c"
+    },
+    {
+      "name": "start-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Start Flow",
+          "id": "b20401c1-59d0-48fe-bd61-d369abf5cdee",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/start-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "start-flow"
+              ]
+            },
+            "description": "Activates an existing flow. For on-demand flows, this operation runs the flow immediately. For schedule and event-triggered flows, this operation activates the flow without modifying the configuration."
+          },
+          "response": [
+            {
+              "id": "c851e39f-d812-40fb-a8f1-bbca6d02b9f2",
+              "name": "Flow started successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/start-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "start-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowArn\": \"<string>\",\n  \"flowStatus\": \"Errored\",\n  \"executionId\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-c851e39f-d812-40fb-a8f1-bbca6d02b9f2"
+            },
+            {
+              "id": "356facd2-efae-4765-8505-82f6adf01995",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/start-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "start-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-356facd2-efae-4765-8505-82f6adf01995"
+            },
+            {
+              "id": "61d9ffe7-9b44-4153-bf0a-42f5a6f2ff35",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/start-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "start-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-61d9ffe7-9b44-4153-bf0a-42f5a6f2ff35"
+            },
+            {
+              "id": "ef14c37a-d41c-4065-877d-92f0200ba13b",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/start-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "start-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-ef14c37a-d41c-4065-877d-92f0200ba13b"
+            },
+            {
+              "id": "cb297487-e751-4b62-b37e-943990711501",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/start-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "start-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-cb297487-e751-4b62-b37e-943990711501"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-b20401c1-59d0-48fe-bd61-d369abf5cdee"
+        }
+      ],
+      "id": "440f4d2e-221f-4f3e-9812-fa32c330b4b6",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-440f4d2e-221f-4f3e-9812-fa32c330b4b6"
+    },
+    {
+      "name": "stop-flow",
+      "item": [
+        {
+          "name": "Amazon AppFlow Stop Flow",
+          "id": "ccbf5801-bc93-4504-8597-e099001c3530",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/stop-flow",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "stop-flow"
+              ]
+            },
+            "description": "Deactivates the existing flow. For on-demand flows, this operation returns an unsupportedOperationException error message. For schedule and event-triggered flows, this operation deactivates the flow."
+          },
+          "response": [
+            {
+              "id": "2679e788-0521-43c1-acd5-904aac7f6c3d",
+              "name": "Flow stopped successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stop-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stop-flow"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowArn\": \"<string>\",\n  \"flowStatus\": \"Active\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-2679e788-0521-43c1-acd5-904aac7f6c3d"
+            },
+            {
+              "id": "f02fd8d9-1c51-40ea-8a89-aa206dffce87",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stop-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stop-flow"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-f02fd8d9-1c51-40ea-8a89-aa206dffce87"
+            },
+            {
+              "id": "a819a43b-60ad-4c25-b46a-f64e7aee7d26",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stop-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stop-flow"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a819a43b-60ad-4c25-b46a-f64e7aee7d26"
+            },
+            {
+              "id": "e95c8987-b111-4d35-b0e8-6b25d5c1e7f0",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stop-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stop-flow"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-e95c8987-b111-4d35-b0e8-6b25d5c1e7f0"
+            },
+            {
+              "id": "d00cf717-7432-466b-8062-3d7515e1b01e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/stop-flow",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "stop-flow"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-d00cf717-7432-466b-8062-3d7515e1b01e"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-ccbf5801-bc93-4504-8597-e099001c3530"
+        }
+      ],
+      "id": "2fa4fd99-53b6-4e9d-ad5d-3922bcdbe8bd",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-2fa4fd99-53b6-4e9d-ad5d-3922bcdbe8bd"
+    },
+    {
+      "name": "cancel-flow-executions",
+      "item": [
+        {
+          "name": "Amazon AppFlow Cancel Flow Executions",
+          "id": "62c2e266-7c03-4ab2-9b7f-252539f11242",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/cancel-flow-executions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cancel-flow-executions"
+              ]
+            },
+            "description": "Cancels active runs for a flow. You can cancel all of the active runs for a flow, or you can cancel specific runs by providing their IDs."
+          },
+          "response": [
+            {
+              "id": "e74f447a-6424-481e-9bf1-3402cba5ff1d",
+              "name": "Flow executions cancelled successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancel-flow-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancel-flow-executions"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"invalidExecutions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-e74f447a-6424-481e-9bf1-3402cba5ff1d"
+            },
+            {
+              "id": "65e8cd55-8222-434f-bfcf-6a34364f86e1",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancel-flow-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancel-flow-executions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-65e8cd55-8222-434f-bfcf-6a34364f86e1"
+            },
+            {
+              "id": "a35afe80-0323-465a-a571-6c0ff625f2ac",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancel-flow-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancel-flow-executions"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a35afe80-0323-465a-a571-6c0ff625f2ac"
+            },
+            {
+              "id": "bb714b18-523a-4493-92c4-55a3f5606a49",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancel-flow-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancel-flow-executions"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-bb714b18-523a-4493-92c4-55a3f5606a49"
+            },
+            {
+              "id": "d8bf1d7e-ee54-4766-8cb2-643e505c4199",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/cancel-flow-executions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "cancel-flow-executions"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-d8bf1d7e-ee54-4766-8cb2-643e505c4199"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-62c2e266-7c03-4ab2-9b7f-252539f11242"
+        }
+      ],
+      "id": "3b07ed65-d841-4dcf-9189-958fb6327b76",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-3b07ed65-d841-4dcf-9189-958fb6327b76"
+    },
+    {
+      "name": "describe-flow-execution-records",
+      "item": [
+        {
+          "name": "Amazon AppFlow Describe Flow Execution Records",
+          "id": "1464e40b-347e-43fc-9725-d5af6f597de8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/describe-flow-execution-records",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "describe-flow-execution-records"
+              ]
+            },
+            "description": "Provides details regarding all instances for a given flow, based on the specified filter function, with a limit of 1000 records."
+          },
+          "response": [
+            {
+              "id": "bff43be8-29f7-4c14-89d8-213f05268c6e",
+              "name": "Flow execution records returned successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow-execution-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow-execution-records"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"flowExecutions\": [\n    {\n      \"executionId\": \"<string>\",\n      \"executionStatus\": \"InProgress\",\n      \"executionResult\": {\n        \"errorInfo\": {},\n        \"bytesProcessed\": \"<long>\",\n        \"bytesWritten\": \"<long>\",\n        \"recordsProcessed\": \"<long>\",\n        \"numParallelProcesses\": \"<long>\"\n      },\n      \"startedAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"dataPullStartTime\": \"<long>\",\n      \"dataPullEndTime\": \"<long>\"\n    },\n    {\n      \"executionId\": \"<string>\",\n      \"executionStatus\": \"Successful\",\n      \"executionResult\": {\n        \"errorInfo\": {},\n        \"bytesProcessed\": \"<long>\",\n        \"bytesWritten\": \"<long>\",\n        \"recordsProcessed\": \"<long>\",\n        \"numParallelProcesses\": \"<long>\"\n      },\n      \"startedAt\": \"<long>\",\n      \"lastUpdatedAt\": \"<long>\",\n      \"dataPullStartTime\": \"<long>\",\n      \"dataPullEndTime\": \"<long>\"\n    }\n  ],\n  \"nextToken\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-bff43be8-29f7-4c14-89d8-213f05268c6e"
+            },
+            {
+              "id": "b9c6d6c3-004b-4734-a628-1caf523cf098",
+              "name": "Validation error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow-execution-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow-execution-records"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-b9c6d6c3-004b-4734-a628-1caf523cf098"
+            },
+            {
+              "id": "a7f765f1-6453-4b03-8165-2c336d2de176",
+              "name": "Access denied",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow-execution-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow-execution-records"
+                  ]
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-a7f765f1-6453-4b03-8165-2c336d2de176"
+            },
+            {
+              "id": "e5cdb1a0-dd01-4edf-b8b7-754680a198a6",
+              "name": "Flow not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow-execution-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow-execution-records"
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-e5cdb1a0-dd01-4edf-b8b7-754680a198a6"
+            },
+            {
+              "id": "b5fbc9bf-dd51-4ea4-bdc5-b3f9611e786c",
+              "name": "Internal server error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/describe-flow-execution-records",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "describe-flow-execution-records"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"code\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T00:30:27.000Z",
+              "updatedAt": "2026-07-28T00:30:27.000Z",
+              "uid": "35240-b5fbc9bf-dd51-4ea4-bdc5-b3f9611e786c"
+            }
+          ],
+          "createdAt": "2026-07-28T00:30:27.000Z",
+          "updatedAt": "2026-07-28T00:30:27.000Z",
+          "uid": "35240-1464e40b-347e-43fc-9725-d5af6f597de8"
+        }
+      ],
+      "id": "7f6a0ac4-a86b-4fb1-ae8e-b44a1e9293a6",
+      "createdAt": "2026-07-28T00:30:27.000Z",
+      "updatedAt": "2026-07-28T00:30:27.000Z",
+      "uid": "35240-7f6a0ac4-a86b-4fb1-ae8e-b44a1e9293a6"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://appflow.{{region}}.amazonaws.com"
+    }
+  ]
+}
