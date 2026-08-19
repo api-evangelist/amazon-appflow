@@ -1,0 +1,3279 @@
+{
+  "item": [
+    {
+      "id": "ae5a23c7-24fd-42f7-9dfb-86f1f9e16cb1",
+      "name": "Flows",
+      "description": {
+        "content": "Operations for creating and managing data flows",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4bebe31-3652-4a97-a2c2-eb2416298bd7",
+          "name": "Amazon AppFlow Create Flow",
+          "request": {
+            "name": "Amazon AppFlow Create Flow",
+            "description": {
+              "content": "Creates a new flow for transferring data between a source connector and a destination connector.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "create-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"<string>\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"<string>\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": \"<object>\",\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": \"<object>\",\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": \"<object>\",\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"<string>\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": \"<object>\",\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"<string>\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": \"<object>\",\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"key_0\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"kmsArn\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  },\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d7d71604-a5bc-4ed4-9b1d-a051a5495ffd",
+              "name": "Flow created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowArn\": \"arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow\",\n  \"flowStatus\": \"Active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "296f255b-c1d2-4aad-88f6-d04ecc12e1c1",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9be5e75f-ccde-4f8d-8732-a547887583d2",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ea360fdd-5ec7-40d6-88e1-c892cd7ba309",
+              "name": "Service quota exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c985371-e890-49b8-b480-1fae381e1334",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "063af03f-c9c0-45db-936d-e4f6f65543fe",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7e6437a7-aa55-41fb-99f2-601674833715",
+              "name": "Conflict — flow with this name already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36915cd4-9eaa-4639-865b-fb6dec74c722",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(1day)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12994ede-d744-46a0-9c66-10bfe3ab0657",
+          "name": "Amazon AppFlow Delete Flow",
+          "request": {
+            "name": "Amazon AppFlow Delete Flow",
+            "description": {
+              "content": "Enables your application to delete an existing flow. Before deleting the flow, Amazon AppFlow validates the request by checking the flow configuration and status. You can delete flows one at a time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delete-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4240dc40-b4a7-4bba-91a1-db6bb39f5cf5",
+              "name": "Flow deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7df565d8-005e-4e7e-9bcb-534906150370",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f33c7a6-7b0f-4022-b74c-c77ad442d16b",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8dd5c407-a336-4428-8f28-6f425e666bdc",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1cfdaa06-95b3-4828-88cc-765ad36f2e59",
+              "name": "Conflict — flow is running",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3202736d-a2c3-4790-96e5-d383bf23db9e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "669e84a8-aa69-4f9e-b1c4-20207d5f5ab1",
+          "name": "Amazon AppFlow Describe Flow",
+          "request": {
+            "name": "Amazon AppFlow Describe Flow",
+            "description": {
+              "content": "Provides a description of the specified flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "619908bf-e3dd-400c-bb2d-a242103d8430",
+              "name": "Flow description returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowArn\": \"arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow\",\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Transfer Salesforce accounts to S3 daily\",\n  \"flowStatus\": \"Active\",\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\"\n  },\n  \"createdAt\": 1718153645993,\n  \"lastUpdatedAt\": 1718153645993,\n  \"createdBy\": \"arn:aws:iam::123456789012:user/admin\",\n  \"lastUpdatedBy\": \"arn:aws:iam::123456789012:user/admin\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35ddfa93-6c85-44f1-a03f-a16be1321dbc",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4839fb6b-0541-4b4f-8134-c0f007a7f319",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49e603b3-0360-46d6-9b00-3e1b2deb57f5",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "47ab45b9-bddc-45f3-8242-096427396cab",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a253ad0f-1d8e-4921-99aa-80dc92952af5",
+          "name": "Amazon AppFlow List Flows",
+          "request": {
+            "name": "Amazon AppFlow List Flows",
+            "description": {
+              "content": "Lists all of the flows associated with your account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list-flows"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d915394-4ee8-412f-80bb-a9ca38ea81ad",
+              "name": "List of flows returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flows\": [\n    {\n      \"flowArn\": \"arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow\",\n      \"flowName\": \"my-salesforce-to-s3-flow\",\n      \"description\": \"Transfer Salesforce accounts to S3 daily\",\n      \"flowStatus\": \"Active\",\n      \"sourceConnectorType\": \"Salesforce\",\n      \"destinationConnectorType\": \"S3\",\n      \"triggerType\": \"Scheduled\",\n      \"createdAt\": 1718153645993,\n      \"lastUpdatedAt\": 1718153645993\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54690bf6-2200-4779-bc15-93cb5c7abb73",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "37ad39b2-1d83-4258-a79b-34de2882b14e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-flows"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf779ae6-5fe7-44bc-9e1a-847339e95013",
+          "name": "Amazon AppFlow Update Flow",
+          "request": {
+            "name": "Amazon AppFlow Update Flow",
+            "description": {
+              "content": "Updates an existing flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"triggerConfig\": {\n    \"triggerType\": \"<string>\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"<string>\",\n        \"dataPullMode\": \"<string>\",\n        \"scheduleStartTime\": \"<long>\",\n        \"scheduleEndTime\": \"<long>\",\n        \"timezone\": \"<string>\",\n        \"scheduleOffset\": \"<long>\",\n        \"firstExecutionFrom\": \"<long>\",\n        \"flowErrorDeactivationThreshold\": \"<integer>\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"<string>\",\n    \"sourceConnectorProperties\": \"<object>\",\n    \"apiVersion\": \"<string>\",\n    \"connectorProfileName\": \"<string>\",\n    \"incrementalPullConfig\": {\n      \"datetimeTypeFieldName\": \"<string>\"\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": \"<object>\",\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    },\n    {\n      \"connectorType\": \"<string>\",\n      \"destinationConnectorProperties\": \"<object>\",\n      \"apiVersion\": \"<string>\",\n      \"connectorProfileName\": \"<string>\"\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"<string>\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": \"<object>\",\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\",\n        \"key_2\": \"<string>\",\n        \"key_3\": \"<string>\"\n      }\n    },\n    {\n      \"taskType\": \"<string>\",\n      \"sourceFields\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"connectorOperator\": \"<object>\",\n      \"destinationField\": \"<string>\",\n      \"taskProperties\": {\n        \"key_0\": \"<string>\",\n        \"key_1\": \"<string>\"\n      }\n    }\n  ],\n  \"clientToken\": \"<string>\",\n  \"description\": \"<string>\",\n  \"metadataCatalogConfig\": {\n    \"glueDataCatalog\": {\n      \"roleArn\": \"<string>\",\n      \"databaseName\": \"<string>\",\n      \"tablePrefix\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2daada52-5f2d-4f51-835c-299790b273f5",
+              "name": "Flow updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Updated description\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(6hours)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowStatus\": \"Active\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cebebcab-4ce6-4cc6-a399-d6c595732d48",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Updated description\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(6hours)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e147ea71-6e93-487c-83c8-10e574c12e26",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Updated description\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(6hours)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14438e1f-586d-4430-8cbb-6f0239ab2f72",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Updated description\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(6hours)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "57e1dd80-7ed6-448e-8e74-5ffa8e600e03",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"description\": \"Updated description\",\n  \"triggerConfig\": {\n    \"triggerType\": \"Scheduled\",\n    \"triggerProperties\": {\n      \"Scheduled\": {\n        \"scheduleExpression\": \"rate(6hours)\"\n      }\n    }\n  },\n  \"sourceFlowConfig\": {\n    \"connectorType\": \"Salesforce\",\n    \"connectorProfileName\": \"my-salesforce-profile\",\n    \"sourceConnectorProperties\": {\n      \"Salesforce\": {\n        \"object\": \"Account\"\n      }\n    }\n  },\n  \"destinationFlowConfigList\": [\n    {\n      \"connectorType\": \"S3\",\n      \"destinationConnectorProperties\": {\n        \"S3\": {\n          \"bucketName\": \"my-data-bucket\",\n          \"bucketPrefix\": \"appflow/salesforce/accounts\"\n        }\n      }\n    }\n  ],\n  \"tasks\": [\n    {\n      \"taskType\": \"Map\",\n      \"sourceFields\": [\n        \"Id\"\n      ],\n      \"destinationField\": \"Id\",\n      \"taskProperties\": {}\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d20ee0b5-faef-472d-8e52-cede18e97e4b",
+          "name": "Amazon AppFlow Start Flow",
+          "request": {
+            "name": "Amazon AppFlow Start Flow",
+            "description": {
+              "content": "Activates an existing flow. For on-demand flows, this operation runs the flow immediately. For schedule and event-triggered flows, this operation activates the flow without modifying the configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "start-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "638c369d-cc5d-458a-8bc2-564e0a5842e8",
+              "name": "Flow started successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowArn\": \"arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow\",\n  \"flowStatus\": \"Active\",\n  \"executionId\": \"exec-500123\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9afdd34-5d9b-47b9-8603-ffdecdf0e19e",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c963a907-1325-428c-9eac-231dbba1355c",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "caa12333-d1a9-45c0-a607-9d93e64ded85",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54380d17-a1ed-432f-b204-d23b18209844",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "start-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49fdbca8-3b56-4ecf-bb6f-a1ebc5cffa7f",
+          "name": "Amazon AppFlow Stop Flow",
+          "request": {
+            "name": "Amazon AppFlow Stop Flow",
+            "description": {
+              "content": "Deactivates the existing flow. For on-demand flows, this operation returns an unsupportedOperationException error message. For schedule and event-triggered flows, this operation deactivates the flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "stop-flow"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "066cc66a-42b6-4c90-94fe-adde5026e60b",
+              "name": "Flow stopped successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowArn\": \"arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow\",\n  \"flowStatus\": \"Suspended\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe484935-4d6f-4e82-9afc-ae709297a5c7",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9223bd87-4e87-4722-9f0d-c27eff9b185e",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e94cf454-bfdb-4887-afbe-6105f09ee00f",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b7766e3-acfa-452a-baee-55905030d468",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "stop-flow"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8125459b-f7c3-4de8-abdf-702b9bd2fa45",
+          "name": "Amazon AppFlow Cancel Flow Executions",
+          "request": {
+            "name": "Amazon AppFlow Cancel Flow Executions",
+            "description": {
+              "content": "Cancels active runs for a flow. You can cancel all of the active runs for a flow, or you can cancel specific runs by providing their IDs.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cancel-flow-executions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"executionIds\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3ca1ebb2-811a-4cbe-9327-980a72ccc0c8",
+              "name": "Flow executions cancelled successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-flow-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"executionIds\": [\n    \"exec-500123\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invalidExecutions\": [\n    \"exec-invalid-123\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6fcf20f-ca57-486a-a647-64fe6231fb0b",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-flow-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"executionIds\": [\n    \"exec-500123\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d97706cb-80ad-458b-82a9-ca613136fdbe",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-flow-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"executionIds\": [\n    \"exec-500123\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0e2f627-2cac-4b61-8c03-cac251c386cd",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-flow-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"executionIds\": [\n    \"exec-500123\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bed11918-1bc2-4c87-9017-20a3fa9f3925",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cancel-flow-executions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"executionIds\": [\n    \"exec-500123\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b26b469d-8f5f-4552-884b-daa5f797ca97",
+          "name": "Amazon AppFlow Describe Flow Execution Records",
+          "request": {
+            "name": "Amazon AppFlow Describe Flow Execution Records",
+            "description": {
+              "content": "Provides details regarding all instances for a given flow, based on the specified filter function, with a limit of 1000 records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-flow-execution-records"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"flowName\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4181b8e3-a4bb-4841-bd71-649ba77be9a7",
+              "name": "Flow execution records returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow-execution-records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"flowExecutions\": [\n    {\n      \"executionId\": \"exec-500123\",\n      \"executionStatus\": \"Successful\",\n      \"startedAt\": 1718153645993,\n      \"lastUpdatedAt\": 1718153700000,\n      \"executionResult\": {\n        \"recordsProcessed\": 1500,\n        \"bytesProcessed\": 204800,\n        \"bytesWritten\": 204800\n      }\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f627f0e-f6eb-45f7-8cfe-7089283e209c",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow-execution-records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3095a1e8-4297-4569-85f9-6216b0dcef1b",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow-execution-records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63da576f-825c-4b35-896d-15049a24ab37",
+              "name": "Flow not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow-execution-records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3bb8ca8-e631-4d59-95e9-e3b1a075b376",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-flow-execution-records"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"flowName\": \"my-salesforce-to-s3-flow\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://appflow.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3163056d-790d-4d12-9e17-d12062bf24a9",
+    "name": "Amazon AppFlow Connectors Flows API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose — on a schedule, in response to a business event, or on demand.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

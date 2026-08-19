@@ -1,0 +1,4601 @@
+{
+  "item": [
+    {
+      "id": "cf0014a0-d953-4594-b362-45c5fa069efa",
+      "name": "Connectors",
+      "description": {
+        "content": "Operations for managing connector profiles and connector registrations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1b4e390d-aaf9-492e-911b-c489df635992",
+          "name": "Amazon AppFlow Create Connector Profile",
+          "request": {
+            "name": "Amazon AppFlow Create Connector Profile",
+            "description": {
+              "content": "Creates a new connector profile associated with your AWS account. There is a soft quota of 100 connector profiles per AWS account. If you need more connector profiles than this quota allows, you can submit a request to the Amazon AppFlow team through the Amazon AppFlow support channel.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "create-connector-profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectionMode\": \"<string>\",\n  \"connectorProfileConfig\": \"<object>\",\n  \"clientToken\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"kmsArn\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4cd5f99a-2bbf-4325-a1b9-c9fb8bf1de3f",
+              "name": "Connector profile created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorProfileArn\": \"arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2de8ebea-c699-4070-a170-c6405762916b",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "501a6cd0-7bd4-4374-8825-1d47b4cee356",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9ebb2af3-3db9-47a1-83b8-39756cabdb64",
+              "name": "Service quota exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "15c6cbb9-ad52-4c29-b3de-79f4675e11ee",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12dfae12-9935-4996-bf91-52d22286a16b",
+              "name": "Conflict — profile with this name already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c2ca731-a6b5-40a7-98de-7c0908e3dfe8",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "create-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorType\": \"Salesforce\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6f30de3a-cee2-4ff1-a448-b4daeb8569d3",
+          "name": "Amazon AppFlow Delete Connector Profile",
+          "request": {
+            "name": "Amazon AppFlow Delete Connector Profile",
+            "description": {
+              "content": "Enables you to delete an existing connector profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "delete-connector-profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bcadebc1-d671-4285-9134-30b9217398c9",
+              "name": "Connector profile deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ad15e705-003d-4e85-a6e5-bcc800d8ed67",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7d309b77-3eb5-4247-a961-f926091830b8",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ece9b087-4ec4-409d-93ff-36c84b9ecaeb",
+              "name": "Connector profile not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "536f28ef-a7ec-491c-bdac-4d005ff1293e",
+              "name": "Conflict — profile is in use by a flow",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dae81404-e36f-41c9-a9c4-58a0c6b39401",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "delete-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81d1d734-cd1f-4ab8-bfaa-ac4c645e760d",
+          "name": "Amazon AppFlow Describe Connector Profiles",
+          "request": {
+            "name": "Amazon AppFlow Describe Connector Profiles",
+            "description": {
+              "content": "Returns a list of connector-profile details matching the provided connector-profile names and connector-types. Both input lists are optional, and you can use them to filter the result. If no names or connector-types are provided, returns all connector profiles in a paginated form. If there is no match, this operation returns an empty list.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-connector-profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileNames\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "57fa5326-3875-44d8-a5ce-f9dd3a03e87f",
+              "name": "Connector profiles returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorProfileDetails\": [\n    {\n      \"connectorProfileArn\": \"arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile\",\n      \"connectorProfileName\": \"my-salesforce-profile\",\n      \"connectorType\": \"Salesforce\",\n      \"connectionMode\": \"Public\",\n      \"createdAt\": 1718153645993,\n      \"lastUpdatedAt\": 1718153645993\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ac575b0d-cb01-4eed-9fec-672bef25d391",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f15d472c-be1d-43cd-a114-25ae780bf625",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f83f4f46-702d-400a-8f2e-bb235f985c80",
+          "name": "Amazon AppFlow Update Connector Profile",
+          "request": {
+            "name": "Amazon AppFlow Update Connector Profile",
+            "description": {
+              "content": "Updates a given connector profile associated with your account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-connector-profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectionMode\": \"<string>\",\n  \"connectorProfileConfig\": \"<object>\",\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "adb6270e-9f6b-4116-b2fa-e77fed6586ea",
+              "name": "Connector profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorProfileArn\": \"arn:aws:appflow:us-east-1:123456789012:connectorprofile/my-salesforce-profile\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ef8afc55-43a6-4596-a04a-94bfb9b0c8d0",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "86cb99bd-9254-42db-9ac4-895ca8943571",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49f47787-007d-4935-93d0-a4b754dc887e",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c8c3460-783a-4407-9c67-9bfaa47a36d6",
+              "name": "Connector profile not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b322891f-2486-4004-b717-6ed2ca9de1d5",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectionMode\": \"Public\",\n  \"connectorProfileConfig\": {\n    \"connectorProfileCredentials\": {\n      \"Salesforce\": {\n        \"accessToken\": \"eyJhbGciOiJSUzI1NiJ9...\",\n        \"refreshToken\": \"5Aep8614...\"\n      }\n    },\n    \"connectorProfileProperties\": {\n      \"Salesforce\": {\n        \"instanceUrl\": \"https://myorg.salesforce.com\"\n      }\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eab5fc09-fc79-4221-a90e-05e83e3770b4",
+          "name": "Amazon AppFlow Describe Connectors",
+          "request": {
+            "name": "Amazon AppFlow Describe Connectors",
+            "description": {
+              "content": "Describes the connectors vended by Amazon AppFlow for specified connector types. If you don't specify a connector type, this operation describes all connectors vended by Amazon AppFlow. This API lists only custom connectors registered in this account, not the AWS authored connectors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorTypes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a1e7a0b6-3229-4e82-9d17-65fab5605414",
+              "name": "Connectors described successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"Salesforce\",\n    \"S3\"\n  ],\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorConfigurations\": {\n    \"Salesforce\": {\n      \"canUseAsSource\": true,\n      \"canUseAsDestination\": true,\n      \"isPrivateLinkEnabled\": false,\n      \"isPrivateLinkEndpointUrlRequired\": false\n    }\n  },\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9223ccca-a663-45fa-8ea5-450507bf08f4",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"Salesforce\",\n    \"S3\"\n  ],\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c353fd12-19ef-4f74-b65b-1fdd0908dace",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorTypes\": [\n    \"Salesforce\",\n    \"S3\"\n  ],\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7378a971-4675-4475-9220-16499cf83ae9",
+          "name": "Amazon AppFlow Describe Connector",
+          "request": {
+            "name": "Amazon AppFlow Describe Connector",
+            "description": {
+              "content": "Describes the given custom connector registered in your AWS account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorType\": \"<string>\",\n  \"connectorLabel\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bdf98fe6-2eed-4897-9125-730a910a7682",
+              "name": "Connector description returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"CustomConnector\",\n  \"connectorLabel\": \"MyCustomConnector\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorConfiguration\": {\n    \"connectorArn\": \"arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector\",\n    \"connectorLabel\": \"MyCustomConnector\",\n    \"connectorDescription\": \"My custom connector\",\n    \"connectorOwner\": \"123456789012\",\n    \"connectorVersion\": \"1.0\",\n    \"connectorModes\": [\n      \"CLOUD\"\n    ],\n    \"canUseAsSource\": true,\n    \"canUseAsDestination\": true\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ba888cb-719c-4a49-a4fb-7031d5c20651",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"CustomConnector\",\n  \"connectorLabel\": \"MyCustomConnector\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4eb12ee-3ec6-4976-81e7-cc8c1f817380",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"CustomConnector\",\n  \"connectorLabel\": \"MyCustomConnector\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bfeb4373-eba3-4400-acfc-6eee93ee70ca",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"CustomConnector\",\n  \"connectorLabel\": \"MyCustomConnector\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "348a22fd-b27c-4c5a-9c30-7f1e95e730c7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"CustomConnector\",\n  \"connectorLabel\": \"MyCustomConnector\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62739a4d-a009-41d5-af6a-b4fabbe64fdb",
+          "name": "Amazon AppFlow Describe Connector Entity",
+          "request": {
+            "name": "Amazon AppFlow Describe Connector Entity",
+            "description": {
+              "content": "Provides details regarding the entity used with the connector, with a description of the data model for each field in that entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "describe-connector-entity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorEntityName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorProfileName\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9e842763-5789-49b2-88fc-eba45cc5dad9",
+              "name": "Connector entity described successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorEntityFields\": [\n    {\n      \"identifier\": \"Id\",\n      \"label\": \"Account ID\",\n      \"isPrimaryKey\": true,\n      \"isQueryable\": true,\n      \"isRetrievable\": true,\n      \"isWritable\": false,\n      \"supportedFieldTypeDetails\": {\n        \"v1\": {\n          \"fieldType\": \"id\",\n          \"filterOperators\": [\n            \"EQUAL_TO\"\n          ]\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee06de65-2708-4436-a012-f77e00d8c84b",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11ec6d9d-2ca5-4875-9af8-6f4003878246",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0f44b846-0558-4ece-83a5-cdb0ace81869",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb06c3a2-6bb8-4738-9860-5ec6a198d0ae",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd5e736a-17cf-4001-8e38-9fdb5d3cea51",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "describe-connector-entity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorEntityName\": \"Account\",\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a7cb909d-05ba-4d8b-a385-133360050e87",
+          "name": "Amazon AppFlow List Connector Entities",
+          "request": {
+            "name": "Amazon AppFlow List Connector Entities",
+            "description": {
+              "content": "Returns the list of available connector entities supported by Amazon AppFlow. For example, you can query Salesforce for Account and Opportunity entities, or query ServiceNow for the Incident entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list-connector-entities"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\",\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "52398d09-ee63-4440-83be-363e27317dfa",
+              "name": "Connector entities listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorEntityMap\": {\n    \"Objects\": [\n      {\n        \"name\": \"Account\",\n        \"label\": \"Account\",\n        \"hasNestedEntities\": false\n      },\n      {\n        \"name\": \"Contact\",\n        \"label\": \"Contact\",\n        \"hasNestedEntities\": false\n      },\n      {\n        \"name\": \"Opportunity\",\n        \"label\": \"Opportunity\",\n        \"hasNestedEntities\": false\n      }\n    ]\n  },\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cd370c5-74c4-4fe3-a706-e6f9a78cd925",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ab7d3157-611b-46b1-b762-299a04547ad0",
+              "name": "Connector authentication error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0839caf7-17ec-424d-be1f-99a2172a1e6d",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a487d398-3d62-4e55-b585-41dd8b874b4b",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "98a156f3-227b-425a-b130-062a57bbdc9a",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connector-entities"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ab3d4aa8-c5a1-40ce-90a5-f0c9ef00b33c",
+          "name": "Amazon AppFlow List Connectors",
+          "request": {
+            "name": "Amazon AppFlow List Connectors",
+            "description": {
+              "content": "Returns the list of all registered custom connectors in your Amazon Web Services account. This API lists only custom connectors registered in this account, not the AWS authored connectors.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "list-connectors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"maxResults\": \"<integer>\",\n  \"nextToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7aa69c6a-358b-4a53-8d2a-25c1087d09f9",
+              "name": "Connectors listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectors\": [\n    {\n      \"connectorArn\": \"arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector\",\n      \"connectorLabel\": \"MyCustomConnector\",\n      \"connectorDescription\": \"My custom connector\",\n      \"connectorType\": \"CustomConnector\",\n      \"connectorModes\": [\n        \"CLOUD\"\n      ]\n    }\n  ],\n  \"nextToken\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5c5af38a-d18e-4ac6-b9a0-f26fdc2b251a",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "079a526a-b6e6-4434-bc05-de0e4af79bce",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "list-connectors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"maxResults\": 20\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c6ac9339-4551-4955-b84b-38c68aaf2659",
+          "name": "Amazon AppFlow Register Connector",
+          "request": {
+            "name": "Amazon AppFlow Register Connector",
+            "description": {
+              "content": "Registers a new custom connector with your Amazon Web Services account. Before you can register the connector, you must deploy the associated AWS lambda function in your account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "register-connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningType\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eeed4c76-8e70-41ef-9e0b-92eee9aa4389",
+              "name": "Connector registered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"My custom connector for proprietary data source\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorArn\": \"arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93c146f2-5f77-4522-955d-9ddb82f66e1c",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"My custom connector for proprietary data source\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2caeb780-0f20-4990-a943-9f2408f85115",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"My custom connector for proprietary data source\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a9ce54c-f330-43b6-b3d4-e3d84c2db81e",
+              "name": "Conflict — connector with this label already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"My custom connector for proprietary data source\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "79dd00e5-eb70-4e76-9371-22cb94889ae6",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "register-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"My custom connector for proprietary data source\",\n  \"connectorProvisioningType\": \"LAMBDA\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c41ffe46-60c4-4496-b24e-db623040d765",
+          "name": "Amazon AppFlow Unregister Connector",
+          "request": {
+            "name": "Amazon AppFlow Unregister Connector",
+            "description": {
+              "content": "Unregisters the custom connector registered in your account that matches the connector label provided in the request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "unregister-connector"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"forceDelete\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "920c5efa-c1b1-497d-829c-4da5bcc77c35",
+              "name": "Connector unregistered successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "947ab998-2dd9-4164-961c-0b59551fd9c3",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1279955f-d746-40af-8860-b038df0669c8",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51ad096a-07c6-45c6-bc3a-24f7a1a1fcb7",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44a78671-8f31-4841-a906-ee02723b1ecf",
+              "name": "Conflict — connector is in use by a flow",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39499d41-4d06-4d06-ac0e-8424979a87ea",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "unregister-connector"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"forceDelete\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51f9557f-db6a-4e3f-878f-eea4cdbf3ae4",
+          "name": "Amazon AppFlow Update Connector Registration",
+          "request": {
+            "name": "Amazon AppFlow Update Connector Registration",
+            "description": {
+              "content": "Updates a custom connector that you've previously registered. This operation updates the connector with one of the following — the latest version of the AWS Lambda function that's assigned to the connector, or a new AWS Lambda function that you specify.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "update-connector-registration"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorLabel\": \"<string>\",\n  \"description\": \"<string>\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"<string>\"\n    }\n  },\n  \"clientToken\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "283d9c0f-aed7-4876-97a2-a77006bc2079",
+              "name": "Connector registration updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"Updated description for my connector\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectorArn\": \"arn:aws:appflow:us-east-1:123456789012:connector/MyCustomConnector\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c7c3c31-cc9b-4fb8-9ac6-5cd67430818a",
+              "name": "Validation error or connector server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"Updated description for my connector\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e0f9f38f-064f-49fb-8e78-bbc8c28b41d3",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"Updated description for my connector\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da3695d3-a2c8-44e7-87af-28976b7f6131",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"Updated description for my connector\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e86b4f74-f31a-42dd-a769-7b6105482174",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "update-connector-registration"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorLabel\": \"MyCustomConnector\",\n  \"description\": \"Updated description for my connector\",\n  \"connectorProvisioningConfig\": {\n    \"lambda\": {\n      \"lambdaArn\": \"arn:aws:lambda:us-east-1:123456789012:function:my-connector-function-v2\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8297430e-502d-49a7-a28b-0d888186e7f7",
+          "name": "Amazon AppFlow Reset Connector Metadata Cache",
+          "request": {
+            "name": "Amazon AppFlow Reset Connector Metadata Cache",
+            "description": {
+              "content": "Resets metadata about your connector entities that Amazon AppFlow stored in its cache. Use this action when you want Amazon AppFlow to return the latest information about the data that you have in a source application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "reset-connector-metadata-cache"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"connectorProfileName\": \"<string>\",\n  \"connectorType\": \"<string>\",\n  \"connectorEntityName\": \"<string>\",\n  \"entitiesPath\": \"<string>\",\n  \"apiVersion\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8246030a-851f-42ae-9705-bf20ebd0ac91",
+              "name": "Connector metadata cache reset successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorEntityName\": \"Account\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bff4ca50-2ed8-4e97-b6a9-8d5e81e2cfcc",
+              "name": "Validation error or connector error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorEntityName\": \"Account\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a05725da-a603-4511-a786-9d7847e953a1",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorEntityName\": \"Account\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ffcd31f1-f7dd-4ab6-86cf-012f4c0d49d4",
+              "name": "Connector not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorEntityName\": \"Account\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "384e3ef9-7653-4958-90db-369c64d0950e",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "reset-connector-metadata-cache"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"connectorType\": \"Salesforce\",\n  \"connectorProfileName\": \"my-salesforce-profile\",\n  \"connectorEntityName\": \"Account\",\n  \"entitiesPath\": \"\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://appflow.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "24320a51-709a-4a82-bd8e-cd7bbacd769f",
+    "name": "Amazon AppFlow Connectors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose — on a schedule, in response to a business event, or on demand.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

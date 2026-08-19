@@ -1,0 +1,1163 @@
+{
+  "item": [
+    {
+      "id": "5e13649d-6e00-496f-ab49-a9f8c7325156",
+      "name": "Tags",
+      "description": {
+        "content": "Operations for managing resource tags",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "77e47ca8-0de5-4fc0-85d6-3226b7bb64e9",
+          "name": "Amazon AppFlow List Tags for Resource",
+          "request": {
+            "name": "Amazon AppFlow List Tags for Resource",
+            "description": {
+              "content": "Retrieves the tags that are associated with a specified flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                ":resourceArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceArn",
+                  "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b1bc097-3345-4ef7-89c1-8cfdcb124c58",
+              "name": "Tags listed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d7f2f0c0-49e8-47c1-8bde-958a862acb64",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b032e926-22a6-4ec1-9ca1-f0a8bc22cb42",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e620b460-d29c-4769-8b0d-4438df2f8f3e",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9fe1c5a0-0abb-43af-8954-fe0f8d59001b",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the specified flow."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a60c897c-4bb5-400e-a9de-b89e3c6d94f9",
+          "name": "Amazon AppFlow Tag Resource",
+          "request": {
+            "name": "Amazon AppFlow Tag Resource",
+            "description": {
+              "content": "Applies a tag to the specified flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                ":resourceArn"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resourceArn",
+                  "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                },
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tags\": {\n    \"key_0\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1a2c589b-52ff-49cc-b4ed-95879da7ce36",
+              "name": "Resource tagged successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85540702-417f-4aa8-a162-10d65df3fdbb",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0cfed5dc-711b-4565-929a-cd5808352e6e",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4dc8100a-0a97-482b-a9a1-f938b58623f4",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16d14382-ec7e-4d5a-907a-b97bd0bd4724",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    ":resourceArn"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resourceArn",
+                      "description": "(Required) The Amazon Resource Name (ARN) of the flow that you want to tag."
+                    },
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tags\": {\n    \"environment\": \"production\",\n    \"team\": \"data-engineering\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "876c689b-8966-4097-a832-0f832161a60b",
+          "name": "Amazon AppFlow Untag Resource",
+          "request": {
+            "name": "Amazon AppFlow Untag Resource",
+            "description": {
+              "content": "Removes a tag from the specified flow.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tags",
+                "{{resourceArn}}"
+              ],
+              "hash": "tagKeys",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "tagKeys",
+                  "value": "<string>",
+                  "description": "(Required) The tag keys associated with the tag that you want to remove from your flow."
+                },
+                {
+                  "disabled": false,
+                  "key": "tagKeys",
+                  "value": "<string>",
+                  "description": "(Required) The tag keys associated with the tag that you want to remove from your flow."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                  "type": "any",
+                  "value": "{{region}}",
+                  "key": "region"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "29774936-f139-4246-8e64-44d4a45107d7",
+              "name": "Tags removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "{{resourceArn}}"
+                  ],
+                  "hash": "tagKeys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tagKeys",
+                      "value": "environment"
+                    },
+                    {
+                      "key": "tagKeys",
+                      "value": "team"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1e929eaa-9564-46bc-930a-77e1302c4097",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "{{resourceArn}}"
+                  ],
+                  "hash": "tagKeys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tagKeys",
+                      "value": "environment"
+                    },
+                    {
+                      "key": "tagKeys",
+                      "value": "team"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eeade3ac-d9e3-421f-8429-157bfb6fe0bc",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "{{resourceArn}}"
+                  ],
+                  "hash": "tagKeys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tagKeys",
+                      "value": "environment"
+                    },
+                    {
+                      "key": "tagKeys",
+                      "value": "team"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ecc29123-cb38-4fad-b623-4f6ed8558af6",
+              "name": "Resource not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "{{resourceArn}}"
+                  ],
+                  "hash": "tagKeys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tagKeys",
+                      "value": "environment"
+                    },
+                    {
+                      "key": "tagKeys",
+                      "value": "team"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5d52c7c-0f8d-445d-bd72-26f5f00362b7",
+              "name": "Internal server error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tags",
+                    "{{resourceArn}}"
+                  ],
+                  "hash": "tagKeys",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "tagKeys",
+                      "value": "environment"
+                    },
+                    {
+                      "key": "tagKeys",
+                      "value": "team"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+                      "type": "any",
+                      "value": "{{region}}",
+                      "key": "region"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"The specified resource was not found.\",\n  \"code\": \"ResourceNotFoundException\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "AWS region (This can only be one of us-east-1,us-east-2,us-west-1,us-west-2,eu-west-1,eu-west-2,eu-central-1,ap-northeast-1,ap-southeast-1,ap-southeast-2,ap-south-1,sa-east-1,ca-central-1)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "us-east-1",
+      "key": "region"
+    },
+    {
+      "type": "string",
+      "value": "https://appflow.{{region}}.amazonaws.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) The Amazon Resource Name (ARN) of the flow that you want to untag.",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<string>",
+      "key": "resourceArn"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "30493b67-38e6-4282-b116-51df556d7c4a",
+    "name": "Amazon AppFlow Connectors Tags API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose — on a schedule, in response to a business event, or on demand.\n\nContact Support:\n Name: AWS Support",
+      "type": "text/plain"
+    }
+  }
+}

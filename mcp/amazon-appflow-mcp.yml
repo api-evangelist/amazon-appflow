@@ -2,11 +2,9 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/amazon-appflow-openapi.yml
-notes: >-
-  No official first-party Amazon AppFlow MCP server was found (no dedicated
-  awslabs/mcp server or registry entry for AppFlow at time of enrichment). The
-  tool list below is a candidate surface derived one-to-one from the AppFlow
-  OpenAPI operations, suitable for wrapping the AWS SDK behind an MCP server.
+notes: No official first-party Amazon AppFlow MCP server was found (no dedicated awslabs/mcp server or
+  registry entry for AppFlow at time of enrichment). The tool list below is a candidate surface derived
+  one-to-one from the AppFlow OpenAPI operations, suitable for wrapping the AWS SDK behind an MCP server.
 server:
   name: amazon-appflow
   transport: stdio
@@ -86,3 +84,9 @@ tools:
 - name: untagResource
   description: Remove tags from a flow.
   source_operation: openapi/amazon-appflow-openapi.yml#untagResource
+deployment:
+  mode: none
+  verified: derived
+  tools: 25
+  checked: '2026-08-12'
+  source: catalog MCP census
