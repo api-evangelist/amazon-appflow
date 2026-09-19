@@ -423,6 +423,8 @@ apis:
   humanURL: https://aws.amazon.com/appflow/
   baseURL: https://appflow.amazonaws.com
   tags:
+  - Flow
+  tags_raw:
   - Flows
   properties:
   - type: OpenAPI
