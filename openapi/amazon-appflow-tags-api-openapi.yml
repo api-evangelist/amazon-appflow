@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon AppFlow Connectors Tags API
+  title: Amazon AppFlow Tags API
   description: Amazon AppFlow is a fully managed integration service that enables you to securely transfer data between SaaS applications like Salesforce, SAP, Zendesk, Slack, and ServiceNow, and AWS services like Amazon S3 and Amazon Redshift. You can run data flows at enterprise scale at the frequency you choose — on a schedule, in response to a business event, or on demand.
   version: '2020-08-23'
   contact:
@@ -231,6 +231,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message describing what went wrong.
+          example: The specified resource was not found.
+        code:
+          type: string
+          description: The error code.
+          example: ResourceNotFoundException
     TagResourceRequest:
       type: object
       required:
@@ -255,17 +266,6 @@ components:
           example:
             environment: production
             team: data-engineering
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The error message describing what went wrong.
-          example: The specified resource was not found.
-        code:
-          type: string
-          description: The error code.
-          example: ResourceNotFoundException
   securitySchemes:
     sigv4:
       type: apiKey
