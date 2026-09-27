@@ -1149,7 +1149,7 @@ apis:
     url: examples/appflow-update-flow-response-example.json
 common:
 - type: Website
-  url: https://amazon.com
+  url: https://aws.amazon.com/appflow/
 - type: PostmanWorkspace
   url: https://www.postman.com/kinlaneapi/amazon-appflow/overview
 - type: AgenticAccess
@@ -1295,5 +1295,5 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
   url: https://apievangelist.com
-x-parent: aws
+x-parent: amazon-web-services
 x-relationship: product

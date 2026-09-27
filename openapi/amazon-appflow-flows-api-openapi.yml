@@ -675,103 +675,41 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ExecutionResult:
+    SourceFlowConfig:
       type: object
+      required:
+      - connectorType
+      - sourceConnectorProperties
       properties:
-        errorInfo:
+        connectorType:
+          type: string
+          description: The type of connector used as a source.
+          example: Salesforce
+        apiVersion:
+          type: string
+          description: The API version of the connector used in the source.
+          example: v55.0
+        connectorProfileName:
+          type: string
+          description: The name of the connector profile. Required for all connectors except Amplitude, Datadog, Dynatrace, GoogleAnalytics, Marketo, SAPOData, Salesforce, ServiceNow, Singular, Slack, Trendmicro, and Veeva.
+          example: my-salesforce-profile
+        sourceConnectorProperties:
           type: object
-          description: Provides any error message information related to the flow run.
-        bytesProcessed:
-          type: integer
-          format: int64
-          description: The total number of bytes processed by the flow run.
-          example: 204800
-        bytesWritten:
-          type: integer
-          format: int64
-          description: The total number of bytes written as a result of the flow run.
-          example: 204800
-        recordsProcessed:
-          type: integer
-          format: int64
-          description: The number of records processed in the flow run.
-          example: 1500
-        numParallelProcesses:
-          type: integer
-          format: int64
-          description: The number of processes that Amazon AppFlow ran at the same time when it retrieved your data.
-          example: 1
-    CancelFlowExecutionsRequest:
-      type: object
-      required:
-      - flowName
-      properties:
-        flowName:
-          type: string
-          description: The name of a flow with active runs that you want to cancel.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-        executionIds:
-          type: array
-          description: The ID of each active run to cancel. If you omit this parameter, your request ends all active runs that belong to the flow.
-          items:
-            type: string
-            example: ''
+          description: Specifies the information that is required to query a particular source connector.
           example:
-          - exec-500123
-    StopFlowRequest:
-      type: object
-      required:
-      - flowName
-      properties:
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-    DescribeFlowRequest:
-      type: object
-      required:
-      - flowName
-      properties:
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-    StopFlowResponse:
+            Salesforce:
+              object: Account
+        incrementalPullConfig:
+          type: object
+          description: Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the incremental data pull.
+          properties:
+            datetimeTypeFieldName:
+              type: string
+              description: A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.
+              example: LastModifiedDate
+    UpdateFlowResponse:
       type: object
       properties:
-        flowArn:
-          type: string
-          description: The flow's Amazon Resource Name (ARN).
-          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
-        flowStatus:
-          type: string
-          description: Indicates the current status of the flow.
-          enum:
-          - Active
-          - Deprecated
-          - Deleted
-          - Draft
-          - Errored
-          - Suspended
-          example: Suspended
-    FlowDefinition:
-      type: object
-      properties:
-        flowArn:
-          type: string
-          description: The flow's Amazon Resource Name (ARN).
-          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
-        description:
-          type: string
-          description: A user-entered description of the flow.
-          example: Transfer Salesforce accounts to S3 daily
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          example: my-salesforce-to-s3-flow
         flowStatus:
           type: string
           description: Indicates the current status of the flow.
@@ -783,211 +721,16 @@ components:
           - Errored
           - Suspended
           example: Active
-        sourceConnectorType:
-          type: string
-          description: Specifies the source connector type.
-          example: Salesforce
-        sourceConnectorLabel:
-          type: string
-          description: The label of the source connector in the flow.
-          example: MyCustomSourceConnector
-        destinationConnectorType:
-          type: string
-          description: Specifies the destination connector type.
-          example: S3
-        destinationConnectorLabel:
-          type: string
-          description: The label of the destination connector in the flow.
-          example: MyCustomDestinationConnector
-        triggerType:
-          type: string
-          description: Specifies the type of flow trigger.
-          enum:
-          - Scheduled
-          - Event
-          - OnDemand
-          example: Scheduled
-        createdAt:
-          type: integer
-          format: int64
-          description: Specifies when the flow was created.
-          example: 1718153645993
-        lastUpdatedAt:
-          type: integer
-          format: int64
-          description: Specifies when the flow was last updated.
-          example: 1718153645993
-        createdBy:
-          type: string
-          description: The ARN of the user who created the flow.
-          example: arn:aws:iam::123456789012:user/admin
-        lastUpdatedBy:
-          type: string
-          description: Specifies the account user name that most recently updated the flow.
-          example: arn:aws:iam::123456789012:user/admin
-        tags:
-          type: object
-          additionalProperties:
-            type: string
-          example:
-            environment: production
-        lastRunExecutionDetails:
-          $ref: '#/components/schemas/ExecutionDetails'
-    CreateFlowRequest:
+    StopFlowRequest:
       type: object
       required:
       - flowName
-      - triggerConfig
-      - sourceFlowConfig
-      - destinationFlowConfigList
-      - tasks
       properties:
         flowName:
           type: string
-          description: The specified name of the flow. Spaces are not allowed. Use underscores or hyphens only.
+          description: The specified name of the flow.
           maxLength: 256
-          pattern: '[a-zA-Z0-9][\w!@#.-]+'
           example: my-salesforce-to-s3-flow
-        clientToken:
-          type: string
-          description: Idempotency token to ensure CreateFlow completes only once.
-          minLength: 1
-          maxLength: 256
-          example: client-token-500123
-        description:
-          type: string
-          description: A description of the flow you want to create.
-          maxLength: 2048
-          example: Transfer Salesforce accounts to S3 daily
-        kmsArn:
-          type: string
-          description: The ARN of the KMS key for encryption.
-          minLength: 20
-          maxLength: 2048
-          example: arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd
-        metadataCatalogConfig:
-          $ref: '#/components/schemas/MetadataCatalogConfig'
-        triggerConfig:
-          $ref: '#/components/schemas/TriggerConfig'
-        sourceFlowConfig:
-          $ref: '#/components/schemas/SourceFlowConfig'
-        destinationFlowConfigList:
-          type: array
-          description: The configuration that controls how Amazon AppFlow places data in the destination connector.
-          items:
-            $ref: '#/components/schemas/DestinationFlowConfig'
-        tasks:
-          type: array
-          description: A list of tasks that Amazon AppFlow performs while transferring data in the flow run.
-          items:
-            $ref: '#/components/schemas/Task'
-        tags:
-          type: object
-          description: The tags used to organize, track, or control access for your flow.
-          additionalProperties:
-            type: string
-          example:
-            environment: production
-    FlowExecution:
-      type: object
-      properties:
-        executionId:
-          type: string
-          description: Specifies the identifier of the given flow run.
-          example: exec-500123
-        executionStatus:
-          type: string
-          description: Specifies the flow run status and whether it is in progress, has completed successfully, or has failed.
-          enum:
-          - InProgress
-          - Successful
-          - Error
-          - CancelStarted
-          - Canceled
-          example: Successful
-        executionResult:
-          $ref: '#/components/schemas/ExecutionResult'
-        startedAt:
-          type: integer
-          format: int64
-          description: Specifies the start timestamp for your flow run.
-          example: 1718153645993
-        lastUpdatedAt:
-          type: integer
-          format: int64
-          description: Specifies the time of the most recent update.
-          example: 1718153700000
-        dataPullStartTime:
-          type: integer
-          format: int64
-          description: The timestamp that determines the first new or updated record to be transferred in the flow run.
-          example: 1718153645993
-        dataPullEndTime:
-          type: integer
-          format: int64
-          description: The timestamp that determines the last new or updated record to be transferred in the flow run.
-          example: 1718153700000
-    Task:
-      type: object
-      required:
-      - taskType
-      - sourceFields
-      properties:
-        sourceFields:
-          type: array
-          description: The source fields to which a particular task is applied.
-          items:
-            type: string
-            example: ''
-          example:
-          - Id
-          - Name
-        connectorOperator:
-          type: object
-          description: The operation to be performed on the provided source fields.
-          example:
-            Salesforce: NO_OP
-        destinationField:
-          type: string
-          description: A field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
-          example: AccountId
-        taskType:
-          type: string
-          description: Specifies the particular task implementation that Amazon AppFlow performs.
-          enum:
-          - Arithmetic
-          - Filter
-          - Map
-          - Map_all
-          - Mask
-          - Merge
-          - Partition
-          - Passthrough
-          - Truncate
-          - Validate
-          - Concat
-          example: Map
-        taskProperties:
-          type: object
-          description: A map used to store task-related information.
-          additionalProperties:
-            type: string
-          example:
-            SOURCE_DATA_TYPE: string
-    ListFlowsRequest:
-      type: object
-      properties:
-        maxResults:
-          type: integer
-          description: Specifies the maximum number of items that should be returned in the result set.
-          minimum: 1
-          maximum: 100
-          example: 20
-        nextToken:
-          type: string
-          description: The pagination token for next page of data.
-          maxLength: 2048
-          example: ''
     TriggerConfig:
       type: object
       required:
@@ -1007,87 +750,6 @@ components:
           properties:
             Scheduled:
               $ref: '#/components/schemas/ScheduledTriggerProperties'
-    UpdateFlowRequest:
-      type: object
-      required:
-      - flowName
-      - triggerConfig
-      - sourceFlowConfig
-      - destinationFlowConfigList
-      - tasks
-      properties:
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-        clientToken:
-          type: string
-          description: Idempotency token.
-          example: client-token-500123
-        description:
-          type: string
-          description: A description of the flow.
-          maxLength: 2048
-          example: Updated description
-        triggerConfig:
-          $ref: '#/components/schemas/TriggerConfig'
-        sourceFlowConfig:
-          $ref: '#/components/schemas/SourceFlowConfig'
-        destinationFlowConfigList:
-          type: array
-          items:
-            $ref: '#/components/schemas/DestinationFlowConfig'
-        tasks:
-          type: array
-          items:
-            $ref: '#/components/schemas/Task'
-        metadataCatalogConfig:
-          $ref: '#/components/schemas/MetadataCatalogConfig'
-    ExecutionDetails:
-      type: object
-      properties:
-        mostRecentExecutionMessage:
-          type: string
-          description: Describes the details of the most recent flow run.
-          example: Successfully ran the flow
-        mostRecentExecutionTime:
-          type: integer
-          format: int64
-          description: Specifies the time of the most recent flow run.
-          example: 1718153700000
-        mostRecentExecutionStatus:
-          type: string
-          description: Specifies the status of the most recent flow run.
-          enum:
-          - InProgress
-          - Successful
-          - Error
-          - CancelStarted
-          - Canceled
-          example: Successful
-    StartFlowResponse:
-      type: object
-      properties:
-        flowArn:
-          type: string
-          description: The flow's Amazon Resource Name (ARN).
-          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
-        flowStatus:
-          type: string
-          description: Indicates the current status of the flow.
-          enum:
-          - Active
-          - Deprecated
-          - Deleted
-          - Draft
-          - Errored
-          - Suspended
-          example: Active
-        executionId:
-          type: string
-          description: Returns the internal execution ID of an on-demand flow when the flow is started.
-          example: exec-500123
     DescribeFlowResponse:
       type: object
       properties:
@@ -1166,6 +828,40 @@ components:
           type: array
           items:
             type: object
+    ListFlowsResponse:
+      type: object
+      properties:
+        flows:
+          type: array
+          description: The list of flows associated with your account.
+          items:
+            $ref: '#/components/schemas/FlowDefinition'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    StartFlowResponse:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+        executionId:
+          type: string
+          description: Returns the internal execution ID of an on-demand flow when the flow is started.
+          example: exec-500123
     CreateFlowResponse:
       type: object
       properties:
@@ -1185,6 +881,247 @@ components:
           - Errored
           - Suspended
           example: Active
+    DescribeFlowExecutionRecordsResponse:
+      type: object
+      properties:
+        flowExecutions:
+          type: array
+          description: Returns the execution details and flow run history for a given flow.
+          items:
+            $ref: '#/components/schemas/FlowExecution'
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          example: ''
+    StartFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+    DescribeFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+    ListFlowsRequest:
+      type: object
+      properties:
+        maxResults:
+          type: integer
+          description: Specifies the maximum number of items that should be returned in the result set.
+          minimum: 1
+          maximum: 100
+          example: 20
+        nextToken:
+          type: string
+          description: The pagination token for next page of data.
+          maxLength: 2048
+          example: ''
+    FlowExecution:
+      type: object
+      properties:
+        executionId:
+          type: string
+          description: Specifies the identifier of the given flow run.
+          example: exec-500123
+        executionStatus:
+          type: string
+          description: Specifies the flow run status and whether it is in progress, has completed successfully, or has failed.
+          enum:
+          - InProgress
+          - Successful
+          - Error
+          - CancelStarted
+          - Canceled
+          example: Successful
+        executionResult:
+          $ref: '#/components/schemas/ExecutionResult'
+        startedAt:
+          type: integer
+          format: int64
+          description: Specifies the start timestamp for your flow run.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies the time of the most recent update.
+          example: 1718153700000
+        dataPullStartTime:
+          type: integer
+          format: int64
+          description: The timestamp that determines the first new or updated record to be transferred in the flow run.
+          example: 1718153645993
+        dataPullEndTime:
+          type: integer
+          format: int64
+          description: The timestamp that determines the last new or updated record to be transferred in the flow run.
+          example: 1718153700000
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The error message describing what went wrong.
+          example: The specified resource was not found.
+        code:
+          type: string
+          description: The error code.
+          example: ResourceNotFoundException
+    FlowDefinition:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        description:
+          type: string
+          description: A user-entered description of the flow.
+          example: Transfer Salesforce accounts to S3 daily
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          example: my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Active
+        sourceConnectorType:
+          type: string
+          description: Specifies the source connector type.
+          example: Salesforce
+        sourceConnectorLabel:
+          type: string
+          description: The label of the source connector in the flow.
+          example: MyCustomSourceConnector
+        destinationConnectorType:
+          type: string
+          description: Specifies the destination connector type.
+          example: S3
+        destinationConnectorLabel:
+          type: string
+          description: The label of the destination connector in the flow.
+          example: MyCustomDestinationConnector
+        triggerType:
+          type: string
+          description: Specifies the type of flow trigger.
+          enum:
+          - Scheduled
+          - Event
+          - OnDemand
+          example: Scheduled
+        createdAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was created.
+          example: 1718153645993
+        lastUpdatedAt:
+          type: integer
+          format: int64
+          description: Specifies when the flow was last updated.
+          example: 1718153645993
+        createdBy:
+          type: string
+          description: The ARN of the user who created the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        lastUpdatedBy:
+          type: string
+          description: Specifies the account user name that most recently updated the flow.
+          example: arn:aws:iam::123456789012:user/admin
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+        lastRunExecutionDetails:
+          $ref: '#/components/schemas/ExecutionDetails'
+    StopFlowResponse:
+      type: object
+      properties:
+        flowArn:
+          type: string
+          description: The flow's Amazon Resource Name (ARN).
+          example: arn:aws:appflow:us-east-1:123456789012:flow/my-salesforce-to-s3-flow
+        flowStatus:
+          type: string
+          description: Indicates the current status of the flow.
+          enum:
+          - Active
+          - Deprecated
+          - Deleted
+          - Draft
+          - Errored
+          - Suspended
+          example: Suspended
+    CancelFlowExecutionsResponse:
+      type: object
+      properties:
+        invalidExecutions:
+          type: array
+          description: The IDs of runs that Amazon AppFlow couldn't cancel. The runs might have ended before the cancelation request was processed.
+          items:
+            type: string
+            example: ''
+          example:
+          - exec-invalid-123
+    DeleteFlowRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        forceDelete:
+          type: boolean
+          description: Indicates whether Amazon AppFlow should delete the flow, even if it is currently in use.
+          example: false
+    ExecutionDetails:
+      type: object
+      properties:
+        mostRecentExecutionMessage:
+          type: string
+          description: Describes the details of the most recent flow run.
+          example: Successfully ran the flow
+        mostRecentExecutionTime:
+          type: integer
+          format: int64
+          description: Specifies the time of the most recent flow run.
+          example: 1718153700000
+        mostRecentExecutionStatus:
+          type: string
+          description: Specifies the status of the most recent flow run.
+          enum:
+          - InProgress
+          - Successful
+          - Error
+          - CancelStarted
+          - Canceled
+          example: Successful
     DescribeFlowExecutionRecordsRequest:
       type: object
       required:
@@ -1205,108 +1142,6 @@ components:
           type: string
           description: The pagination token for next page of data.
           maxLength: 2048
-          example: ''
-    StartFlowRequest:
-      type: object
-      required:
-      - flowName
-      properties:
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-        clientToken:
-          type: string
-          description: Idempotency token.
-          example: client-token-500123
-    UpdateFlowResponse:
-      type: object
-      properties:
-        flowStatus:
-          type: string
-          description: Indicates the current status of the flow.
-          enum:
-          - Active
-          - Deprecated
-          - Deleted
-          - Draft
-          - Errored
-          - Suspended
-          example: Active
-    SourceFlowConfig:
-      type: object
-      required:
-      - connectorType
-      - sourceConnectorProperties
-      properties:
-        connectorType:
-          type: string
-          description: The type of connector used as a source.
-          example: Salesforce
-        apiVersion:
-          type: string
-          description: The API version of the connector used in the source.
-          example: v55.0
-        connectorProfileName:
-          type: string
-          description: The name of the connector profile. Required for all connectors except Amplitude, Datadog, Dynatrace, GoogleAnalytics, Marketo, SAPOData, Salesforce, ServiceNow, Singular, Slack, Trendmicro, and Veeva.
-          example: my-salesforce-profile
-        sourceConnectorProperties:
-          type: object
-          description: Specifies the information that is required to query a particular source connector.
-          example:
-            Salesforce:
-              object: Account
-        incrementalPullConfig:
-          type: object
-          description: Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the incremental data pull.
-          properties:
-            datetimeTypeFieldName:
-              type: string
-              description: A field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.
-              example: LastModifiedDate
-    MetadataCatalogConfig:
-      type: object
-      properties:
-        glueDataCatalog:
-          type: object
-          description: Specifies the configuration that Amazon AppFlow uses when it catalogs data with the Glue Data Catalog.
-          properties:
-            roleArn:
-              type: string
-              description: The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions.
-              example: arn:aws:iam::123456789012:role/AppFlowGlueRole
-            databaseName:
-              type: string
-              description: The name of an existing Glue Data Catalog database.
-              example: appflow-catalog-db
-            tablePrefix:
-              type: string
-              description: A naming prefix for each Data Catalog table that Amazon AppFlow creates.
-              example: sf_
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: The error message describing what went wrong.
-          example: The specified resource was not found.
-        code:
-          type: string
-          description: The error code.
-          example: ResourceNotFoundException
-    DescribeFlowExecutionRecordsResponse:
-      type: object
-      properties:
-        flowExecutions:
-          type: array
-          description: Returns the execution details and flow run history for a given flow.
-          items:
-            $ref: '#/components/schemas/FlowExecution'
-        nextToken:
-          type: string
-          description: The pagination token for next page of data.
           example: ''
     ScheduledTriggerProperties:
       type: object
@@ -1352,20 +1187,6 @@ components:
           type: integer
           description: Defines how many times a scheduled flow fails consecutively before Amazon AppFlow deactivates it.
           example: 3
-    DeleteFlowRequest:
-      type: object
-      required:
-      - flowName
-      properties:
-        flowName:
-          type: string
-          description: The specified name of the flow.
-          maxLength: 256
-          example: my-salesforce-to-s3-flow
-        forceDelete:
-          type: boolean
-          description: Indicates whether Amazon AppFlow should delete the flow, even if it is currently in use.
-          example: false
     DestinationFlowConfig:
       type: object
       required:
@@ -1391,29 +1212,208 @@ components:
             S3:
               bucketName: my-data-bucket
               bucketPrefix: appflow/salesforce/accounts
-    CancelFlowExecutionsResponse:
+    UpdateFlowRequest:
+      type: object
+      required:
+      - flowName
+      - triggerConfig
+      - sourceFlowConfig
+      - destinationFlowConfigList
+      - tasks
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token.
+          example: client-token-500123
+        description:
+          type: string
+          description: A description of the flow.
+          maxLength: 2048
+          example: Updated description
+        triggerConfig:
+          $ref: '#/components/schemas/TriggerConfig'
+        sourceFlowConfig:
+          $ref: '#/components/schemas/SourceFlowConfig'
+        destinationFlowConfigList:
+          type: array
+          items:
+            $ref: '#/components/schemas/DestinationFlowConfig'
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        metadataCatalogConfig:
+          $ref: '#/components/schemas/MetadataCatalogConfig'
+    CreateFlowRequest:
+      type: object
+      required:
+      - flowName
+      - triggerConfig
+      - sourceFlowConfig
+      - destinationFlowConfigList
+      - tasks
+      properties:
+        flowName:
+          type: string
+          description: The specified name of the flow. Spaces are not allowed. Use underscores or hyphens only.
+          maxLength: 256
+          pattern: '[a-zA-Z0-9][\w!@#.-]+'
+          example: my-salesforce-to-s3-flow
+        clientToken:
+          type: string
+          description: Idempotency token to ensure CreateFlow completes only once.
+          minLength: 1
+          maxLength: 256
+          example: client-token-500123
+        description:
+          type: string
+          description: A description of the flow you want to create.
+          maxLength: 2048
+          example: Transfer Salesforce accounts to S3 daily
+        kmsArn:
+          type: string
+          description: The ARN of the KMS key for encryption.
+          minLength: 20
+          maxLength: 2048
+          example: arn:aws:kms:us-east-1:123456789012:key/mrk-1234abcd
+        metadataCatalogConfig:
+          $ref: '#/components/schemas/MetadataCatalogConfig'
+        triggerConfig:
+          $ref: '#/components/schemas/TriggerConfig'
+        sourceFlowConfig:
+          $ref: '#/components/schemas/SourceFlowConfig'
+        destinationFlowConfigList:
+          type: array
+          description: The configuration that controls how Amazon AppFlow places data in the destination connector.
+          items:
+            $ref: '#/components/schemas/DestinationFlowConfig'
+        tasks:
+          type: array
+          description: A list of tasks that Amazon AppFlow performs while transferring data in the flow run.
+          items:
+            $ref: '#/components/schemas/Task'
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+    ExecutionResult:
       type: object
       properties:
-        invalidExecutions:
+        errorInfo:
+          type: object
+          description: Provides any error message information related to the flow run.
+        bytesProcessed:
+          type: integer
+          format: int64
+          description: The total number of bytes processed by the flow run.
+          example: 204800
+        bytesWritten:
+          type: integer
+          format: int64
+          description: The total number of bytes written as a result of the flow run.
+          example: 204800
+        recordsProcessed:
+          type: integer
+          format: int64
+          description: The number of records processed in the flow run.
+          example: 1500
+        numParallelProcesses:
+          type: integer
+          format: int64
+          description: The number of processes that Amazon AppFlow ran at the same time when it retrieved your data.
+          example: 1
+    MetadataCatalogConfig:
+      type: object
+      properties:
+        glueDataCatalog:
+          type: object
+          description: Specifies the configuration that Amazon AppFlow uses when it catalogs data with the Glue Data Catalog.
+          properties:
+            roleArn:
+              type: string
+              description: The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions.
+              example: arn:aws:iam::123456789012:role/AppFlowGlueRole
+            databaseName:
+              type: string
+              description: The name of an existing Glue Data Catalog database.
+              example: appflow-catalog-db
+            tablePrefix:
+              type: string
+              description: A naming prefix for each Data Catalog table that Amazon AppFlow creates.
+              example: sf_
+    Task:
+      type: object
+      required:
+      - taskType
+      - sourceFields
+      properties:
+        sourceFields:
           type: array
-          description: The IDs of runs that Amazon AppFlow couldn't cancel. The runs might have ended before the cancelation request was processed.
+          description: The source fields to which a particular task is applied.
           items:
             type: string
             example: ''
           example:
-          - exec-invalid-123
-    ListFlowsResponse:
-      type: object
-      properties:
-        flows:
-          type: array
-          description: The list of flows associated with your account.
-          items:
-            $ref: '#/components/schemas/FlowDefinition'
-        nextToken:
+          - Id
+          - Name
+        connectorOperator:
+          type: object
+          description: The operation to be performed on the provided source fields.
+          example:
+            Salesforce: NO_OP
+        destinationField:
           type: string
-          description: The pagination token for next page of data.
-          example: ''
+          description: A field in a destination connector, or a field value against which Amazon AppFlow validates a source field.
+          example: AccountId
+        taskType:
+          type: string
+          description: Specifies the particular task implementation that Amazon AppFlow performs.
+          enum:
+          - Arithmetic
+          - Filter
+          - Map
+          - Map_all
+          - Mask
+          - Merge
+          - Partition
+          - Passthrough
+          - Truncate
+          - Validate
+          - Concat
+          example: Map
+        taskProperties:
+          type: object
+          description: A map used to store task-related information.
+          additionalProperties:
+            type: string
+          example:
+            SOURCE_DATA_TYPE: string
+    CancelFlowExecutionsRequest:
+      type: object
+      required:
+      - flowName
+      properties:
+        flowName:
+          type: string
+          description: The name of a flow with active runs that you want to cancel.
+          maxLength: 256
+          example: my-salesforce-to-s3-flow
+        executionIds:
+          type: array
+          description: The ID of each active run to cancel. If you omit this parameter, your request ends all active runs that belong to the flow.
+          items:
+            type: string
+            example: ''
+          example:
+          - exec-500123
   securitySchemes:
     sigv4:
       type: apiKey
