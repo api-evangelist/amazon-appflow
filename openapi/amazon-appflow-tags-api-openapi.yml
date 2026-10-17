@@ -231,17 +231,17 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ListTagsForResourceResponse:
+    ErrorResponse:
       type: object
       properties:
-        tags:
-          type: object
-          description: The tags used to organize, track, or control access for your flow.
-          additionalProperties:
-            type: string
-          example:
-            environment: production
-            team: data-engineering
+        message:
+          type: string
+          description: The error message describing what went wrong.
+          example: The specified resource was not found.
+        code:
+          type: string
+          description: The error code.
+          example: ResourceNotFoundException
     TagResourceRequest:
       type: object
       required:
@@ -255,17 +255,17 @@ components:
           example:
             environment: production
             team: data-engineering
-    ErrorResponse:
+    ListTagsForResourceResponse:
       type: object
       properties:
-        message:
-          type: string
-          description: The error message describing what went wrong.
-          example: The specified resource was not found.
-        code:
-          type: string
-          description: The error code.
-          example: ResourceNotFoundException
+        tags:
+          type: object
+          description: The tags used to organize, track, or control access for your flow.
+          additionalProperties:
+            type: string
+          example:
+            environment: production
+            team: data-engineering
   securitySchemes:
     sigv4:
       type: apiKey
